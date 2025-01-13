@@ -1,0 +1,101 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "fe42fd9b-9eb1-4f3c-993c-d85dd59d1118": {
+      "type": "rich-text",
+      "blocks": {
+        "template--18355947274520__fe42fd9b-9eb1-4f3c-993c-d85dd59d1118-1679682152fc5d404d-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p><strong>SIZE GUIDE</strong></p>",
+            "heading_size": "hxl"
+          }
+        }
+      },
+      "block_order": [
+        "template--18355947274520__fe42fd9b-9eb1-4f3c-993c-d85dd59d1118-1679682152fc5d404d-0"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "b0029d14-ee69-4389-80ec-b267786613f1": {
+      "type": "image-with-text",
+      "settings": {
+        "order_mobile": "column-reverse",
+        "order_desktop": "row",
+        "bg_color": "#ffffff",
+        "heading": "SOCK HEIGHT",
+        "main_text": "<p>At Sockeloen we know best how valuable the wright sockheight is for a cyclist. That's why our socks allready have a perfect height optimised by the size and usage of the socks.<br/><br/><strong>We have socks between 17cm to 21cm. </strong><br/><br/>But if you wanna check your height you can measure it: starting from the top, to just above the heel of the sock. Like the picture attached.<br/><br/></p>",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "33e98e73-6cfc-439d-a0ed-b31c7ae9ce0e": {
+      "type": "image-with-text",
+      "settings": {
+        "order_mobile": "true",
+        "order_desktop": "row-reverse",
+        "bg_color": "#ffffff",
+        "heading": "SOCK SIZE",
+        "main_text": "<p><strong>ONE SIZE: </strong>This is most common size we use is. We developped this special fit by using extra elastic material. <br/><span style=\"text-decoration:underline\">This size covers 39 - 46. </span><br/><br/><strong>TWO SIZES: </strong>Some of our socks we offer in two sizes. <br/><span style=\"text-decoration:underline\">These are 36-42 and 43-48.</span><br/><br/><strong>THREE SIZES:</strong> Custom made we can also produce three sizes for you. <span style=\"text-decoration:underline\">These are: 35-40 and 40-45 and 45-50.</span></p>",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "4bbe5988-c166-47ae-8f8c-edf219e8d319": {
+      "type": "image-with-text",
+      "settings": {
+        "order_mobile": "column-reverse",
+        "order_desktop": "row",
+        "bg_color": "#ffffff",
+        "heading": "GLOVES",
+        "main_text": "<p>- <strong>Size S</strong> index finger: 7.5 cm<br/>- <strong>Size M</strong> index finger: 8 cm<br/>- <strong>Size L</strong> index finger: 8.5 cm<br/>- <strong>Size XL</strong> index finger: 9 cm<br/><em><br/>The gloves also have an extra long fit so that the wrists also remain protected.</em></p>",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "dc6c1e06-9cca-444d-a11b-849b54ee7780": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "order_mobile": "column-reverse",
+        "order_desktop": "row-reverse",
+        "bg_color": "#ffffff",
+        "heading": "GLOVES",
+        "main_text": "<p>- <strong>Size S</strong> index finger: 7.5 cm<br/>- <strong>Size M</strong> index finger: 8 cm<br/>- <strong>Size L</strong> index finger: 8.5 cm<br/>- <strong>Size XL</strong> index finger: 9 cm<br/><em><br/>The gloves also have an extra long fit so that the wrists also remain protected.</em></p>",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "main",
+    "fe42fd9b-9eb1-4f3c-993c-d85dd59d1118",
+    "b0029d14-ee69-4389-80ec-b267786613f1",
+    "33e98e73-6cfc-439d-a0ed-b31c7ae9ce0e",
+    "4bbe5988-c166-47ae-8f8c-edf219e8d319",
+    "dc6c1e06-9cca-444d-a11b-849b54ee7780"
+  ]
+}

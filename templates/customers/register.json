@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_AWQhmd": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_cdddVH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Create Custom Account",
+            "heading_size": "h2"
+          }
+        },
+        "text_Uh4a4H": {
+          "type": "text",
+          "settings": {
+            "text": "This account section is exclusively for bussinesses, clubs, brands that are looking to order +50 pairs of custom made socks.",
+            "text_style": "body"
+          }
+        },
+        "buttons_JKdyfR": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_cdddVH",
+        "text_Uh4a4H",
+        "buttons_JKdyfR"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/CUSTOM.SOCKS.banner_2.png",
+        "image_mobile": "shopify://shop_images/CUSTOM.SOCKS.banner.MOBILE_597a2174-ebd2-4a07-be0b-5c176d2b4e2a_1.png",
+        "image_overlay_opacity": 30,
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner_AWQhmd",
+    "main"
+  ]
+}

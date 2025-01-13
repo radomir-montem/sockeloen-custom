@@ -1,0 +1,11 @@
+{% if settings.custom_form_image != blank %}
+  <div
+    class="image-block-container flex items-center justify-center"
+    style="padding: {{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px;"
+  >
+      <img 
+        src="{{ settings.custom_form_image | image_url: width: settings.custom_form_image.width }}"
+        class="max-w-full rounded"
+      />
+  </div>
+{% endif %}
