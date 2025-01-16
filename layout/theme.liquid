@@ -277,12 +277,15 @@
       {{ "accessibility.skip_to_text" | t }}
     </a>
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
-    {%- endif -%}
-
-    {% section 'announcement-bar' %}
-    {% section 'header' %}
+    {% assign tempalte_suffix = template.suffix | handleize %}
+    {% unless tempalte_suffix == 'forms-free-sample-design' %}
+      {%- if settings.cart_type == 'drawer' -%}
+        {%- render 'cart-drawer' -%}
+      {%- endif -%}
+    
+      {% section 'announcement-bar' %}
+      {% section 'header' %}
+    {% endunless %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
@@ -464,7 +467,7 @@
         SufioVAT.onCart();
     };
 </script>
-{% assign tempalte_suffix = template.suffix | handleize %}
+
 {% if tempalte_suffix == 'forms-free-sample-design' %}
   <script src="{{ 'custom-form.js' | asset_url }}" defer="defer"></script>
 {% endif %}

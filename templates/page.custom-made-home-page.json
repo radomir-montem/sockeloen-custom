@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "image_banner": {
@@ -22,7 +13,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "FREE 15MIN CONSULT // FREE SAMPLE SOCKS // STARTING FROM 1 PAIR // DELIVERY WITHIN 1 WEEK // OWNED PRODUCTION FACILITIES // 100% SATISFACTION",
+            "text": "FREE 15MIN CONSULT \/\/ FREE SAMPLE SOCKS \/\/ STARTING FROM 1 PAIR \/\/ DELIVERY WITHIN 1 WEEK \/\/ OWNED PRODUCTION FACILITIES \/\/ 100% SATISFACTION",
             "text_style": "body"
           }
         },
@@ -30,10 +21,10 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "VIEW PRODUCTS",
-            "button_link_1": "shopify://collections/custom-knitted-socks",
+            "button_link_1": "shopify:\/\/collections\/custom-knitted-socks",
             "button_style_secondary_1": false,
             "button_label_2": "BOOK A CALL",
-            "button_link_2": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/G9vEwDuO/sockeloen-custom-call",
+            "button_link_2": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/G9vEwDuO\/sockeloen-custom-call",
             "button_style_secondary_2": true
           }
         }
@@ -47,8 +38,8 @@
         "h2 {font-size: 48px;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/CUSTOM.SOCKS.banner.png",
-        "image_mobile": "shopify://shop_images/CUSTOM.SOCKS.banner.MOBILE_597a2174-ebd2-4a07-be0b-5c176d2b4e2a.png",
+        "image": "shopify:\/\/shop_images\/CUSTOM.SOCKS.banner.png",
+        "image_mobile": "shopify:\/\/shop_images\/CUSTOM.SOCKS.banner.MOBILE_597a2174-ebd2-4a07-be0b-5c176d2b4e2a.png",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -67,25 +58,25 @@
         "a68819bb-0e6b-48c9-863f-10a1074f5d16": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-CANYON.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-CANYON.jpg"
           }
         },
         "e5266b35-ea27-4c04-aa02-b709db6a4999": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-LSRF-LOGO.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-LSRF-LOGO.jpg"
           }
         },
         "20a37a02-b535-4c77-9abf-ee2feb677b95": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-LA-MACHINE-LOGO.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-LA-MACHINE-LOGO.jpg"
           }
         },
         "0cd61b2f-4ae5-4495-8470-6db7647649c0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-SRAM.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-SRAM.jpg"
           }
         }
       },
@@ -119,30 +110,30 @@
           "type": "richtext",
           "settings": {
             "title": "FREE CONSULT",
-            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, samples and everthing else you want to know.</p><p></p><p></p>",
+            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, samples and everthing else you want to know.<\/p><p><\/p><p><\/p>",
             "button_label": "",
-            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/G9vEwDuO/sockeloen-custom-call",
+            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/G9vEwDuO\/sockeloen-custom-call",
             "text_align": "center"
           }
         },
         "86de9b6b-4b96-465d-89c3-3525b1066c20": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/BOOK.A.CLL.COLLECTION_DESKTOP_474X680_7da116a4-3725-470a-8698-e820f9196d5d.png",
+            "image": "shopify:\/\/shop_images\/BOOK.A.CLL.COLLECTION_DESKTOP_474X680_7da116a4-3725-470a-8698-e820f9196d5d.png",
             "opacity": 40,
             "title": "",
             "button_label": "BOOK A CALL",
-            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/G9vEwDuO/sockeloen-custom-call"
+            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/G9vEwDuO\/sockeloen-custom-call"
           }
         },
         "4904019c-ebe9-48ae-adae-d8c50c33e729": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ASK.US.COLLECTION_DESKTOP_474X680_543907b2-02ca-4f56-a798-dfecf1a578ea.png",
+            "image": "shopify:\/\/shop_images\/ASK.US.COLLECTION_DESKTOP_474X680_543907b2-02ca-4f56-a798-dfecf1a578ea.png",
             "opacity": 40,
             "title": "",
             "button_label": "DESIGN ONLINE",
-            "button_url": "shopify://collections/custom-knitted-socks"
+            "button_url": "shopify:\/\/collections\/custom-knitted-socks"
           }
         }
       },
@@ -161,41 +152,41 @@
         "eef4ba6c-f921-4b50-98a4-4507f6975f2a": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/TEAMS_CATEGORY_DESKTOP_474X680_dc0477b1-c4d6-40e0-8ca2-8bb4b6ca4ba3.png",
+            "image": "shopify:\/\/shop_images\/TEAMS_CATEGORY_DESKTOP_474X680_dc0477b1-c4d6-40e0-8ca2-8bb4b6ca4ba3.png",
             "opacity": 10,
-            "title": "TEAMS / CLUBS",
+            "title": "TEAMS \/ CLUBS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify://collections/custom-knitted-socks"
+            "button_url": "shopify:\/\/collections\/custom-knitted-socks"
           }
         },
         "019acde6-345b-4b53-8c89-106563c84fb2": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SHOPS_CATEGORY_DESKTOP_474X680_b881fe68-9b78-46ee-b170-9bbad98e4772.png",
+            "image": "shopify:\/\/shop_images\/SHOPS_CATEGORY_DESKTOP_474X680_b881fe68-9b78-46ee-b170-9bbad98e4772.png",
             "opacity": 10,
             "title": "SHOPS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify://collections/custom-knitted-socks"
+            "button_url": "shopify:\/\/collections\/custom-knitted-socks"
           }
         },
         "6d8ba610-7a14-4d56-aec7-aab43b31460b": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/BRANDS_CATEGORY_DESKTOP_474X680_856d9e60-fa88-493f-ad5a-601f8a728215.png",
+            "image": "shopify:\/\/shop_images\/BRANDS_CATEGORY_DESKTOP_474X680_856d9e60-fa88-493f-ad5a-601f8a728215.png",
             "opacity": 10,
             "title": "BRANDS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify://collections/custom-knitted-socks"
+            "button_url": "shopify:\/\/collections\/custom-knitted-socks"
           }
         },
         "70fc3b03-a6c3-48e5-b2b0-9eb9da4cb5d6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/EVEENTS_CATEGORY_DESKTOP_474X680_6b66e517-320d-41e5-af0c-1710ce2a882e.png",
+            "image": "shopify:\/\/shop_images\/EVEENTS_CATEGORY_DESKTOP_474X680_6b66e517-320d-41e5-af0c-1710ce2a882e.png",
             "opacity": 10,
             "title": "EVENTS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify://collections/custom-knitted-socks"
+            "button_url": "shopify:\/\/collections\/custom-knitted-socks"
           }
         }
       },
@@ -218,11 +209,11 @@
       ],
       "settings": {
         "bg_color": "#ffffff",
-        "image": "shopify://shop_images/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D.png",
-        "main_text": "<p><strong>WE WORK WITH THE BIGGEST IN THE GAME</strong></p>",
+        "image": "shopify:\/\/shop_images\/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D.png",
+        "main_text": "<p><strong>WE WORK WITH THE BIGGEST IN THE GAME<\/strong><\/p>",
         "main_text_color": "#121212",
         "button_text": "",
-        "button_url": "shopify://collections/fsotp",
+        "button_url": "shopify:\/\/collections\/fsotp",
         "button_bg_color": "#a28044",
         "button_text_color": "#ffffff"
       }
@@ -233,25 +224,25 @@
         "5413c838-8dcd-4bdf-9567-c36e21c6b44b": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-TDT_839acf47-5031-4b3f-beb4-4a941e6b4a3a.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-TDT_839acf47-5031-4b3f-beb4-4a941e6b4a3a.jpg"
           }
         },
         "d7e984c8-9378-4894-991e-3c75722378a7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-KAPTEIN.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-KAPTEIN.jpg"
           }
         },
         "b7366413-5172-442e-a756-b73ce5bd9b53": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-LSRF-LOGO.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-LSRF-LOGO.jpg"
           }
         },
         "5bda4731-74fd-493b-a13e-58a8f9e1c5ef": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS-cycling4climate.jpg"
+            "image": "shopify:\/\/shop_images\/USPS-cycling4climate.jpg"
           }
         }
       },
@@ -273,7 +264,7 @@
             "text_color": "#343434",
             "font_size": 40,
             "heading": "ENTERPRISE PROGRAM",
-            "description": "<ol><li>We work for the biggest in the game. </li><li>Completely custom.</li><li>Competitive industry pricing.<br/></li></ol><p></p><p></p>",
+            "description": "<ol><li>We work for the biggest in the game. <\/li><li>Completely custom.<\/li><li>Competitive industry pricing.<br\/><\/li><\/ol><p><\/p><p><\/p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
@@ -285,7 +276,7 @@
         "d3c61b13-8dbb-4c88-8c39-6529210ef951": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D.png",
+            "image": "shopify:\/\/shop_images\/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D.png",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -312,7 +303,7 @@
         "f47fe3ef-df81-429a-82c4-e3c7432f016f": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/PRICES.2.1000.1000.png",
+            "image": "shopify:\/\/shop_images\/PRICES.2.1000.1000.png",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -333,7 +324,7 @@
             "text_color": "#343434",
             "font_size": 40,
             "heading": "PRICES",
-            "description": "<p>Find out more about the different prices for our custom socks here.</p>",
+            "description": "<p>Find out more about the different prices for our custom socks here.<\/p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
@@ -376,8 +367,8 @@
         "template--17826493464856__1bee97a8-4b6b-400a-b06f-c4a7cfa384a5-1675957273a2faf5d4-2"
       ],
       "settings": {
-        "image": "shopify://shop_images/SUSTAINABLE.BANNER.png",
-        "image_mobile": "shopify://shop_images/SUSTAINABLE.BANNER.MOBILE.png",
+        "image": "shopify:\/\/shop_images\/SUSTAINABLE.BANNER.png",
+        "image_mobile": "shopify:\/\/shop_images\/SUSTAINABLE.BANNER.MOBILE.png",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -432,7 +423,7 @@
         "f72a7a31-0fb1-49c1-859c-ab673d507bad": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2.PELOTON.USP.TRANS.png",
+            "image": "shopify:\/\/shop_images\/2.PELOTON.USP.TRANS.png",
             "opacity": 0,
             "title": "",
             "button_label": "",
@@ -442,7 +433,7 @@
         "66c1e5f3-94d0-4c5d-8920-92ad5dc332d7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/4.KING.USP.TRANS.png",
+            "image": "shopify:\/\/shop_images\/4.KING.USP.TRANS.png",
             "opacity": 0,
             "title": "",
             "button_label": "",

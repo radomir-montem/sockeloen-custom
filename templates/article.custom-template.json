@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -50,24 +41,24 @@
         "template--19671563469124__54539796-6cc9-4af4-aaed-2140e2d56b3e-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Je eigen custom sokken</p>",
+            "heading": "<p>Je eigen custom sokken<\/p>",
             "heading_size": "h1"
           }
         },
         "template--19671563469124__54539796-6cc9-4af4-aaed-2140e2d56b3e-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Kies tussen bedrukte of verweven sokken om verder te kunnen. Bedrukte sokken zijn vanaf 1 paar te bestellen en verweven vanaf 50 paar.</p>"
+            "text": "<p>Kies tussen bedrukte of verweven sokken om verder te kunnen. Bedrukte sokken zijn vanaf 1 paar te bestellen en verweven vanaf 50 paar.<\/p>"
           }
         },
         "template--19671563469124__54539796-6cc9-4af4-aaed-2140e2d56b3e-button-1": {
           "type": "button",
           "settings": {
             "button_label": "Bedrukte sokken",
-            "button_link": "https://sockeloen.com/nl/collections/custom-printed-1-50-pairs",
+            "button_link": "https:\/\/sockeloen.com\/nl\/collections\/custom-printed-1-50-pairs",
             "button_style_secondary": false,
             "button_label_2": "Verweven sokken",
-            "button_link_2": "https://custom.sockeloen.nl/",
+            "button_link_2": "https:\/\/custom.sockeloen.nl\/",
             "button_style_secondary_2": true
           }
         }

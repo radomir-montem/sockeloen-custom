@@ -1,15 +1,6 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "current": {
-    "product_colors": "Wit | White\nJongen | Boy\nMeisje | Girl\nGekleurd | Colored\nEffen | Plain\nGlanzend | Glossy\nWit V1 | White V1\nWit V2 | White V2\nWit/Zilver | White/Silver\nWit/Zwart | White/Black\nWit/Oranje | White/Orange\nWit/Geel | White/Yellow\nLogowit | Logowhite\nhelemaal wit | Allwhite\nZwart | Black\nhelemaal zwart | Allblack\nZwart/Goud | Black/Gold\nZwart/Goud | Black/Gold\nZwart/Wit | Black/White\nZwart/Grijs | Black/Grey\nZwart/Groen | Black/Green\nDonker | Dark\nGeel | Yellow\nModder | Mud\nDen | Pine\nCommute | Communte\nBlauw | Blue\nGrijs | Grey\nOranje | Orange\nSalie | Sage\nSomber | Murk\nSchors | Bark\nBeige | Beige\nGroen | Green\nBruin | Brown\nOranje | Orange\nGirasole | Girasole\nBonnie Blue | Bonnie Blue\nLamswol | Lamb's Wool\nTarroco | Tarroco\nOlijf | Oliva\nPansé | Pansé\nStaal | Acero\nBlauw | Blue\nItalië | Italy\nFrankrijk | France\nDuitsland | Germany\nBelgië | Belgium\nEuropa | Europe\nNederland | Netherlands\nWerelden | Worlds\nBordeauxrood | Bordeaux red\nNacht | Notte\nStandard | Standard\nBEAT | BEAT\nLSRF | LSRF\nCanyon | Canyon\nLa Machine | La Machine\nS-Bikes | S-Bikes\nSRAM | SRAM",
+    "product_colors": "Wit | White\nJongen | Boy\nMeisje | Girl\nGekleurd | Colored\nEffen | Plain\nGlanzend | Glossy\nWit V1 | White V1\nWit V2 | White V2\nWit\/Zilver | White\/Silver\nWit\/Zwart | White\/Black\nWit\/Oranje | White\/Orange\nWit\/Geel | White\/Yellow\nLogowit | Logowhite\nhelemaal wit | Allwhite\nZwart | Black\nhelemaal zwart | Allblack\nZwart\/Goud | Black\/Gold\nZwart\/Goud | Black\/Gold\nZwart\/Wit | Black\/White\nZwart\/Grijs | Black\/Grey\nZwart\/Groen | Black\/Green\nDonker | Dark\nGeel | Yellow\nModder | Mud\nDen | Pine\nCommute | Communte\nBlauw | Blue\nGrijs | Grey\nOranje | Orange\nSalie | Sage\nSomber | Murk\nSchors | Bark\nBeige | Beige\nGroen | Green\nBruin | Brown\nOranje | Orange\nGirasole | Girasole\nBonnie Blue | Bonnie Blue\nLamswol | Lamb's Wool\nTarroco | Tarroco\nOlijf | Oliva\nPansé | Pansé\nStaal | Acero\nBlauw | Blue\nItalië | Italy\nFrankrijk | France\nDuitsland | Germany\nBelgië | Belgium\nEuropa | Europe\nNederland | Netherlands\nWerelden | Worlds\nBordeauxrood | Bordeaux red\nNacht | Notte\nStandard | Standard\nBEAT | BEAT\nLSRF | LSRF\nCanyon | Canyon\nLa Machine | La Machine\nS-Bikes | S-Bikes\nSRAM | SRAM",
     "one_day_shipment": "Netherlands, Belgium",
     "two_days_shipment": "Germany, Austria, France",
     "three_five_days_shipment": "Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden",
@@ -130,7 +121,7 @@
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
-    "favicon": "shopify://shop_images/sockeloen-bike-socks-fietssokken.png",
+    "favicon": "shopify:\/\/shop_images\/sockeloen-bike-socks-fietssokken.png",
     "currency_code_enabled": false,
     "free_shipping": 75,
     "global_upsells": "all-products",
@@ -138,8 +129,20 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_button_2_cta": "Go to Cart",
-    "custom_form_image": "shopify://shop_images/custom.banner2.jpg",
-    "checkout_logo_image": "shopify://shop_images/sockeloen-bike-socks-fietssokken.png",
+    "custom_form_phone_icon": "shopify:\/\/shop_images\/417553291_784903770330555_5438435566756787737_n.jpg",
+    "custom_form_logo": "shopify:\/\/shop_images\/LOGO-SOCKELOEN-CUSTOM.png",
+    "custom_form_whatsapp_icon": "shopify:\/\/shop_images\/whatsapp-white-icon.png",
+    "custom_form_whatsapp_link": "https:\/\/wa.me\/31645635608?text=Hallo%2C%20I%20have%20the%20following%20question%20about%20custom%20socks%3A",
+    "custom_form_image": "shopify:\/\/shop_images\/custom.banner2.jpg",
+    "custom_form_star": "shopify:\/\/shop_images\/star.png",
+    "custom_form_brand_logo1": "shopify:\/\/shop_images\/adidas.png",
+    "custom_form_brand_logo2": "shopify:\/\/shop_images\/maap.png",
+    "custom_form_brand_logo3": "shopify:\/\/shop_images\/Nike-Logo.png",
+    "custom_form_brand_logo4": "shopify:\/\/shop_images\/booking.png",
+    "custom_form_brand_logo5": "shopify:\/\/shop_images\/red_bull.png",
+    "custom_form_brand_logo6": "shopify:\/\/shop_images\/global_music.png",
+    "custom_form_brand_logo7": "shopify:\/\/shop_images\/new_balance.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/sockeloen-bike-socks-fietssokken.png",
     "checkout_logo_position": "center",
     "checkout_logo_size": "small",
     "checkout_accent_color": "#a28044",
@@ -158,11 +161,11 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "// PLAN FREE 15 MIN CONSULT HERE //",
+              "text": "\/\/ PLAN FREE 15 MIN CONSULT HERE \/\/",
               "text_alignment": "center",
               "bg_color": "#000000",
               "font_color": "#ffffff",
-              "link": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call"
+              "link": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call"
             }
           }
         },
@@ -283,7 +286,7 @@
         ],
         "settings": {
           "color_scheme": "background-1",
-          "logo": "shopify://shop_images/LOGO-SOCKELOEN-CUSTOM.png",
+          "logo": "shopify:\/\/shop_images\/LOGO-SOCKELOEN-CUSTOM.png",
           "logo_width": 200,
           "logo_position": "middle-center",
           "menu": "main-menu",
@@ -323,12 +326,12 @@
     "content_for_index": [],
     "blocks": {
       "1787840288555608609": {
-        "type": "shopify://apps/live-product-options/blocks/app-embed/88bfdf40-5e27-4962-a966-70c8d1e87757",
+        "type": "shopify:\/\/apps\/live-product-options\/blocks\/app-embed\/88bfdf40-5e27-4962-a966-70c8d1e87757",
         "disabled": false,
         "settings": {}
       },
       "13768625480086291342": {
-        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "type": "shopify:\/\/apps\/forms\/blocks\/forms\/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
         "settings": {}
       }

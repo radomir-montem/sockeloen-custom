@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -42,7 +33,7 @@
           }
         },
         "live_product_options_app_block_rYjLMz": {
-          "type": "shopify://apps/live-product-options/blocks/app-block/88bfdf40-5e27-4962-a966-70c8d1e87757",
+          "type": "shopify:\/\/apps\/live-product-options\/blocks\/app-block\/88bfdf40-5e27-4962-a966-70c8d1e87757",
           "settings": {
             "product": "{{product}}"
           }
@@ -68,10 +59,10 @@
           "type": "usps",
           "disabled": true,
           "settings": {
-            "usp1_text": "<p><a href=\"/policies/shipping-policy\" title=\"Shipping Policy\"><strong>Free </strong>Shipping &gt; €75,-</a></p>",
-            "usp2_text": "<p><strong>Born</strong> in the peloton</p>",
-            "usp3_text": "<p>100% <strong>Satisfaction</strong></p>",
-            "usp4_text": "<p><a href=\"https://www.reviews.io/company-reviews/store/sockeloen-nl\" title=\"https://www.reviews.io/company-reviews/store/sockeloen-nl\"><strong>Customer </strong>is king</a></p>"
+            "usp1_text": "<p><a href=\"\/policies\/shipping-policy\" title=\"Shipping Policy\"><strong>Free <\/strong>Shipping &gt; €75,-<\/a><\/p>",
+            "usp2_text": "<p><strong>Born<\/strong> in the peloton<\/p>",
+            "usp3_text": "<p>100% <strong>Satisfaction<\/strong><\/p>",
+            "usp4_text": "<p><a href=\"https:\/\/www.reviews.io\/company-reviews\/store\/sockeloen-nl\" title=\"https:\/\/www.reviews.io\/company-reviews\/store\/sockeloen-nl\"><strong>Customer <\/strong>is king<\/a><\/p>"
           }
         },
         "31d4cb82-9836-481d-b31f-0d99044260ea": {
@@ -91,7 +82,7 @@
           "settings": {
             "heading": "Height",
             "icon": "ruler",
-            "content": "<p>{{ product.metafields.custom.height.value }}</p>",
+            "content": "<p>{{ product.metafields.custom.height.value }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -113,7 +104,7 @@
           "settings": {
             "heading": "Knit Structure",
             "icon": "carrot",
-            "content": "<p>{{ product.metafields.custom.knit_structure.value }}</p>",
+            "content": "<p>{{ product.metafields.custom.knit_structure.value }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -124,7 +115,7 @@
           "settings": {
             "heading": "Terry Mesh",
             "icon": "snowflake",
-            "content": "<p>{{ product.metafields.custom.terry_mesh.value }}</p>",
+            "content": "<p>{{ product.metafields.custom.terry_mesh.value }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -135,7 +126,7 @@
           "settings": {
             "heading": "Type of Sock",
             "icon": "shoe",
-            "content": "<p>{{ product.metafields.custom.type_of_sock.value }}</p>",
+            "content": "<p>{{ product.metafields.custom.type_of_sock.value }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -146,7 +137,7 @@
           "settings": {
             "heading": "Washing & Care",
             "icon": "washing",
-            "content": "<p>{{ product.metafields.custom.washing_care | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.washing_care | metafield_tag }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -190,7 +181,7 @@
           "settings": {
             "heading": "Aero",
             "icon": "banana",
-            "content": "<p>{{ product.metafields.custom.aero.value }}</p>",
+            "content": "<p>{{ product.metafields.custom.aero.value }}<\/p>",
             "page": "",
             "logos_size": 26
           }
@@ -305,25 +296,25 @@
         "f1e6c323-4e34-4b13-8360-51bf6955f214": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS.sock.design_2.png"
+            "image": "shopify:\/\/shop_images\/USPS.sock.design_2.png"
           }
         },
         "60bf623b-28be-4bba-9947-9913bd8d9cf1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/6.CIRCULAR.USP.TRANS_2.png"
+            "image": "shopify:\/\/shop_images\/6.CIRCULAR.USP.TRANS_2.png"
           }
         },
         "147a6ef5-caad-4b5a-a490-90c8496e34d9": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/SYMBOLEN.USPS.SHOPIFY_1_a9efabcf-8465-4673-8b9a-9ed43058628a_1.png"
+            "image": "shopify:\/\/shop_images\/SYMBOLEN.USPS.SHOPIFY_1_a9efabcf-8465-4673-8b9a-9ed43058628a_1.png"
           }
         },
         "284de428-db68-441f-8ea9-4fe42dc83449": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/USPS.KING_2.png"
+            "image": "shopify:\/\/shop_images\/USPS.KING_2.png"
           }
         }
       },
@@ -345,19 +336,19 @@
             "text_color": "#ffffff",
             "font_size": 33,
             "heading": "FREE CONSULT",
-            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, materials, samples and everthing else you want to know.</p>",
+            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, materials, samples and everthing else you want to know.<\/p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
             "button_text": "BOOK A CALL",
-            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call",
+            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call",
             "button_pos": "mt-0"
           }
         },
         "6a0118df-4330-436a-b702-9317ff284f63": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/PRICES.2.1000.1000_1.png",
+            "image": "shopify:\/\/shop_images\/PRICES.2.1000.1000_1.png",
             "color": "#64652e",
             "text_color": "#000000",
             "font_size": 48,

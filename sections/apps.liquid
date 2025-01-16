@@ -1,4 +1,31 @@
+{% assign tempalte_suffix = template.suffix | handleize %}
+{% if tempalte_suffix == 'forms-free-sample-design' %}
+  <div class="custom-header flex justify-between items-center">
+    <a class="flex items-center" href="tel: {{ settings.custom_form_phone_number }}">
+      <div class="custom-header__icon relative overflow-hidden">
+        {% if settings.custom_form_phone_icon != blank %}
+          {{ settings.custom_form_phone_icon | image_url: width: 100 | image_tag }}
+        {% endif %}
+      </div>
+      <div class="custom-header__link small-hide" style="margin-left: 15px;">{{ settings.custom_form_phone_number }}</div>
+    </a>
+    <a class="custom-header__logo" href="{{ shop.url }}">
+      {{ settings.custom_form_logo | image_url: width: 200 | image_tag  }}
+    </a>
+    <a class="flex items-center" href="tel: {{ settings.custom_form_whatsapp_link }}">
+      <div class="custom-header__link small-hide" style="margin-right: 15px;">{{ settings.custom_form_whatsapp_label }}</div>
+      <div class="custom-header__icon relative overflow-hidden">
+        {% if settings.custom_form_whatsapp_icon != blank %}
+          {{ settings.custom_form_whatsapp_icon | image_url: width: 100 | image_tag }}
+        {% endif %}
+      </div>
+    </a>
+  </div>
+{% endif %}
+
 <div class="{% if section.settings.include_margins %}page-width{% endif %}">
+  {% if tempalte_suffix == 'forms-free-sample-design' %}
+  {% endif %}
   {%- for block in section.blocks -%}
     {% if block.type == 'image-block' %}
       {% render 'image-block', block: block %}
@@ -6,7 +33,153 @@
       {% render block %}
     {% endif %}
   {%- endfor -%}
-</div>
+</div> 
+
+{% if tempalte_suffix == 'forms-free-sample-design' %}
+  <div class="custom-form-usp flex justify-center items-center flex-wrap flex-col md:flex-row hidden" id="custom-form-usp-1">
+    {% if settings.custom_form_usp1 != blank %}
+      <div class="custom-form-usp__item">
+        {{ settings.custom_form_usp1 }}
+      </div>
+    {% endif %}
+    {% if settings.custom_form_usp2 != blank %}
+      <div class="custom-form-usp__item">
+        {{ settings.custom_form_usp2 }}
+      </div>
+    {% endif %}
+    {% if settings.custom_form_usp3 != blank %}
+      <div class="custom-form-usp__item">
+        {{ settings.custom_form_usp3 }}
+      </div>
+    {% endif %}
+    {% if settings.custom_form_usp4 != blank %}
+      <div class="custom-form-usp__item">
+        {{ settings.custom_form_usp4 }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="custom-form-usp flex justify-center items-center flex-wrap hidden" id="custom-form-usp-2">
+    {% if settings.custom_form_usp != blank %}
+      <div class="custom-form-usp__item">
+        {{ settings.custom_form_usp }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="custom-form-review flex flex-wrap justify-center items-center hidden" id="custom-form-review">
+    {% if settings.custom_form_star != blank %}
+      {{ settings.custom_form_star | image_url: width: 100 |image_tag }}
+    {% endif %}
+    {% if settings.custom_form_review_text %}
+      <p>{{ settings.custom_form_review_text }}</p>
+    {% endif %}
+  </div>
+
+
+  <div class="custom-form-brands hidden" id="custom-form-brands">
+    <div class="custom-form-brands__scroll-container">
+      {% if settings.custom_form_brand_logo1 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+            {{ settings.custom_form_brand_logo1 | image_url: width: 100 | image_tag }}
+          </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo2 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo2 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo3 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo3 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo4 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo4 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo5 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo5 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo6 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo6 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo7 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo7 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo1 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo1 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo2 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo2 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo3 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo3 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo4 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo4 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo5 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo5 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo6 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo6 | image_url: width: 100 | image_tag }}
+      </div>
+        </div>
+      {% endif %}
+      {% if settings.custom_form_brand_logo7 != blank %}
+        <div class="custom-form-brands__scroll-content">
+          <div class="custom-form-brands__scroll-img">
+        {{ settings.custom_form_brand_logo7 | image_url: width: 100 | image_tag }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
 
 {% schema %}
 {

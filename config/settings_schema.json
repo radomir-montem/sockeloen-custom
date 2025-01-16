@@ -1596,9 +1596,150 @@
     "name": "Custom Form",
     "settings": [
       {
+        "type": "header",
+        "content": "Header Settings"
+      },
+      {
+        "type": "header",
+        "content": "Phone"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_phone_icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_phone_number",
+        "label": "Number",
+        "default": "+31 645635608",
+        "placeholder": "+12345678910"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_logo",
+        "label": "Logo Image"
+      },
+      {
+        "type": "header",
+        "content": "Whatsapp"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_whatsapp_icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_whatsapp_label",
+        "label": "Label",
+        "default": "send a whatsapp"
+      },
+      {
+        "type": "url",
+        "id": "custom_form_whatsapp_link",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Form Settings"
+      },
+      {
+        "type": "header",
+        "content": "USP Items"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_usp1",
+        "label": "Item1",
+        "default": "100% Satisfaction Guarantee"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_usp2",
+        "label": "Item2",
+        "default": "Free Sample"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_usp3",
+        "label": "Item3",
+        "default": "OEKO-tex Certified"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_usp4",
+        "label": "Item4",
+        "default": "Rush Delivery in 4 Weeks"
+      },
+      {
         "type": "image_picker",
         "id": "custom_form_image",
         "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Review"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_star",
+        "label": "Star Image"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "custom_form_review_text",
+        "label": "Text",
+        "default": "Trusted by <strong>4,109<\/strong> happy customers - Rated <strong>4.8\/5!<\/strong>"
+      },
+      {
+        "type": "text",
+        "id": "custom_form_usp",
+        "label": "USP",
+        "default": "Designing custom socks for iconic brands."
+      },
+      {
+        "type": "header",
+        "content": "Brand Logos"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo1",
+        "label": "Logo1"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo2",
+        "label": "Logo2"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo3",
+        "label": "Logo3"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo4",
+        "label": "Logo4"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo5",
+        "label": "Logo5"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo6",
+        "label": "Logo6"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_brand_logo7",
+        "label": "Logo7"
       }
     ]
   }
