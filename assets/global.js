@@ -787,15 +787,17 @@ class VariantSelects extends HTMLElement {
     let selectedColor = colorInput ? colorInput.value : null;
   
     let sizeContainer = document.querySelectorAll('.js.product-form__input:not(.color-input)');
-    let sizeInputs = Array.from((sizeContainer)[0].childNodes).filter(sizeInput => sizeInput.nodeName.includes('INPUT'))
-    sizeInputs.forEach(function(sizeInput) {
-      let sizeValue = sizeInput.value;
-      let matchingVariants = variantsData.filter(function(variant) {
-        return variant.options[0] === selectedColor && variant.options[1] === sizeValue;
+    if(sizeContainer.length) {
+      let sizeInputs = Array.from((sizeContainer)[0].childNodes).filter(sizeInput => sizeInput.nodeName.includes('INPUT'))
+      sizeInputs.forEach(function(sizeInput) {
+        let sizeValue = sizeInput.value;
+        let matchingVariants = variantsData.filter(function(variant) {
+          return variant.options[0] === selectedColor && variant.options[1] === sizeValue;
+        });
+        sizeInput.disabled = matchingVariants.length === 0;
+        if (sizeInput.disabled) sizeInput.checked = false
       });
-      sizeInput.disabled = matchingVariants.length === 0;
-      if (sizeInput.disabled) sizeInput.checked = false
-    });
+    }
   }
 
   checkDynamicCheckout() {
@@ -812,11 +814,11 @@ class VariantSelects extends HTMLElement {
     var variant_available = this.currentVariant?.available;
     if (variant_available) {
       outOfStockNotificationElement.style.display = 'none';
-      shipmentMessage.style.display = 'block';
+      if(shipmentMessage) shipmentMessage.style.display = 'block';
       if (backInStockText) backInStockText.style.display = 'none';
     } else {
       outOfStockNotificationElement.style.display = 'flex';
-      shipmentMessage.style.display = 'none';
+      if(shipmentMessage) shipmentMessage.style.display = 'none';
       if (backInStockText) backInStockText.style.display = 'block';
     }
   }
@@ -824,7 +826,7 @@ class VariantSelects extends HTMLElement {
   filterMedia() {
     $('[thumbnail-color]').hide();
     var selected_variant = this.currentVariant.featured_media.alt;
-    var color_names = ['black', 'Black', 'white', 'White', 'bonnie-blue', 'Bonnie-blue', 'girasole', 'Girasole', 'oliva', 'Oliva', 'lambs-wool', 'Lambs-wool', 'grey', 'Grey', 'panse', 'Pansé', 'azul', 'Azul', 'acero', 'Acero', 'tarocco', 'Tarocco', 'Whitelogo', 'whitelogo', 'Logowhite', 'logo', 'yellow', 'Yellow', 'commute', 'Commute', 'pine', 'Pine', 'orange', 'Orange', 'beige', 'Beige', 'mud', 'Mud', 'all-white', 'All-white', 'all-black', 'All-black'];
+    var color_names = ['black', 'Black', 'white', 'White', 'bonnie-blue', 'Bonnie-blue', 'girasole', 'Girasole', 'oliva', 'Oliva', 'lambs-wool', 'Lambs-wool', 'grey', 'Grey', 'panse', 'Pansé', 'azul', 'Azul', 'acero', 'Acero', 'tarocco', 'Tarocco', 'Whitelogo', 'whitelogo', 'Logowhite', 'logo', 'yellow', 'Yellow', 'commute', 'Commute', 'pine', 'Pine', 'orange', 'Orange', 'beige', 'Beige', 'mud', 'Mud', 'all-white', 'All-white', 'all-black', 'All-black', 'non', 'cycling'];
     var selected_color = null;
     for (var i = 0; i < color_names.length; i++) {
       if (selected_variant.startsWith(color_names[i])) {
@@ -835,10 +837,11 @@ class VariantSelects extends HTMLElement {
     if (!selected_color) {
       selected_color = selected_variant.split(' - ')[0];
     }
+    console.log(selected_color);
     var selected_attribute = '[thumbnail-color*="' + selected_color + '"]';
     if (selected_variant.includes(selected_color) || selected_variant.startsWith(selected_color)) {
       $(selected_attribute).show();
-    } 
+    }
   }
 
   updateOptions() {

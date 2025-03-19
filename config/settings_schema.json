@@ -1616,6 +1616,11 @@
         "placeholder": "+12345678910"
       },
       {
+        "type": "text",
+        "id": "custom_form_phone_link",
+        "label": "Link"
+      },
+      {
         "type": "header",
         "content": "Logo"
       },
@@ -1680,6 +1685,11 @@
         "type": "image_picker",
         "id": "custom_form_image",
         "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "custom_form_image_mobile",
+        "label": "Mobile Image"
       },
       {
         "type": "header",

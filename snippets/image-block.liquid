@@ -1,6 +1,6 @@
 {% if settings.custom_form_image != blank %}
   <div
-    class="image-block-container flex items-center justify-center"
+    class="image-block-container flex items-center justify-center {% if settings.custom_form_image_mobile != blank %}small-hide{% endif %}"
     style="padding: {{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px;"
   >
       <img 
