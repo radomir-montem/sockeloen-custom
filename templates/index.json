@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -13,7 +22,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "FREE 15MIN CONSULT \/\/ FREE SAMPLE SOCKS \/\/ STARTING FROM 1 PAIR \/\/ DELIVERY WITHIN 1 WEEK \/\/ OWNED PRODUCTION FACILITIES \/\/ 100% SATISFACTION",
+            "text": "FREE 15MIN CONSULT // FREE SAMPLE SOCKS // STARTING FROM 1 PAIR // DELIVERY WITHIN 1 WEEK // OWNED PRODUCTION FACILITIES // 100% SATISFACTION",
             "text_style": "body"
           }
         },
@@ -21,10 +30,10 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "VIEW PRODUCTS",
-            "button_link_1": "shopify:\/\/collections\/frontpage",
+            "button_link_1": "shopify://collections/frontpage",
             "button_style_secondary_1": false,
             "button_label_2": "BOOK A CALL",
-            "button_link_2": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call",
+            "button_link_2": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call",
             "button_style_secondary_2": true
           }
         }
@@ -38,8 +47,8 @@
         "h2 {font-size: 48px;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/CUSTOM.SOCKS.banner_2.png",
-        "image_mobile": "shopify:\/\/shop_images\/CUSTOM.SOCKS.banner.MOBILE_597a2174-ebd2-4a07-be0b-5c176d2b4e2a_1.png",
+        "image": "shopify://shop_images/CUSTOM.SOCKS.banner_2.png",
+        "image_mobile": "shopify://shop_images/CUSTOM.SOCKS.banner.MOBILE_597a2174-ebd2-4a07-be0b-5c176d2b4e2a_1.png",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "adapt_height_first_image": false,
@@ -58,25 +67,25 @@
         "a68819bb-0e6b-48c9-863f-10a1074f5d16": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/wit.USPS.sock.design_1.png"
+            "image": "shopify://shop_images/wit.USPS.sock.design_1.png"
           }
         },
         "e5266b35-ea27-4c04-aa02-b709db6a4999": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/wit.6.CIRCULAR.USP.TRANS_1.png"
+            "image": "shopify://shop_images/wit.6.CIRCULAR.USP.TRANS_1.png"
           }
         },
         "0cd61b2f-4ae5-4495-8470-6db7647649c0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/wit.SYMBOLEN.USPS_1.png"
+            "image": "shopify://shop_images/wit.SYMBOLEN.USPS_1.png"
           }
         },
         "20a37a02-b535-4c77-9abf-ee2feb677b95": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/wit.USPS.KING_1.png"
+            "image": "shopify://shop_images/wit.USPS.KING_1.png"
           }
         }
       },
@@ -92,7 +101,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "OUR CUSTOM PRODUCTS",
-        "collection": "frontpage",
+        "collection": "custom-sock-samples",
         "products_to_show": 4,
         "columns_desktop": 4,
         "image_ratio": "portrait",
@@ -109,25 +118,25 @@
         "image_QCJGDF": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-CANYON_1.jpg"
+            "image": "shopify://shop_images/USPS-CANYON_1.jpg"
           }
         },
         "image_WBFxin": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-LSRF-LOGO_1.jpg"
+            "image": "shopify://shop_images/USPS-LSRF-LOGO_1.jpg"
           }
         },
         "image_XzGcz9": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-LA-MACHINE-LOGO_1.jpg"
+            "image": "shopify://shop_images/USPS-LA-MACHINE-LOGO_1.jpg"
           }
         },
         "image_a9iWbC": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-SRAM_1.jpg"
+            "image": "shopify://shop_images/USPS-SRAM_1.jpg"
           }
         }
       },
@@ -146,30 +155,30 @@
           "type": "richtext",
           "settings": {
             "title": "FREE CONSULT",
-            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, materials, samples and everthing else you want to know.<\/p><p><\/p><p><\/p>",
+            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, materials, samples and everthing else you want to know.</p><p></p><p></p>",
             "button_label": "BOOK A CALL",
-            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call",
+            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call",
             "text_align": "center"
           }
         },
         "4904019c-ebe9-48ae-adae-d8c50c33e729": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/BOOK.A.CLL.COLLECTION_DESKTOP_474X680_7da116a4-3725-470a-8698-e820f9196d5d.png",
+            "image": "shopify://shop_images/BOOK.A.CLL.COLLECTION_DESKTOP_474X680_7da116a4-3725-470a-8698-e820f9196d5d.png",
             "opacity": 40,
             "title": "",
             "button_label": "BOOK A CALL",
-            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call"
+            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call"
           }
         },
         "86de9b6b-4b96-465d-89c3-3525b1066c20": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ASK.US.COLLECTION_DESKTOP_474X680_543907b2-02ca-4f56-a798-dfecf1a578ea_1.png",
+            "image": "shopify://shop_images/ASK.US.COLLECTION_DESKTOP_474X680_543907b2-02ca-4f56-a798-dfecf1a578ea_1.png",
             "opacity": 40,
             "title": "",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify:\/\/collections\/example-product-gallery"
+            "button_url": "shopify://collections/example-product-gallery"
           }
         }
       },
@@ -188,41 +197,41 @@
         "eef4ba6c-f921-4b50-98a4-4507f6975f2a": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/TEAMS_CATEGORY_DESKTOP_474X680_dc0477b1-c4d6-40e0-8ca2-8bb4b6ca4ba3.png",
+            "image": "shopify://shop_images/TEAMS_CATEGORY_DESKTOP_474X680_dc0477b1-c4d6-40e0-8ca2-8bb4b6ca4ba3.png",
             "opacity": 10,
-            "title": "TEAMS \/ CLUBS",
+            "title": "TEAMS / CLUBS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify:\/\/collections\/example-product-gallery"
+            "button_url": "shopify://collections/example-product-gallery"
           }
         },
         "019acde6-345b-4b53-8c89-106563c84fb2": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SHOPS_CATEGORY_DESKTOP_474X680_b881fe68-9b78-46ee-b170-9bbad98e4772.png",
+            "image": "shopify://shop_images/SHOPS_CATEGORY_DESKTOP_474X680_b881fe68-9b78-46ee-b170-9bbad98e4772.png",
             "opacity": 10,
             "title": "SHOPS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify:\/\/collections\/example-product-gallery"
+            "button_url": "shopify://collections/example-product-gallery"
           }
         },
         "6d8ba610-7a14-4d56-aec7-aab43b31460b": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/BRANDS_CATEGORY_DESKTOP_474X680_856d9e60-fa88-493f-ad5a-601f8a728215.png",
+            "image": "shopify://shop_images/BRANDS_CATEGORY_DESKTOP_474X680_856d9e60-fa88-493f-ad5a-601f8a728215.png",
             "opacity": 10,
             "title": "BRANDS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify:\/\/collections\/example-product-gallery"
+            "button_url": "shopify://collections/example-product-gallery"
           }
         },
         "70fc3b03-a6c3-48e5-b2b0-9eb9da4cb5d6": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/EVEENTS_CATEGORY_DESKTOP_474X680_6b66e517-320d-41e5-af0c-1710ce2a882e.png",
+            "image": "shopify://shop_images/EVEENTS_CATEGORY_DESKTOP_474X680_6b66e517-320d-41e5-af0c-1710ce2a882e.png",
             "opacity": 10,
             "title": "EVENTS",
             "button_label": "SEE EXAMPLES",
-            "button_url": "shopify:\/\/collections\/example-product-gallery"
+            "button_url": "shopify://collections/example-product-gallery"
           }
         }
       },
@@ -243,25 +252,25 @@
         "image_t3yLFr": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-TDT_839acf47-5031-4b3f-beb4-4a941e6b4a3a.jpg"
+            "image": "shopify://shop_images/USPS-TDT_839acf47-5031-4b3f-beb4-4a941e6b4a3a.jpg"
           }
         },
         "image_UAEa8p": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-KAPTEIN_1.jpg"
+            "image": "shopify://shop_images/USPS-KAPTEIN_1.jpg"
           }
         },
         "image_UAH89K": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-LSRF-LOGO_2.jpg"
+            "image": "shopify://shop_images/USPS-LSRF-LOGO_2.jpg"
           }
         },
         "image_6xCcV3": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS-cycling4climate_1.jpg"
+            "image": "shopify://shop_images/USPS-cycling4climate_1.jpg"
           }
         }
       },
@@ -283,19 +292,19 @@
             "text_color": "#121212",
             "font_size": 40,
             "heading": "ENTERPRISE PROGRAM",
-            "description": "<ol><li>We work for the biggest in the game. <\/li><li>Completely custom.<\/li><li>Competitive industry pricing.<br\/><\/li><\/ol><p><\/p><p><\/p>",
+            "description": "<ol><li>We work for the biggest in the game. </li><li>Completely custom.</li><li>Competitive industry pricing.<br/></li></ol><p></p><p></p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
             "button_text": "BOOK A CALL",
-            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/pP43qXU9\/custom-call",
+            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/pP43qXU9/custom-call",
             "button_pos": "mt-0"
           }
         },
         "d3c61b13-8dbb-4c88-8c39-6529210ef951": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D_1.png",
+            "image": "shopify://shop_images/VIERKANT.Fastest_sock_on_the_planet_468_all_white_aero_socks_7_FRONT_3D_1.png",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -322,25 +331,25 @@
         "image_eMt4Wj": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS.sock.design_2.png"
+            "image": "shopify://shop_images/USPS.sock.design_2.png"
           }
         },
         "image_MhmdFQ": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/6.CIRCULAR.USP.TRANS_2.png"
+            "image": "shopify://shop_images/6.CIRCULAR.USP.TRANS_2.png"
           }
         },
         "image_ikcRdA": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/SYMBOLEN.USPS.SHOPIFY_1_a9efabcf-8465-4673-8b9a-9ed43058628a_1.png"
+            "image": "shopify://shop_images/SYMBOLEN.USPS.SHOPIFY_1_a9efabcf-8465-4673-8b9a-9ed43058628a_1.png"
           }
         },
         "image_kJnUAa": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/USPS.KING_2.png"
+            "image": "shopify://shop_images/USPS.KING_2.png"
           }
         }
       },
@@ -358,7 +367,7 @@
         "column_hcVhLj": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/design.lsrf.example.banner.800.800_1.png",
+            "image": "shopify://shop_images/design.lsrf.example.banner.800.800_1.png",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -379,12 +388,12 @@
             "text_color": "#121212",
             "font_size": 40,
             "heading": "FREE SOCK DESIGN",
-            "description": "<p><strong>from the best designers in the game<br\/><\/strong><em>only for knitted socks &gt; 50 pairs<\/em><\/p>",
+            "description": "<p><strong>from the best designers in the game<br/></strong><em>only for knitted socks &gt; 50 pairs</em></p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
             "button_text": "REQUEST FREE DESIGN",
-            "button_url": "https:\/\/custom.sockeloen.nl\/en-custom-design-checkout\/",
+            "button_url": "https://custom.sockeloen.nl/en-custom-design-checkout/",
             "button_pos": "mt-0"
           }
         }
@@ -405,19 +414,19 @@
             "text_color": "#ffffff",
             "font_size": 40,
             "heading": "ON A MISSION",
-            "description": "<p><strong>to a circular sock industry<\/strong><br\/><br\/>Let us teach you about sustainability and<\/p><p>our sustainable sock solutions.<\/p>",
+            "description": "<p><strong>to a circular sock industry</strong><br/><br/>Let us teach you about sustainability and</p><p>our sustainable sock solutions.</p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
             "button_text": "BOOK A CALL",
-            "button_url": "https:\/\/sockeloen-8b3b9d.pipedrive.com\/scheduler\/G9vEwDuO\/sockeloen-custom-call",
+            "button_url": "https://sockeloen-8b3b9d.pipedrive.com/scheduler/G9vEwDuO/sockeloen-custom-call",
             "button_pos": "mt-0"
           }
         },
         "column_3yzRte": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2.MISSION_BANNER_800X800_ccb93bfa-43c8-48f8-9494-488647777ebd_1.jpg",
+            "image": "shopify://shop_images/2.MISSION_BANNER_800X800_ccb93bfa-43c8-48f8-9494-488647777ebd_1.jpg",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -444,7 +453,7 @@
         "column_mKtQBY": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/PRICES.2.1000.1000_1.png",
+            "image": "shopify://shop_images/PRICES.2.1000.1000_1.png",
             "color": "",
             "text_color": "#000000",
             "font_size": 48,
@@ -465,12 +474,12 @@
             "text_color": "#121212",
             "font_size": 40,
             "heading": "PRICES",
-            "description": "<p>Find out more about the different prices <br\/>for our custom socks on the product pages.<\/p>",
+            "description": "<p>Find out more about the different prices <br/>for our custom socks on the product pages.</p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
             "button_text": "VIEW PRODUCT PRICES",
-            "button_url": "https:\/\/sockeloen-custom.myshopify.com\/collections\/frontpage",
+            "button_url": "https://sockeloen-custom.myshopify.com/collections/frontpage",
             "button_pos": "mt-0"
           }
         }
@@ -494,21 +503,21 @@
           "type": "faq",
           "settings": {
             "question": "How can I design my own custom socks?",
-            "answer": "<p>Designing your own custom socks is easy! At our online custom sock builder you can upload your logo or graphic easily and quickly. Select your own designs, choose colors, and even decide on the sock type and size. Simply follow the steps provided, and your custom socks will be ready to order with fast delivery.<\/p>"
+            "answer": "<p>Designing your own custom socks is easy! At our online custom sock builder you can upload your logo or graphic easily and quickly. Select your own designs, choose colors, and even decide on the sock type and size. Simply follow the steps provided, and your custom socks will be ready to order with fast delivery.</p>"
           }
         },
         "faq_E6RQFf": {
           "type": "faq",
           "settings": {
             "question": "What makes Sockeloen socks unique?",
-            "answer": "<p>Sockeloen socks are crafted with premium materials and innovative designs, providing superior comfort and performance for athletes and everyday wearers alike. Founded by Jasper, a former elite race cyclist, who knows how much a good pair of socks makes a difference in performance and comfort. <\/p>"
+            "answer": "<p>Sockeloen socks are crafted with premium materials and innovative designs, providing superior comfort and performance for athletes and everyday wearers alike. Founded by Jasper, a former elite race cyclist, who knows how much a good pair of socks makes a difference in performance and comfort. </p>"
           }
         },
         "faq_KbtPDk": {
           "type": "faq",
           "settings": {
             "question": "Can I have my logo woven onto Sockeloen custom socks?",
-            "answer": "<p>Yes, you can have your logo and other design elements woven into the custom socks. If you already have a logo or design idea, you can send it to info@sockeloen.nl so we can review it and create a no-obligation design!<\/p>"
+            "answer": "<p>Yes, you can have your logo and other design elements woven into the custom socks. If you already have a logo or design idea, you can send it to info@sockeloen.nl so we can review it and create a no-obligation design!</p>"
           }
         }
       },
@@ -539,10 +548,10 @@
       ],
       "settings": {
         "bg_color": "#e2e2e2",
-        "main_text": "<p><strong>FASTEST SOCKS ON THE PLANET<\/strong><\/p>",
+        "main_text": "<p><strong>FASTEST SOCKS ON THE PLANET</strong></p>",
         "main_text_color": "#121212",
         "button_text": "Shop now",
-        "button_url": "shopify:\/\/collections\/fsotp",
+        "button_url": "shopify://collections/fsotp",
         "button_bg_color": "#a28044",
         "button_text_color": "#ffffff"
       }
