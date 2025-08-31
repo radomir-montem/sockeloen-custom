@@ -213,35 +213,6 @@
         "padding_bottom": 0
       }
     },
-    "9148c605-c3d3-4457-a7d9-718e5b06ad2d": {
-      "type": "usp-blackbg",
-      "blocks": {
-        "cdbd0cb4-2ce5-4d43-81b3-cf8af48f1dea": {
-          "type": "image",
-          "settings": {}
-        },
-        "4eafd2d7-ffe9-4d85-9d3c-1c5257810662": {
-          "type": "image",
-          "settings": {}
-        },
-        "59aa8067-54fc-449f-975b-d765af1aa2d4": {
-          "type": "image",
-          "settings": {}
-        },
-        "8191162b-59ec-4e9d-a84e-4fee271c0ab8": {
-          "type": "image",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "cdbd0cb4-2ce5-4d43-81b3-cf8af48f1dea",
-        "4eafd2d7-ffe9-4d85-9d3c-1c5257810662",
-        "59aa8067-54fc-449f-975b-d765af1aa2d4",
-        "8191162b-59ec-4e9d-a84e-4fee271c0ab8"
-      ],
-      "disabled": true,
-      "settings": {}
-    },
     "multicolumn": {
       "type": "multicolumn",
       "disabled": true,
@@ -310,7 +281,7 @@
             "text_color": "#ffffff",
             "font_size": 33,
             "heading": "FREE CONSULT",
-            "description": "<p>Our custom sock specialists can answere questions about colors, prices, delivery times, materials, samples and everthing else you want to know.</p>",
+            "description": "<p>Our custom sock specialists can answer questions about colors, prices, delivery times, materials, samples and everything else you want to know.</p>",
             "vertical_pos": "justify-center",
             "horizontal_pos": "items-center",
             "button_disclaimer": "",
@@ -357,7 +328,6 @@
   },
   "order": [
     "main",
-    "9148c605-c3d3-4457-a7d9-718e5b06ad2d",
     "multicolumn",
     "product-recommendations",
     "8537c4d9-9c10-488a-bbd4-2c87e8b7e0a6",
