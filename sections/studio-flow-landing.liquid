@@ -67,6 +67,12 @@
     color: var(--sf-primary-text);
   }
   
+  .sf-headline strong,
+  .sf-headline b {
+    color: var(--sf-accent-color);
+    font-weight: 700;
+  }
+  
   .sf-subheadline {
     font-size: 18px;
     color: var(--sf-secondary-text);
@@ -320,6 +326,10 @@
     color: var(--sf-secondary-text);
   }
   
+  .sf-highlight {
+    color: var(--sf-accent-color);
+  }
+  
   @media (max-width: 768px) {
     .sf-headline { font-size: 32px; }
     .sf-case-study { grid-template-columns: 1fr; }
@@ -455,15 +465,6 @@
     </div>
   </section>
   
-  <footer class="sf-footer">
-    {% if section.settings.disclaimer %}
-      <div class="sf-disclaimer">{{ section.settings.disclaimer }}</div>
-    {% endif %}
-    {% if section.settings.copyright %}
-      <div class="sf-copyright">{{ section.settings.copyright }}</div>
-    {% endif %}
-  </footer>
-  
 </div>
 
 {% schema %}
@@ -505,7 +506,7 @@
     {"type": "range", "id": "logo_opacity", "label": "Opacity", "min": 0, "max": 100, "step": 10, "default": 60},
     {"type": "header", "content": "✏️ HERO"},
     {"type": "text", "id": "hero_badge", "label": "Badge", "default": "Businesses spending $25k/m+ on ads"},
-    {"type": "textarea", "id": "hero_headline", "label": "Headline", "default": "Use AI To Produce 1,000+ Ads Every Month"},
+    {"type": "richtext", "id": "hero_headline", "label": "Headline (use bold for colored words)", "default": "<p>Use AI To Produce 1,000+ Ads Every Month</p>"},
     {"type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "Watch this video for details"},
     {"type": "text", "id": "hero_cta_text", "label": "CTA Text", "default": "Get Started"},
     {"type": "url", "id": "hero_cta_url", "label": "CTA Link"},
@@ -519,10 +520,7 @@
     {"type": "url", "id": "reasons_cta_url", "label": "CTA Link"},
     {"type": "header", "content": "💬 TESTIMONIAL"},
     {"type": "textarea", "id": "testimonial_quote", "label": "Quote"},
-    {"type": "text", "id": "testimonial_author", "label": "Author"},
-    {"type": "header", "content": "📄 FOOTER"},
-    {"type": "textarea", "id": "disclaimer", "label": "Disclaimer"},
-    {"type": "text", "id": "copyright", "label": "Copyright", "default": "© 2025"}
+    {"type": "text", "id": "testimonial_author", "label": "Author"}
   ],
   "blocks": [
     {
