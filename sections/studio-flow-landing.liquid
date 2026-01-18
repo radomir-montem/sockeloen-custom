@@ -4,10 +4,16 @@
 {% endcomment %}
 
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
   .studio-flow-page {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: #1a1a1a;
-    background: #ffffff;
+    color: #000000;
+    background: #000000;
+    min-height: 100vh;
   }
   
   .sf-hero {
@@ -15,11 +21,13 @@
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    background: #000000;
   }
   
   .sf-badge {
     display: inline-block;
-    background: #f5f5f5;
+    background: #1a1a1a;
+    color: #ffffff;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
@@ -31,19 +39,20 @@
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 30px;
+    color: #ffffff;
   }
   
   .sf-subheadline {
     font-size: 18px;
-    color: #666;
+    color: #cccccc;
     margin-bottom: 30px;
     line-height: 1.6;
   }
   
   .sf-cta-btn {
     display: inline-block;
-    background: #000;
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
     padding: 16px 40px;
     font-size: 18px;
     font-weight: 600;
@@ -53,7 +62,7 @@
   }
   
   .sf-cta-btn:hover {
-    background: #333;
+    background: #e5e5e5;
     transform: translateY(-2px);
   }
   
@@ -61,6 +70,7 @@
     max-width: 900px;
     margin: 50px auto;
     padding: 0 20px;
+    background: #000000;
   }
   
   .sf-video-container {
@@ -82,7 +92,7 @@
   
   .sf-logos {
     padding: 60px 20px;
-    background: #fafafa;
+    background: #000000;
     text-align: center;
   }
   
@@ -90,7 +100,7 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #999;
+    color: #666666;
     margin-bottom: 30px;
   }
   
@@ -121,12 +131,14 @@
     padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    background: #000000;
   }
   
   .sf-reasons h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 60px;
+    color: #ffffff;
   }
   
   .sf-reasons-grid {
@@ -136,8 +148,8 @@
   }
   
   .sf-reason-card {
-    background: #fff;
-    border: 1px solid #e5e5e5;
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
     border-radius: 12px;
     padding: 30px;
   }
@@ -145,7 +157,7 @@
   .sf-reason-number {
     font-size: 48px;
     font-weight: 700;
-    color: #f5f5f5;
+    color: #1a1a1a;
     margin-bottom: 15px;
   }
   
@@ -153,16 +165,17 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
+    color: #ffffff;
   }
   
   .sf-reason-text {
-    color: #666;
+    color: #999999;
     line-height: 1.6;
   }
   
   .sf-case-studies {
     padding: 80px 20px;
-    background: #fafafa;
+    background: #000000;
   }
   
   .sf-case-study {
@@ -186,7 +199,7 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #999;
+    color: #666666;
     margin-bottom: 15px;
   }
   
@@ -195,10 +208,11 @@
     font-weight: 700;
     margin-bottom: 15px;
     line-height: 1.3;
+    color: #ffffff;
   }
   
   .sf-case-content p {
-    color: #666;
+    color: #999999;
     font-size: 18px;
     line-height: 1.6;
   }
@@ -214,6 +228,7 @@
     padding: 80px 20px;
     max-width: 800px;
     margin: 0 auto;
+    background: #000000;
   }
   
   .sf-testimonial blockquote {
@@ -221,11 +236,12 @@
     font-weight: 600;
     line-height: 1.5;
     margin-bottom: 20px;
+    color: #ffffff;
   }
   
   .sf-testimonial cite {
     font-size: 16px;
-    color: #666;
+    color: #999999;
     font-style: normal;
   }
   
@@ -233,6 +249,7 @@
     padding: 80px 20px;
     max-width: 1400px;
     margin: 0 auto;
+    background: #000000;
   }
   
   .sf-gallery-grid {
@@ -248,7 +265,7 @@
   }
   
   .sf-footer {
-    background: #1a1a1a;
+    background: #0a0a0a;
     color: #fff;
     padding: 60px 20px;
     text-align: center;
@@ -259,12 +276,12 @@
     margin: 0 auto 30px;
     font-size: 12px;
     line-height: 1.6;
-    color: #999;
+    color: #666666;
   }
   
   .sf-copyright {
     font-size: 14px;
-    color: #666;
+    color: #666666;
   }
   
   @media (max-width: 768px) {
@@ -415,6 +432,33 @@
         {% if block.type == 'gallery_image' and block.settings.gallery_image %}
           <div class="sf-gallery-item">
             <img src="{{ block.settings.gallery_image | img_url: '400x' }}" alt="Gallery image">
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Flexible Content Blocks -->
+  <section style="background: #000000; padding: 40px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      {% for block in section.blocks %}
+        {% if block.type == 'text_block' %}
+          <div style="margin: 40px 0; color: #ffffff;">
+            {% if block.settings.text_content %}
+              {{ block.settings.text_content }}
+            {% endif %}
+          </div>
+        {% elsif block.type == 'image_block' %}
+          <div style="margin: 40px 0;">
+            {% if block.settings.block_image %}
+              <img src="{{ block.settings.block_image | img_url: '1200x' }}" alt="{{ block.settings.image_alt }}" style="width: 100%; border-radius: 12px;">
+            {% endif %}
+          </div>
+        {% elsif block.type == 'video_block' %}
+          <div style="margin: 40px 0;">
+            <div class="sf-video-container">
+              <iframe src="{{ block.settings.block_video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
           </div>
         {% endif %}
       {% endfor %}
@@ -618,6 +662,46 @@
           "type": "image_picker",
           "id": "gallery_image",
           "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "text_block",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text_content",
+          "label": "Text Content",
+          "default": "<p>Add your text content here</p>"
+        }
+      ]
+    },
+    {
+      "type": "image_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text"
+        }
+      ]
+    },
+    {
+      "type": "video_block",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_video_url",
+          "label": "Video Embed URL",
+          "info": "YouTube or Vimeo embed URL"
         }
       ]
     }
