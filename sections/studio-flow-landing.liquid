@@ -1,18 +1,27 @@
 {% comment %}
-  Studio Flow Landing Page Template
-  Save this as sections/studio-flow-landing.liquid
+  Studio Flow Landing Page - Complete Version with Full Color Control
+  File: sections/studio-flow-landing.liquid
 {% endcomment %}
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
+  :root {
+    --sf-primary-bg: {{ section.settings.primary_bg_color }};
+    --sf-secondary-bg: {{ section.settings.secondary_bg_color }};
+    --sf-card-bg: {{ section.settings.card_bg_color }};
+    --sf-accent-color: {{ section.settings.accent_color }};
+    --sf-primary-text: {{ section.settings.primary_text_color }};
+    --sf-secondary-text: {{ section.settings.secondary_text_color }};
+    --sf-button-bg: {{ section.settings.button_bg_color }};
+    --sf-button-text: {{ section.settings.button_text_color }};
+    --sf-grid-color: {{ section.settings.grid_color }};
   }
+  
+  body { margin: 0; padding: 0; }
   
   .studio-flow-page {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: #000000;
-    background: #000000;
+    color: var(--sf-primary-text);
+    background: var(--sf-primary-bg);
     min-height: 100vh;
     position: relative;
   }
@@ -20,39 +29,34 @@
   .studio-flow-page::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-image: 
-      linear-gradient(rgba(0, 255, 100, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 100, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(var(--sf-grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--sf-grid-color) 1px, transparent 1px);
+    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
     pointer-events: none;
     z-index: 0;
+    opacity: {{ section.settings.grid_opacity }}%;
   }
   
-  .studio-flow-page > * {
-    position: relative;
-    z-index: 1;
-  }
+  .studio-flow-page > * { position: relative; z-index: 1; }
   
   .sf-hero {
     text-align: center;
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background: #000000;
   }
   
   .sf-badge {
     display: inline-block;
-    background: #1a1a1a;
-    color: #ffffff;
+    background: var(--sf-card-bg);
+    color: var(--sf-secondary-text);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
     margin-bottom: 30px;
+    border: 1px solid {{ section.settings.badge_border_color }};
   }
   
   .sf-headline {
@@ -60,40 +64,39 @@
     font-weight: 700;
     line-height: 1.2;
     margin: 0 0 30px;
-    color: #ffffff;
+    color: var(--sf-primary-text);
   }
   
   .sf-subheadline {
     font-size: 18px;
-    color: #cccccc;
+    color: var(--sf-secondary-text);
     margin-bottom: 30px;
     line-height: 1.6;
   }
   
   .sf-cta-btn {
     display: inline-block;
-    background: #00ff66;
-    color: #000000;
+    background: var(--sf-button-bg);
+    color: var(--sf-button-text);
     padding: 16px 40px;
     font-size: 18px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s;
-    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+    box-shadow: 0 0 20px {{ section.settings.button_glow_color }};
   }
   
   .sf-cta-btn:hover {
-    background: #00ff80;
+    background: {{ section.settings.button_hover_color }};
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(0, 255, 102, 0.5);
+    box-shadow: 0 0 30px {{ section.settings.button_glow_hover_color }};
   }
   
   .sf-video-wrapper {
     max-width: 900px;
     margin: 50px auto;
     padding: 0 20px;
-    background: #000000;
   }
   
   .sf-video-container {
@@ -102,21 +105,19 @@
     height: 0;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.2);
-    border: 2px solid rgba(0, 255, 102, 0.3);
+    box-shadow: 0 10px 40px {{ section.settings.video_shadow_color }};
+    border: 2px solid {{ section.settings.video_border_color }};
   }
   
   .sf-video-container iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
   }
   
   .sf-logos {
     padding: 60px 20px;
-    background: #000000;
+    background: var(--sf-secondary-bg);
     text-align: center;
   }
   
@@ -124,7 +125,7 @@
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #666666;
+    color: var(--sf-secondary-text);
     margin-bottom: 30px;
   }
   
@@ -141,28 +142,27 @@
   .sf-logo-grid img {
     height: 40px;
     width: auto;
-    filter: grayscale(100%);
-    opacity: 0.6;
+    filter: grayscale({{ section.settings.logo_grayscale }}%);
+    opacity: {{ section.settings.logo_opacity }}%;
     transition: all 0.3s;
   }
   
   .sf-logo-grid img:hover {
     filter: grayscale(0%);
-    opacity: 1;
+    opacity: 100%;
   }
   
   .sf-reasons {
     padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background: #000000;
   }
   
   .sf-reasons h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 60px;
-    color: #ffffff;
+    color: var(--sf-primary-text);
   }
   
   .sf-reasons-grid {
@@ -172,43 +172,43 @@
   }
   
   .sf-reason-card {
-    background: #0a0a0a;
-    border: 1px solid #00ff66;
+    background: var(--sf-card-bg);
+    border: 1px solid {{ section.settings.card_border_color }};
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
+    box-shadow: 0 0 15px {{ section.settings.card_glow_color }};
     transition: all 0.3s;
   }
   
   .sf-reason-card:hover {
-    border-color: #00ff80;
-    box-shadow: 0 0 25px rgba(0, 255, 102, 0.2);
+    border-color: var(--sf-accent-color);
+    box-shadow: 0 0 25px {{ section.settings.card_glow_hover_color }};
     transform: translateY(-5px);
   }
   
   .sf-reason-number {
     font-size: 48px;
     font-weight: 700;
-    color: #00ff66;
+    color: var(--sf-accent-color);
     margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+    text-shadow: 0 0 10px {{ section.settings.number_glow_color }};
   }
   
   .sf-reason-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #ffffff;
+    color: var(--sf-primary-text);
   }
   
   .sf-reason-text {
-    color: #999999;
+    color: var(--sf-secondary-text);
     line-height: 1.6;
   }
   
   .sf-case-studies {
     padding: 80px 20px;
-    background: #000000;
+    background: var(--sf-secondary-bg);
   }
   
   .sf-case-study {
@@ -220,19 +220,14 @@
     align-items: center;
   }
   
-  .sf-case-study:nth-child(even) {
-    direction: rtl;
-  }
-  
-  .sf-case-study:nth-child(even) > * {
-    direction: ltr;
-  }
+  .sf-case-study:nth-child(even) { direction: rtl; }
+  .sf-case-study:nth-child(even) > * { direction: ltr; }
   
   .sf-case-content h3 {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #666666;
+    color: var(--sf-secondary-text);
     margin-bottom: 15px;
   }
   
@@ -241,11 +236,11 @@
     font-weight: 700;
     margin-bottom: 15px;
     line-height: 1.3;
-    color: #ffffff;
+    color: var(--sf-primary-text);
   }
   
   .sf-case-content p {
-    color: #999999;
+    color: var(--sf-secondary-text);
     font-size: 18px;
     line-height: 1.6;
   }
@@ -253,8 +248,8 @@
   .sf-case-image img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.15);
-    border: 1px solid rgba(0, 255, 102, 0.2);
+    box-shadow: 0 10px 40px {{ section.settings.image_shadow_color }};
+    border: 1px solid {{ section.settings.image_border_color }};
   }
   
   .sf-testimonial {
@@ -262,7 +257,6 @@
     padding: 80px 20px;
     max-width: 800px;
     margin: 0 auto;
-    background: #000000;
   }
   
   .sf-testimonial blockquote {
@@ -270,12 +264,12 @@
     font-weight: 600;
     line-height: 1.5;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: var(--sf-primary-text);
   }
   
   .sf-testimonial cite {
     font-size: 16px;
-    color: #999999;
+    color: var(--sf-secondary-text);
     font-style: normal;
   }
   
@@ -283,7 +277,6 @@
     padding: 80px 20px;
     max-width: 1400px;
     margin: 0 auto;
-    background: #000000;
   }
   
   .sf-gallery-grid {
@@ -296,22 +289,22 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
-    border: 1px solid rgba(0, 255, 102, 0.2);
+    border: 1px solid {{ section.settings.gallery_border_color }};
     transition: all 0.3s;
   }
   
   .sf-gallery-item img:hover {
-    border-color: #00ff66;
-    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+    border-color: var(--sf-accent-color);
+    box-shadow: 0 0 20px {{ section.settings.gallery_glow_color }};
     transform: scale(1.05);
   }
   
   .sf-footer {
-    background: #0a0a0a;
-    color: #fff;
+    background: var(--sf-card-bg);
+    color: var(--sf-primary-text);
     padding: 60px 20px;
     text-align: center;
-    border-top: 1px solid rgba(0, 255, 102, 0.2);
+    border-top: 1px solid {{ section.settings.footer_border_color }};
   }
   
   .sf-disclaimer {
@@ -319,122 +312,52 @@
     margin: 0 auto 30px;
     font-size: 12px;
     line-height: 1.6;
-    color: #666666;
+    color: var(--sf-secondary-text);
   }
   
   .sf-copyright {
     font-size: 14px;
-    color: #666666;
+    color: var(--sf-secondary-text);
   }
   
   @media (max-width: 768px) {
-    .sf-headline {
-      font-size: 32px;
-    }
-    
-    .sf-case-study {
-      grid-template-columns: 1fr;
-    }
-    
-    .sf-case-study:nth-child(even) {
-      direction: ltr;
-    }
-    
-    .sf-case-content h2 {
-      font-size: 24px;
-    }
-    
-    .sf-testimonial blockquote {
-      font-size: 20px;
-    }
-  }
-  
-  /* Neon Green Accent Lines */
-  .sf-accent-line {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00ff66, transparent);
-    margin: 40px 0;
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
-  }
-  
-  .sf-highlight {
-    color: #00ff66;
-    text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
-  }
-  
-  /* Glowing corner accents */
-  .sf-corner-accent {
-    position: relative;
-  }
-  
-  .sf-corner-accent::before,
-  .sf-corner-accent::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 2px solid #00ff66;
-    box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
-  }
-  
-  .sf-corner-accent::before {
-    top: -10px;
-    left: -10px;
-    border-right: none;
-    border-bottom: none;
-  }
-  
-  .sf-corner-accent::after {
-    bottom: -10px;
-    right: -10px;
-    border-left: none;
-    border-top: none;
+    .sf-headline { font-size: 32px; }
+    .sf-case-study { grid-template-columns: 1fr; }
+    .sf-case-study:nth-child(even) { direction: ltr; }
+    .sf-case-content h2 { font-size: 24px; }
+    .sf-testimonial blockquote { font-size: 20px; }
   }
 </style>
 
 <div class="studio-flow-page">
   
-  <!-- Hero Section -->
   <section class="sf-hero">
     {% if section.settings.hero_badge %}
       <div class="sf-badge">{{ section.settings.hero_badge }}</div>
     {% endif %}
-    
     {% if section.settings.hero_headline %}
       <h1 class="sf-headline">{{ section.settings.hero_headline }}</h1>
     {% endif %}
-    
     {% if section.settings.hero_subheadline %}
       <p class="sf-subheadline">{{ section.settings.hero_subheadline }}</p>
     {% endif %}
-    
     {% if section.settings.hero_cta_text and section.settings.hero_cta_url %}
-      <a href="{{ section.settings.hero_cta_url }}" class="sf-cta-btn">
-        {{ section.settings.hero_cta_text }} →
-      </a>
+      <a href="{{ section.settings.hero_cta_url }}" class="sf-cta-btn">{{ section.settings.hero_cta_text }} →</a>
     {% endif %}
   </section>
   
-  <!-- Video Section -->
   {% if section.settings.video_url %}
   <section class="sf-video-wrapper">
     <div class="sf-video-container">
-      <iframe 
-        src="{{ section.settings.video_url }}" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
+      <iframe src="{{ section.settings.video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </section>
   {% endif %}
   
-  <!-- Logo Section -->
   <section class="sf-logos">
     {% if section.settings.logos_title %}
       <h3>{{ section.settings.logos_title }}</h3>
     {% endif %}
-    
     <div class="sf-logo-grid">
       {% for block in section.blocks %}
         {% if block.type == 'logo' and block.settings.logo_image %}
@@ -444,12 +367,10 @@
     </div>
   </section>
   
-  <!-- Reasons Section -->
   <section class="sf-reasons">
     {% if section.settings.reasons_title %}
       <h2>{{ section.settings.reasons_title }}</h2>
     {% endif %}
-    
     <div class="sf-reasons-grid">
       {% for block in section.blocks %}
         {% if block.type == 'reason' %}
@@ -461,36 +382,29 @@
         {% endif %}
       {% endfor %}
     </div>
-    
     {% if section.settings.reasons_cta_text and section.settings.reasons_cta_url %}
     <div style="text-align: center; margin-top: 60px;">
-      <a href="{{ section.settings.reasons_cta_url }}" class="sf-cta-btn">
-        {{ section.settings.reasons_cta_text }} →
-      </a>
+      <a href="{{ section.settings.reasons_cta_url }}" class="sf-cta-btn">{{ section.settings.reasons_cta_text }} →</a>
     </div>
     {% endif %}
   </section>
   
-  <!-- Case Studies Section -->
   <section class="sf-case-studies">
     {% for block in section.blocks %}
       {% if block.type == 'case_study' %}
         <div class="sf-case-study">
           <div class="sf-case-content">
-            {% if block.settings.case_category %}
-              <h3>{{ block.settings.case_category }}</h3>
-            {% endif %}
-            {% if block.settings.case_headline %}
-              <h2>{{ block.settings.case_headline }}</h2>
-            {% endif %}
-            {% if block.settings.case_description %}
-              <p>{{ block.settings.case_description }}</p>
-            {% endif %}
+            {% if block.settings.case_category %}<h3>{{ block.settings.case_category }}</h3>{% endif %}
+            {% if block.settings.case_headline %}<h2>{{ block.settings.case_headline }}</h2>{% endif %}
+            {% if block.settings.case_description %}<p>{{ block.settings.case_description }}</p>{% endif %}
           </div>
-          
           <div class="sf-case-image">
             {% if block.settings.case_image %}
               <img src="{{ block.settings.case_image | img_url: '800x' }}" alt="{{ block.settings.case_headline }}">
+            {% elsif block.settings.case_video_url %}
+              <div class="sf-video-container">
+                <iframe src="{{ block.settings.case_video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             {% endif %}
           </div>
         </div>
@@ -498,19 +412,13 @@
     {% endfor %}
   </section>
   
-  <!-- Testimonial Section -->
   {% if section.settings.testimonial_quote %}
   <section class="sf-testimonial">
-    <blockquote>
-      "{{ section.settings.testimonial_quote }}"
-    </blockquote>
-    {% if section.settings.testimonial_author %}
-      <cite>{{ section.settings.testimonial_author }}</cite>
-    {% endif %}
+    <blockquote>"{{ section.settings.testimonial_quote }}"</blockquote>
+    {% if section.settings.testimonial_author %}<cite>{{ section.settings.testimonial_author }}</cite>{% endif %}
   </section>
   {% endif %}
   
-  <!-- Gallery Section -->
   <section class="sf-gallery">
     <div class="sf-gallery-grid">
       {% for block in section.blocks %}
@@ -523,20 +431,17 @@
     </div>
   </section>
   
-  <!-- Flexible Content Blocks -->
-  <section style="background: #000000; padding: 40px 20px;">
+  <section style="background: var(--sf-primary-bg); padding: 40px 20px;">
     <div style="max-width: 1200px; margin: 0 auto;">
       {% for block in section.blocks %}
         {% if block.type == 'text_block' %}
-          <div style="margin: 40px 0; color: #ffffff;">
-            {% if block.settings.text_content %}
-              {{ block.settings.text_content }}
-            {% endif %}
+          <div style="margin: 40px 0; color: var(--sf-primary-text);">
+            {{ block.settings.text_content }}
           </div>
         {% elsif block.type == 'image_block' %}
           <div style="margin: 40px 0;">
             {% if block.settings.block_image %}
-              <img src="{{ block.settings.block_image | img_url: '1200x' }}" alt="{{ block.settings.image_alt }}" style="width: 100%; border-radius: 12px;">
+              <img src="{{ block.settings.block_image | img_url: '1200x' }}" alt="{{ block.settings.image_alt }}" style="width: 100%; border-radius: 12px; border: 1px solid {{ section.settings.image_border_color }};">
             {% endif %}
           </div>
         {% elsif block.type == 'video_block' %}
@@ -550,18 +455,12 @@
     </div>
   </section>
   
-  <!-- Footer -->
   <footer class="sf-footer">
     {% if section.settings.disclaimer %}
-      <div class="sf-disclaimer">
-        {{ section.settings.disclaimer }}
-      </div>
+      <div class="sf-disclaimer">{{ section.settings.disclaimer }}</div>
     {% endif %}
-    
     {% if section.settings.copyright %}
-      <div class="sf-copyright">
-        {{ section.settings.copyright }}
-      </div>
+      <div class="sf-copyright">{{ section.settings.copyright }}</div>
     {% endif %}
   </footer>
   
@@ -571,226 +470,118 @@
 {
   "name": "Studio Flow Landing",
   "settings": [
-    {
-      "type": "header",
-      "content": "Hero Section"
-    },
-    {
-      "type": "text",
-      "id": "hero_badge",
-      "label": "Badge Text",
-      "default": "Businesses spending $25k/m+ on ads"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_headline",
-      "label": "Headline",
-      "default": "Use AI To Produce 1,000+ Ads Every Month - 10x Your Creative Output In 90 Days Without Making A Single Hire"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_subheadline",
-      "label": "Subheadline",
-      "default": "Watch this video for details & pricing, then click the \"Get Started\" button to schedule a call."
-    },
-    {
-      "type": "text",
-      "id": "hero_cta_text",
-      "label": "CTA Button Text",
-      "default": "Get Started"
-    },
-    {
-      "type": "url",
-      "id": "hero_cta_url",
-      "label": "CTA Button Link"
-    },
-    {
-      "type": "header",
-      "content": "Video Section"
-    },
-    {
-      "type": "text",
-      "id": "video_url",
-      "label": "Video Embed URL (YouTube or Vimeo)",
-      "info": "Example: https://www.youtube.com/embed/VIDEO_ID"
-    },
-    {
-      "type": "header",
-      "content": "Logo Section"
-    },
-    {
-      "type": "text",
-      "id": "logos_title",
-      "label": "Logos Title",
-      "default": "TRUSTED BY THE CREATIVE TEAMS AT:"
-    },
-    {
-      "type": "header",
-      "content": "Reasons Section"
-    },
-    {
-      "type": "text",
-      "id": "reasons_title",
-      "label": "Section Title",
-      "default": "4 Reasons To Get Started Today"
-    },
-    {
-      "type": "text",
-      "id": "reasons_cta_text",
-      "label": "CTA Button Text",
-      "default": "Get Started"
-    },
-    {
-      "type": "url",
-      "id": "reasons_cta_url",
-      "label": "CTA Button Link"
-    },
-    {
-      "type": "header",
-      "content": "Testimonial Section"
-    },
-    {
-      "type": "textarea",
-      "id": "testimonial_quote",
-      "label": "Testimonial Quote",
-      "default": "The care, the speed, the results. Everything was incredible. I'd give them a 10/10 overall"
-    },
-    {
-      "type": "text",
-      "id": "testimonial_author",
-      "label": "Testimonial Author",
-      "default": "Louis Dharma, Head of Growth Immutable"
-    },
-    {
-      "type": "header",
-      "content": "Footer"
-    },
-    {
-      "type": "textarea",
-      "id": "disclaimer",
-      "label": "Disclaimer Text"
-    },
-    {
-      "type": "text",
-      "id": "copyright",
-      "label": "Copyright Text",
-      "default": "©️ 2025 StudioFlow"
-    }
+    {"type": "header", "content": "🎨 COLORS"},
+    {"type": "color", "id": "primary_bg_color", "label": "Primary BG", "default": "#000000"},
+    {"type": "color", "id": "secondary_bg_color", "label": "Secondary BG", "default": "#000000"},
+    {"type": "color", "id": "card_bg_color", "label": "Card BG", "default": "#0a0a0a"},
+    {"type": "color", "id": "primary_text_color", "label": "Primary Text", "default": "#ffffff"},
+    {"type": "color", "id": "secondary_text_color", "label": "Secondary Text", "default": "#999999"},
+    {"type": "color", "id": "accent_color", "label": "Accent Color", "default": "#00ff66"},
+    {"type": "header", "content": "🔘 BUTTONS"},
+    {"type": "color", "id": "button_bg_color", "label": "Button BG", "default": "#00ff66"},
+    {"type": "color", "id": "button_text_color", "label": "Button Text", "default": "#000000"},
+    {"type": "color", "id": "button_hover_color", "label": "Button Hover", "default": "#00ff80"},
+    {"type": "color", "id": "button_glow_color", "label": "Button Glow", "default": "#00ff6650"},
+    {"type": "color", "id": "button_glow_hover_color", "label": "Glow Hover", "default": "#00ff6680"},
+    {"type": "header", "content": "🖼️ BORDERS"},
+    {"type": "color", "id": "card_border_color", "label": "Card Border", "default": "#00ff66"},
+    {"type": "color", "id": "card_glow_color", "label": "Card Glow", "default": "#00ff6620"},
+    {"type": "color", "id": "card_glow_hover_color", "label": "Card Glow Hover", "default": "#00ff6640"},
+    {"type": "color", "id": "number_glow_color", "label": "Number Glow", "default": "#00ff6680"},
+    {"type": "color", "id": "video_border_color", "label": "Video Border", "default": "#00ff6650"},
+    {"type": "color", "id": "video_shadow_color", "label": "Video Shadow", "default": "#00ff6640"},
+    {"type": "color", "id": "image_border_color", "label": "Image Border", "default": "#00ff6630"},
+    {"type": "color", "id": "image_shadow_color", "label": "Image Shadow", "default": "#00ff6625"},
+    {"type": "color", "id": "gallery_border_color", "label": "Gallery Border", "default": "#00ff6630"},
+    {"type": "color", "id": "gallery_glow_color", "label": "Gallery Glow", "default": "#00ff6650"},
+    {"type": "color", "id": "badge_border_color", "label": "Badge Border", "default": "#00ff6630"},
+    {"type": "color", "id": "footer_border_color", "label": "Footer Border", "default": "#00ff6630"},
+    {"type": "header", "content": "🔲 GRID"},
+    {"type": "color", "id": "grid_color", "label": "Grid Color", "default": "#00ff6608"},
+    {"type": "range", "id": "grid_size", "label": "Grid Size", "min": 20, "max": 100, "step": 5, "default": 50},
+    {"type": "range", "id": "grid_opacity", "label": "Grid Opacity", "min": 0, "max": 100, "step": 5, "default": 100},
+    {"type": "header", "content": "🖼️ LOGOS"},
+    {"type": "range", "id": "logo_grayscale", "label": "Grayscale", "min": 0, "max": 100, "step": 10, "default": 100},
+    {"type": "range", "id": "logo_opacity", "label": "Opacity", "min": 0, "max": 100, "step": 10, "default": 60},
+    {"type": "header", "content": "✏️ HERO"},
+    {"type": "text", "id": "hero_badge", "label": "Badge", "default": "Businesses spending $25k/m+ on ads"},
+    {"type": "textarea", "id": "hero_headline", "label": "Headline", "default": "Use AI To Produce 1,000+ Ads Every Month"},
+    {"type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "Watch this video for details"},
+    {"type": "text", "id": "hero_cta_text", "label": "CTA Text", "default": "Get Started"},
+    {"type": "url", "id": "hero_cta_url", "label": "CTA Link"},
+    {"type": "header", "content": "📹 VIDEO"},
+    {"type": "text", "id": "video_url", "label": "Video URL"},
+    {"type": "header", "content": "🏢 LOGOS"},
+    {"type": "text", "id": "logos_title", "label": "Title", "default": "TRUSTED BY:"},
+    {"type": "header", "content": "📋 REASONS"},
+    {"type": "text", "id": "reasons_title", "label": "Title", "default": "4 Reasons To Get Started"},
+    {"type": "text", "id": "reasons_cta_text", "label": "CTA Text", "default": "Get Started"},
+    {"type": "url", "id": "reasons_cta_url", "label": "CTA Link"},
+    {"type": "header", "content": "💬 TESTIMONIAL"},
+    {"type": "textarea", "id": "testimonial_quote", "label": "Quote"},
+    {"type": "text", "id": "testimonial_author", "label": "Author"},
+    {"type": "header", "content": "📄 FOOTER"},
+    {"type": "textarea", "id": "disclaimer", "label": "Disclaimer"},
+    {"type": "text", "id": "copyright", "label": "Copyright", "default": "© 2025"}
   ],
   "blocks": [
     {
       "type": "logo",
-      "name": "Client Logo",
+      "name": "Logo",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "logo_image",
-          "label": "Logo Image"
-        },
-        {
-          "type": "text",
-          "id": "logo_alt",
-          "label": "Logo Alt Text"
-        }
+        {"type": "image_picker", "id": "logo_image", "label": "Image"},
+        {"type": "text", "id": "logo_alt", "label": "Alt Text"}
       ]
     },
     {
       "type": "reason",
-      "name": "Reason Card",
+      "name": "Reason",
       "settings": [
-        {
-          "type": "text",
-          "id": "reason_title",
-          "label": "Title",
-          "default": "More Creatives = More Tests = More Winners"
-        },
-        {
-          "type": "textarea",
-          "id": "reason_text",
-          "label": "Description"
-        }
+        {"type": "text", "id": "reason_title", "label": "Title"},
+        {"type": "textarea", "id": "reason_text", "label": "Text"}
       ]
     },
     {
       "type": "case_study",
       "name": "Case Study",
       "settings": [
-        {
-          "type": "text",
-          "id": "case_category",
-          "label": "Category",
-          "default": "Info/Agency"
-        },
-        {
-          "type": "textarea",
-          "id": "case_headline",
-          "label": "Headline",
-          "default": "Case Study: $500K to $1.1M MRR in 90 Days"
-        },
-        {
-          "type": "textarea",
-          "id": "case_description",
-          "label": "Description"
-        },
-        {
-          "type": "image_picker",
-          "id": "case_image",
-          "label": "Case Study Image"
-        }
+        {"type": "text", "id": "case_category", "label": "Category"},
+        {"type": "textarea", "id": "case_headline", "label": "Headline"},
+        {"type": "textarea", "id": "case_description", "label": "Description"},
+        {"type": "image_picker", "id": "case_image", "label": "Image"},
+        {"type": "text", "id": "case_video_url", "label": "OR Video URL"}
       ]
     },
     {
       "type": "gallery_image",
       "name": "Gallery Image",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "gallery_image",
-          "label": "Image"
-        }
+        {"type": "image_picker", "id": "gallery_image", "label": "Image"}
       ]
     },
     {
       "type": "text_block",
       "name": "Text Block",
       "settings": [
-        {
-          "type": "richtext",
-          "id": "text_content",
-          "label": "Text Content",
-          "default": "<p>Add your text content here</p>"
-        }
+        {"type": "richtext", "id": "text_content", "label": "Content"}
       ]
     },
     {
       "type": "image_block",
       "name": "Image Block",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "block_image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "image_alt",
-          "label": "Image Alt Text"
-        }
+        {"type": "image_picker", "id": "block_image", "label": "Image"},
+        {"type": "text", "id": "image_alt", "label": "Alt Text"}
       ]
     },
     {
       "type": "video_block",
       "name": "Video Block",
       "settings": [
-        {
-          "type": "text",
-          "id": "block_video_url",
-          "label": "Video Embed URL",
-          "info": "YouTube or Vimeo embed URL"
-        }
+        {"type": "text", "id": "block_video_url", "label": "Video URL"}
       ]
     }
   ],
-  
+  "presets": [{"name": "Studio Flow Landing"}]
 }
 {% endschema %}
