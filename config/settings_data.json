@@ -171,6 +171,7 @@
         "blocks": {
           "announcement-bar-0": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "// PLAN FREE CONSULT HERE //",
               "text_alignment": "center",
