@@ -1,0 +1,632 @@
+{% comment %}
+  Studio Flow Landing Page Template
+  Save this as sections/studio-flow-landing.liquid
+{% endcomment %}
+
+<style>
+  .studio-flow-page {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  
+  .sf-hero {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sf-badge {
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .sf-headline {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 30px;
+  }
+  
+  .sf-subheadline {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  .sf-cta-btn {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .sf-cta-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+  }
+  
+  .sf-video-wrapper {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+  
+  .sf-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+  
+  .sf-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .sf-logos {
+    padding: 60px 20px;
+    background: #fafafa;
+    text-align: center;
+  }
+  
+  .sf-logos h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 30px;
+  }
+  
+  .sf-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sf-logo-grid img {
+    height: 40px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s;
+  }
+  
+  .sf-logo-grid img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  
+  .sf-reasons {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sf-reasons h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 60px;
+  }
+  
+  .sf-reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+  }
+  
+  .sf-reason-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 30px;
+  }
+  
+  .sf-reason-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #f5f5f5;
+    margin-bottom: 15px;
+  }
+  
+  .sf-reason-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .sf-reason-text {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .sf-case-studies {
+    padding: 80px 20px;
+    background: #fafafa;
+  }
+  
+  .sf-case-study {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .sf-case-study:nth-child(even) {
+    direction: rtl;
+  }
+  
+  .sf-case-study:nth-child(even) > * {
+    direction: ltr;
+  }
+  
+  .sf-case-content h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+  
+  .sf-case-content h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+  
+  .sf-case-content p {
+    color: #666;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .sf-case-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  }
+  
+  .sf-testimonial {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .sf-testimonial blockquote {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .sf-testimonial cite {
+    font-size: 16px;
+    color: #666;
+    font-style: normal;
+  }
+  
+  .sf-gallery {
+    padding: 80px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .sf-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .sf-gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .sf-footer {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .sf-disclaimer {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #999;
+  }
+  
+  .sf-copyright {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .sf-headline {
+      font-size: 32px;
+    }
+    
+    .sf-case-study {
+      grid-template-columns: 1fr;
+    }
+    
+    .sf-case-study:nth-child(even) {
+      direction: ltr;
+    }
+    
+    .sf-case-content h2 {
+      font-size: 24px;
+    }
+    
+    .sf-testimonial blockquote {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div class="studio-flow-page">
+  
+  <!-- Hero Section -->
+  <section class="sf-hero">
+    {% if section.settings.hero_badge %}
+      <div class="sf-badge">{{ section.settings.hero_badge }}</div>
+    {% endif %}
+    
+    {% if section.settings.hero_headline %}
+      <h1 class="sf-headline">{{ section.settings.hero_headline }}</h1>
+    {% endif %}
+    
+    {% if section.settings.hero_subheadline %}
+      <p class="sf-subheadline">{{ section.settings.hero_subheadline }}</p>
+    {% endif %}
+    
+    {% if section.settings.hero_cta_text and section.settings.hero_cta_url %}
+      <a href="{{ section.settings.hero_cta_url }}" class="sf-cta-btn">
+        {{ section.settings.hero_cta_text }} →
+      </a>
+    {% endif %}
+  </section>
+  
+  <!-- Video Section -->
+  {% if section.settings.video_url %}
+  <section class="sf-video-wrapper">
+    <div class="sf-video-container">
+      <iframe 
+        src="{{ section.settings.video_url }}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+  {% endif %}
+  
+  <!-- Logo Section -->
+  <section class="sf-logos">
+    {% if section.settings.logos_title %}
+      <h3>{{ section.settings.logos_title }}</h3>
+    {% endif %}
+    
+    <div class="sf-logo-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'logo' and block.settings.logo_image %}
+          <img src="{{ block.settings.logo_image | img_url: '200x' }}" alt="{{ block.settings.logo_alt }}">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Reasons Section -->
+  <section class="sf-reasons">
+    {% if section.settings.reasons_title %}
+      <h2>{{ section.settings.reasons_title }}</h2>
+    {% endif %}
+    
+    <div class="sf-reasons-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'reason' %}
+          <div class="sf-reason-card">
+            <div class="sf-reason-number">{{ forloop.index }}.</div>
+            <h3 class="sf-reason-title">{{ block.settings.reason_title }}</h3>
+            <p class="sf-reason-text">{{ block.settings.reason_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.reasons_cta_text and section.settings.reasons_cta_url %}
+    <div style="text-align: center; margin-top: 60px;">
+      <a href="{{ section.settings.reasons_cta_url }}" class="sf-cta-btn">
+        {{ section.settings.reasons_cta_text }} →
+      </a>
+    </div>
+    {% endif %}
+  </section>
+  
+  <!-- Case Studies Section -->
+  <section class="sf-case-studies">
+    {% for block in section.blocks %}
+      {% if block.type == 'case_study' %}
+        <div class="sf-case-study">
+          <div class="sf-case-content">
+            {% if block.settings.case_category %}
+              <h3>{{ block.settings.case_category }}</h3>
+            {% endif %}
+            {% if block.settings.case_headline %}
+              <h2>{{ block.settings.case_headline }}</h2>
+            {% endif %}
+            {% if block.settings.case_description %}
+              <p>{{ block.settings.case_description }}</p>
+            {% endif %}
+          </div>
+          
+          <div class="sf-case-image">
+            {% if block.settings.case_image %}
+              <img src="{{ block.settings.case_image | img_url: '800x' }}" alt="{{ block.settings.case_headline }}">
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+  
+  <!-- Testimonial Section -->
+  {% if section.settings.testimonial_quote %}
+  <section class="sf-testimonial">
+    <blockquote>
+      "{{ section.settings.testimonial_quote }}"
+    </blockquote>
+    {% if section.settings.testimonial_author %}
+      <cite>{{ section.settings.testimonial_author }}</cite>
+    {% endif %}
+  </section>
+  {% endif %}
+  
+  <!-- Gallery Section -->
+  <section class="sf-gallery">
+    <div class="sf-gallery-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'gallery_image' and block.settings.gallery_image %}
+          <div class="sf-gallery-item">
+            <img src="{{ block.settings.gallery_image | img_url: '400x' }}" alt="Gallery image">
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="sf-footer">
+    {% if section.settings.disclaimer %}
+      <div class="sf-disclaimer">
+        {{ section.settings.disclaimer }}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.copyright %}
+      <div class="sf-copyright">
+        {{ section.settings.copyright }}
+      </div>
+    {% endif %}
+  </footer>
+  
+</div>
+
+{% schema %}
+{
+  "name": "Studio Flow Landing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Badge Text",
+      "default": "Businesses spending $25k/m+ on ads"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_headline",
+      "label": "Headline",
+      "default": "Use AI To Produce 1,000+ Ads Every Month - 10x Your Creative Output In 90 Days Without Making A Single Hire"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subheadline",
+      "label": "Subheadline",
+      "default": "Watch this video for details & pricing, then click the \"Get Started\" button to schedule a call."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "CTA Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Video Section"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video Embed URL (YouTube or Vimeo)",
+      "info": "Example: https://www.youtube.com/embed/VIDEO_ID"
+    },
+    {
+      "type": "header",
+      "content": "Logo Section"
+    },
+    {
+      "type": "text",
+      "id": "logos_title",
+      "label": "Logos Title",
+      "default": "TRUSTED BY THE CREATIVE TEAMS AT:"
+    },
+    {
+      "type": "header",
+      "content": "Reasons Section"
+    },
+    {
+      "type": "text",
+      "id": "reasons_title",
+      "label": "Section Title",
+      "default": "4 Reasons To Get Started Today"
+    },
+    {
+      "type": "text",
+      "id": "reasons_cta_text",
+      "label": "CTA Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "reasons_cta_url",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial Section"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_quote",
+      "label": "Testimonial Quote",
+      "default": "The care, the speed, the results. Everything was incredible. I'd give them a 10/10 overall"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Testimonial Author",
+      "default": "Louis Dharma, Head of Growth Immutable"
+    },
+    {
+      "type": "header",
+      "content": "Footer"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer Text"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text",
+      "default": "©️ 2025 StudioFlow"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Client Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Logo Alt Text"
+        }
+      ]
+    },
+    {
+      "type": "reason",
+      "name": "Reason Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "reason_title",
+          "label": "Title",
+          "default": "More Creatives = More Tests = More Winners"
+        },
+        {
+          "type": "textarea",
+          "id": "reason_text",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "case_study",
+      "name": "Case Study",
+      "settings": [
+        {
+          "type": "text",
+          "id": "case_category",
+          "label": "Category",
+          "default": "Info/Agency"
+        },
+        {
+          "type": "textarea",
+          "id": "case_headline",
+          "label": "Headline",
+          "default": "Case Study: $500K to $1.1M MRR in 90 Days"
+        },
+        {
+          "type": "textarea",
+          "id": "case_description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "case_image",
+          "label": "Case Study Image"
+        }
+      ]
+    },
+    {
+      "type": "gallery_image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "gallery_image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Studio Flow Landing",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
