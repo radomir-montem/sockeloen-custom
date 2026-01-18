@@ -296,8 +296,8 @@
           "1a5c69a5-62b0-4869-8c95-6e04a6cd4094"
         ],
         "settings": {
-          "color_scheme": "background-1",
-          "logo": "shopify://shop_images/LOGO-SOCKELOEN-CUSTOM.png",
+          "color_scheme": "inverse",
+          "logo": "shopify://shop_images/LOGO-SOCKELOEN-CUSTOM_026ba19b-3b73-41c4-bf2e-804790967994.png",
           "logo_width": 200,
           "logo_position": "middle-center",
           "menu": "main-menu",
