@@ -14,6 +14,27 @@
     color: #000000;
     background: #000000;
     min-height: 100vh;
+    position: relative;
+  }
+  
+  .studio-flow-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 255, 100, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 100, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .studio-flow-page > * {
+    position: relative;
+    z-index: 1;
   }
   
   .sf-hero {
@@ -51,7 +72,7 @@
   
   .sf-cta-btn {
     display: inline-block;
-    background: #ffffff;
+    background: #00ff66;
     color: #000000;
     padding: 16px 40px;
     font-size: 18px;
@@ -59,11 +80,13 @@
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
   }
   
   .sf-cta-btn:hover {
-    background: #e5e5e5;
+    background: #00ff80;
     transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 255, 102, 0.5);
   }
   
   .sf-video-wrapper {
@@ -79,7 +102,8 @@
     height: 0;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.2);
+    border: 2px solid rgba(0, 255, 102, 0.3);
   }
   
   .sf-video-container iframe {
@@ -149,16 +173,25 @@
   
   .sf-reason-card {
     background: #0a0a0a;
-    border: 1px solid #1a1a1a;
+    border: 1px solid #00ff66;
     border-radius: 12px;
     padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
+    transition: all 0.3s;
+  }
+  
+  .sf-reason-card:hover {
+    border-color: #00ff80;
+    box-shadow: 0 0 25px rgba(0, 255, 102, 0.2);
+    transform: translateY(-5px);
   }
   
   .sf-reason-number {
     font-size: 48px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #00ff66;
     margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
   }
   
   .sf-reason-title {
@@ -220,7 +253,8 @@
   .sf-case-image img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 255, 102, 0.15);
+    border: 1px solid rgba(0, 255, 102, 0.2);
   }
   
   .sf-testimonial {
@@ -262,6 +296,14 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
+    border: 1px solid rgba(0, 255, 102, 0.2);
+    transition: all 0.3s;
+  }
+  
+  .sf-gallery-item img:hover {
+    border-color: #00ff66;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+    transform: scale(1.05);
   }
   
   .sf-footer {
@@ -269,6 +311,7 @@
     color: #fff;
     padding: 60px 20px;
     text-align: center;
+    border-top: 1px solid rgba(0, 255, 102, 0.2);
   }
   
   .sf-disclaimer {
@@ -304,6 +347,48 @@
     .sf-testimonial blockquote {
       font-size: 20px;
     }
+  }
+  
+  /* Neon Green Accent Lines */
+  .sf-accent-line {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff66, transparent);
+    margin: 40px 0;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+  }
+  
+  .sf-highlight {
+    color: #00ff66;
+    text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+  }
+  
+  /* Glowing corner accents */
+  .sf-corner-accent {
+    position: relative;
+  }
+  
+  .sf-corner-accent::before,
+  .sf-corner-accent::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+  }
+  
+  .sf-corner-accent::before {
+    top: -10px;
+    left: -10px;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .sf-corner-accent::after {
+    bottom: -10px;
+    right: -10px;
+    border-left: none;
+    border-top: none;
   }
 </style>
 
@@ -706,11 +791,6 @@
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Studio Flow Landing",
-      "category": "Custom"
-    }
-  ]
+  
 }
 {% endschema %}
