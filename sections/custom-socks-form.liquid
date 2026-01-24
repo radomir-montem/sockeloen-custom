@@ -1,0 +1,511 @@
+{% comment %}
+  Custom Socks Lead Form Section
+  Add this file to: sections/custom-socks-form.liquid
+{% endcomment %}
+
+<style>
+  .custom-socks-form-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-container {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .form-logo {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .form-logo img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .form-heading {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .form-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .form-subheading {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .design-badge {
+    display: inline-block;
+    background: #48bb78;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    margin: 30px 0;
+  }
+
+  .benefits-list {
+    margin: 30px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .benefits-list li {
+    padding: 12px 0 12px 35px;
+    position: relative;
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .benefits-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #48bb78;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .custom-form {
+    margin-top: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  }
+
+  .submit-button:active {
+    transform: translateY(0);
+  }
+
+  .contact-info {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .contact-info p {
+    margin: 8px 0;
+    color: #4a5568;
+    font-size: 14px;
+  }
+
+  .contact-info a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  .small-order-link {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .small-order-link a {
+    color: #718096;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .small-order-link a:hover {
+    color: #667eea;
+  }
+
+  .required {
+    color: #e53e3e;
+  }
+
+  @media (max-width: 768px) {
+    .custom-socks-form-section {
+      padding: 40px 15px;
+    }
+
+    .form-container {
+      padding: 35px 25px;
+    }
+
+    .form-heading h2 {
+      font-size: 26px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="custom-socks-form-section">
+  <div class="form-container">
+    {% if section.settings.logo %}
+      <div class="form-logo">
+        <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}">
+      </div>
+    {% endif %}
+
+    <div class="form-heading">
+      <h2>{{ section.settings.form_title }}</h2>
+    </div>
+
+    <div class="form-subheading">
+      <span class="design-badge">{{ section.settings.badge_text }}</span>
+    </div>
+
+    <div class="divider"></div>
+
+    {% if section.settings.show_benefits %}
+      <ul class="benefits-list">
+        {% if section.settings.benefit_1 != blank %}
+          <li>{{ section.settings.benefit_1 }}</li>
+        {% endif %}
+        {% if section.settings.benefit_2 != blank %}
+          <li>{{ section.settings.benefit_2 }}</li>
+        {% endif %}
+        {% if section.settings.benefit_3 != blank %}
+          <li>{{ section.settings.benefit_3 }}</li>
+        {% endif %}
+        {% if section.settings.benefit_4 != blank %}
+          <li>{{ section.settings.benefit_4 }}</li>
+        {% endif %}
+      </ul>
+    {% endif %}
+
+    <form class="custom-form" action="{{ section.settings.thank_you_page }}" method="post" id="custom-socks-lead-form">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="return_to" value="{{ section.settings.thank_you_page }}">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">
+            Voornaam <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="first_name" 
+            name="contact[first_name]" 
+            required
+            placeholder="Jouw voornaam">
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">
+            Achternaam <span class="required">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="last_name" 
+            name="contact[last_name]" 
+            required
+            placeholder="Jouw achternaam">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          E-mailadres <span class="required">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="contact[email]" 
+          required
+          placeholder="voorbeeld@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">
+          Telefoonnummer <span class="required">*</span>
+        </label>
+        <input 
+          type="tel" 
+          id="phone" 
+          name="contact[phone]" 
+          required
+          placeholder="+31 6 12345678">
+      </div>
+
+      <div class="form-group">
+        <label for="company">
+          Bedrijfsnaam <span class="required">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="company" 
+          name="contact[company]" 
+          required
+          placeholder="Jouw bedrijfsnaam">
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">
+          Gewenste aantal sokken <span class="required">*</span>
+        </label>
+        <select id="quantity" name="contact[quantity]" required>
+          <option value="">Selecteer aantal</option>
+          <option value="50-100">50 - 100 paar</option>
+          <option value="100-250">100 - 250 paar</option>
+          <option value="250-500">250 - 500 paar</option>
+          <option value="500-1000">500 - 1000 paar</option>
+          <option value="1000+">1000+ paar</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">
+          Vertel ons over je project
+        </label>
+        <textarea 
+          id="message" 
+          name="contact[message]"
+          placeholder="Beschrijf je wensen, kleuren, design ideeën..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-button">
+        {{ section.settings.button_text }}
+      </button>
+    </form>
+
+    {% if section.settings.show_contact_info %}
+      <div class="contact-info">
+        <p>{{ section.settings.contact_text }}</p>
+        {% if section.settings.phone_number != blank %}
+          <p>
+            <a href="tel:{{ section.settings.phone_number | replace: ' ', '' }}">
+              {{ section.settings.phone_number }}
+            </a>
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.small_order_link != blank %}
+      <div class="small-order-link">
+        <a href="{{ section.settings.small_order_link }}">
+          {{ section.settings.small_order_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.getElementById('custom-socks-lead-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+    
+    // Submit to Shopify customer API
+    fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(formData)
+    })
+    .then(response => {
+      // Redirect to thank you page
+      window.location.href = '{{ section.settings.thank_you_page }}';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Er is iets misgegaan. Probeer het opnieuw of neem contact met ons op.');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Socks Lead Form",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "VRAAG GRATIS DESIGN"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "DESIGN GRATIS"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show Benefits List",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "Jouw offerte zit binnen 5 minuten in je mailbox."
+    },
+    {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "100% Tevredenheids garantie"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "Bel of WhatsApp ons direct op: +31 6 16 49 78 73"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "Minder dan 50 paar? klik dan hier."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "VRAAG GRATIS ONTWERP AAN"
+    },
+    {
+      "type": "url",
+      "id": "thank_you_page",
+      "label": "Thank You Page URL",
+      "info": "Enter the full URL of your thank you page (e.g., /pages/thank-you)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_info",
+      "label": "Show Contact Info",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact Text",
+      "default": "Of neem direct contact op:"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "+31 6 16 49 78 73"
+    },
+    {
+      "type": "url",
+      "id": "small_order_link",
+      "label": "Small Order Link",
+      "info": "Link for orders under minimum quantity"
+    },
+    {
+      "type": "text",
+      "id": "small_order_text",
+      "label": "Small Order Link Text",
+      "default": "Minder dan 50 paar? klik dan hier."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Socks Lead Form"
+    }
+  ]
+}
+{% endschema %}
