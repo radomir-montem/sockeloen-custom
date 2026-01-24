@@ -1,0 +1,245 @@
+{% comment %}
+  Embedded Form Section - Custom Socks
+  Add this to: sections/embedded-form.liquid
+  Then add to your page through the theme customizer
+{% endcomment %}
+
+<style>
+  .embedded-form-section {
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.background_color }};
+  }
+  
+  .embedded-form-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+  
+  {% if section.settings.show_heading %}
+  .embedded-form-heading {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .embedded-form-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 10px 0;
+  }
+  
+  .embedded-form-heading p {
+    font-size: 16px;
+    color: #4a5568;
+    margin: 0;
+  }
+  {% endif %}
+  
+  .form-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    background: white;
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    {% if section.settings.show_shadow %}
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    {% endif %}
+  }
+  
+  .form-iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    min-height: {{ section.settings.min_height }}px;
+  }
+  
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+  .loading-spinner.active {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .embedded-form-heading h2 {
+      font-size: 24px;
+    }
+    
+    .embedded-form-section {
+      padding: 40px 15px;
+    }
+  }
+</style>
+
+<div class="embedded-form-section">
+  <div class="embedded-form-container">
+    
+    {% if section.settings.show_heading %}
+      <div class="embedded-form-heading">
+        <h2>{{ section.settings.heading_text }}</h2>
+        {% if section.settings.subheading_text != blank %}
+          <p>{{ section.settings.subheading_text }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    <div class="form-iframe-wrapper">
+      <div class="loading-spinner active">
+        <p>Formulier laden...</p>
+      </div>
+      
+      <iframe 
+        class="form-iframe"
+        src="{{ section.settings.form_url }}"
+        id="embedded-form-iframe"
+        frameborder="0"
+        scrolling="no"
+        title="{{ section.settings.iframe_title }}">
+      </iframe>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  (function() {
+    const iframe = document.getElementById('embedded-form-iframe');
+    const spinner = document.querySelector('.loading-spinner');
+    
+    // Hide spinner when iframe loads
+    iframe.addEventListener('load', function() {
+      spinner.classList.remove('active');
+    });
+    
+    // Auto-resize iframe based on content
+    function resizeIframe() {
+      try {
+        if (iframe.contentWindow) {
+          const height = iframe.contentWindow.document.body.scrollHeight;
+          iframe.style.height = height + 'px';
+        }
+      } catch (e) {
+        // Cross-origin restriction - use fixed height
+        iframe.style.height = '{{ section.settings.min_height }}px';
+      }
+    }
+    
+    // Listen for resize messages from iframe
+    window.addEventListener('message', function(e) {
+      if (e.data.hasOwnProperty('frameHeight')) {
+        iframe.style.height = e.data.frameHeight + 'px';
+      }
+    });
+    
+    iframe.addEventListener('load', resizeIframe);
+    
+    // Fallback: resize on window resize
+    window.addEventListener('resize', resizeIframe);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Embedded Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_url",
+      "label": "Form URL",
+      "default": "https://custom.sockeloen.nl/design-offer/",
+      "info": "The URL of the form you want to embed"
+    },
+    {
+      "type": "text",
+      "id": "iframe_title",
+      "label": "iFrame Title (for accessibility)",
+      "default": "Custom Socks Design Request Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show Heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "Request your FREE design"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading_text",
+      "label": "Subheading (optional)"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max Width (px)",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum Height (px)",
+      "min": 600,
+      "max": 2000,
+      "step": 100,
+      "default": 1200,
+      "info": "Adjust if form is cut off"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius (px)",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shadow",
+      "label": "Show Shadow",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f7fafc"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Embedded Form"
+    }
+  ]
+}
+{% endschema %}
