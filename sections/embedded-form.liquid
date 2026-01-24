@@ -1,244 +1,251 @@
 {% comment %}
-  Embedded Form Section - Custom Socks
-  Add this to: sections/embedded-form.liquid
-  Then add to your page through the theme customizer
+  Simple Lead Form - Just the Form Fields
+  Add this to: sections/simple-lead-form.liquid
 {% endcomment %}
 
 <style>
-  .embedded-form-section {
-    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
-    background: {{ section.settings.background_color }};
-  }
-  
-  .embedded-form-container {
-    max-width: {{ section.settings.max_width }}px;
+  .lead-form-wrapper {
+    width: 100%;
+    max-width: {{ section.settings.form_width }}px;
     margin: 0 auto;
   }
-  
-  {% if section.settings.show_heading %}
-  .embedded-form-heading {
-    text-align: center;
-    margin-bottom: 30px;
+
+  .lead-form {
+    width: 100%;
   }
-  
-  .embedded-form-heading h2 {
-    font-size: 32px;
-    font-weight: 700;
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .form-field {
+    margin-bottom: 15px;
+  }
+
+  .form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
     color: #2d3748;
-    margin: 0 0 10px 0;
+    font-size: 14px;
   }
-  
-  .embedded-form-heading p {
-    font-size: 16px;
-    color: #4a5568;
-    margin: 0;
-  }
-  {% endif %}
-  
-  .form-iframe-wrapper {
-    position: relative;
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
     width: 100%;
-    background: white;
-    border-radius: {{ section.settings.border_radius }}px;
-    overflow: hidden;
-    {% if section.settings.show_shadow %}
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    {% endif %}
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
   }
-  
-  .form-iframe {
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+
+  .form-field textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .required {
+    color: #e53e3e;
+  }
+
+  .submit-btn {
     width: 100%;
+    padding: 16px 30px;
+    background: {{ section.settings.button_color }};
+    color: white;
     border: none;
-    display: block;
-    min-height: {{ section.settings.min_height }}px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
   }
-  
-  .loading-spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
+
+  .submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
   }
-  
-  .loading-spinner.active {
-    display: block;
-  }
-  
+
   @media (max-width: 768px) {
-    .embedded-form-heading h2 {
-      font-size: 24px;
-    }
-    
-    .embedded-form-section {
-      padding: 40px 15px;
+    .form-row {
+      grid-template-columns: 1fr;
     }
   }
 </style>
 
-<div class="embedded-form-section">
-  <div class="embedded-form-container">
-    
-    {% if section.settings.show_heading %}
-      <div class="embedded-form-heading">
-        <h2>{{ section.settings.heading_text }}</h2>
-        {% if section.settings.subheading_text != blank %}
-          <p>{{ section.settings.subheading_text }}</p>
-        {% endif %}
+<div class="lead-form-wrapper">
+  <form class="lead-form" action="{{ section.settings.thank_you_page }}" method="post" id="lead-form">
+    <input type="hidden" name="form_type" value="customer">
+    <input type="hidden" name="utf8" value="✓">
+    <input type="hidden" name="return_to" value="{{ section.settings.thank_you_page }}">
+
+    <div class="form-row">
+      <div class="form-field">
+        <label for="first_name">
+          Voornaam <span class="required">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="first_name" 
+          name="contact[first_name]" 
+          required
+          placeholder="Jouw voornaam">
       </div>
-    {% endif %}
-    
-    <div class="form-iframe-wrapper">
-      <div class="loading-spinner active">
-        <p>Formulier laden...</p>
+
+      <div class="form-field">
+        <label for="last_name">
+          Achternaam <span class="required">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="last_name" 
+          name="contact[last_name]" 
+          required
+          placeholder="Jouw achternaam">
       </div>
-      
-      <iframe 
-        class="form-iframe"
-        src="{{ section.settings.form_url }}"
-        id="embedded-form-iframe"
-        frameborder="0"
-        scrolling="no"
-        title="{{ section.settings.iframe_title }}">
-      </iframe>
     </div>
-    
-  </div>
+
+    <div class="form-field">
+      <label for="email">
+        E-mailadres <span class="required">*</span>
+      </label>
+      <input 
+        type="email" 
+        id="email" 
+        name="contact[email]" 
+        required
+        placeholder="voorbeeld@email.com">
+    </div>
+
+    <div class="form-field">
+      <label for="phone">
+        Telefoonnummer <span class="required">*</span>
+      </label>
+      <input 
+        type="tel" 
+        id="phone" 
+        name="contact[phone]" 
+        required
+        placeholder="+31 6 12345678">
+    </div>
+
+    <div class="form-field">
+      <label for="company">
+        Bedrijfsnaam <span class="required">*</span>
+      </label>
+      <input 
+        type="text" 
+        id="company" 
+        name="contact[company]" 
+        required
+        placeholder="Jouw bedrijfsnaam">
+    </div>
+
+    <div class="form-field">
+      <label for="quantity">
+        Gewenste aantal sokken <span class="required">*</span>
+      </label>
+      <select id="quantity" name="contact[quantity]" required>
+        <option value="">Selecteer aantal</option>
+        <option value="50-100">50 - 100 paar</option>
+        <option value="100-250">100 - 250 paar</option>
+        <option value="250-500">250 - 500 paar</option>
+        <option value="500-1000">500 - 1000 paar</option>
+        <option value="1000+">1000+ paar</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="message">
+        Vertel ons over je project
+      </label>
+      <textarea 
+        id="message" 
+        name="contact[message]"
+        placeholder="Beschrijf je wensen, kleuren, design ideeën..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">
+      {{ section.settings.button_text }}
+    </button>
+  </form>
 </div>
 
 <script>
-  (function() {
-    const iframe = document.getElementById('embedded-form-iframe');
-    const spinner = document.querySelector('.loading-spinner');
+  document.getElementById('lead-form').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    // Hide spinner when iframe loads
-    iframe.addEventListener('load', function() {
-      spinner.classList.remove('active');
+    const formData = new FormData(this);
+    
+    fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(formData)
+    })
+    .then(response => {
+      window.location.href = '{{ section.settings.thank_you_page }}';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Er is iets misgegaan. Probeer het opnieuw.');
     });
-    
-    // Auto-resize iframe based on content
-    function resizeIframe() {
-      try {
-        if (iframe.contentWindow) {
-          const height = iframe.contentWindow.document.body.scrollHeight;
-          iframe.style.height = height + 'px';
-        }
-      } catch (e) {
-        // Cross-origin restriction - use fixed height
-        iframe.style.height = '{{ section.settings.min_height }}px';
-      }
-    }
-    
-    // Listen for resize messages from iframe
-    window.addEventListener('message', function(e) {
-      if (e.data.hasOwnProperty('frameHeight')) {
-        iframe.style.height = e.data.frameHeight + 'px';
-      }
-    });
-    
-    iframe.addEventListener('load', resizeIframe);
-    
-    // Fallback: resize on window resize
-    window.addEventListener('resize', resizeIframe);
-  })();
+  });
 </script>
 
 {% schema %}
 {
-  "name": "Embedded Form",
+  "name": "Simple Lead Form",
   "settings": [
     {
-      "type": "text",
-      "id": "form_url",
-      "label": "Form URL",
-      "default": "https://custom.sockeloen.nl/design-offer/",
-      "info": "The URL of the form you want to embed"
-    },
-    {
-      "type": "text",
-      "id": "iframe_title",
-      "label": "iFrame Title (for accessibility)",
-      "default": "Custom Socks Design Request Form"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_heading",
-      "label": "Show Heading",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "heading_text",
-      "label": "Heading",
-      "default": "Request your FREE design"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading_text",
-      "label": "Subheading (optional)"
-    },
-    {
       "type": "range",
-      "id": "max_width",
-      "label": "Max Width (px)",
-      "min": 600,
-      "max": 1200,
+      "id": "form_width",
+      "label": "Form Width",
+      "min": 400,
+      "max": 800,
       "step": 50,
-      "default": 800
+      "default": 600,
+      "unit": "px"
     },
     {
-      "type": "range",
-      "id": "min_height",
-      "label": "Minimum Height (px)",
-      "min": 600,
-      "max": 2000,
-      "step": 100,
-      "default": 1200,
-      "info": "Adjust if form is cut off"
-    },
-    {
-      "type": "range",
-      "id": "border_radius",
-      "label": "Border Radius (px)",
-      "min": 0,
-      "max": 30,
-      "step": 5,
-      "default": 10
-    },
-    {
-      "type": "checkbox",
-      "id": "show_shadow",
-      "label": "Show Shadow",
-      "default": true
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "VERSTUUR AANVRAAG"
     },
     {
       "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#f7fafc"
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#667eea"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top (px)",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "default": 60
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom (px)",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "default": 60
+      "type": "text",
+      "id": "thank_you_page",
+      "label": "Thank You Page URL",
+      "default": "/nl/pages/bedankt",
+      "info": "Where to redirect after submission (e.g., /pages/thank-you)"
     }
   ],
   "presets": [
     {
-      "name": "Embedded Form"
+      "name": "Simple Lead Form"
     }
   ]
 }
