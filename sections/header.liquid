@@ -104,9 +104,12 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  
+  /* Default: Invert logo to black on all pages */
   .header__heading-link img {
     filter: invert(100%);
   }
+  
   {% if template == 'index' %}
   .header__heading-link img {
     filter: none;
@@ -149,6 +152,21 @@
     }
   {% endif %}
 {%- endstyle -%}
+
+<!-- Add script to detect studio-flow-landing and make logo white -->
+<script>
+  // Check if URL contains view=studio-flow-landing
+  if (window.location.search.includes('view=studio-flow-landing')) {
+    // Add CSS to override the invert filter for this page only
+    var style = document.createElement('style');
+    style.textContent = `
+      .header__heading-link img {
+        filter: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
