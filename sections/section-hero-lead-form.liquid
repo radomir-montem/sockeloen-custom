@@ -1,0 +1,920 @@
+{{ 'section-hero-lead-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .hero-lead-form-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .hero-content h1 {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-family: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    font-weight: {{ section.settings.heading_font.weight }};
+  }
+  
+  .hero-lead-form-{{ section.id }} .hero-content p {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .trust-badge {
+    color: {{ section.settings.badge_color }};
+    font-size: {{ section.settings.badge_size }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .lead-form-container {
+    background-color: {{ section.settings.form_background }};
+    border-radius: {{ section.settings.form_border_radius }}px;
+    border: {{ section.settings.form_border_width }}px solid {{ section.settings.form_border_color }};
+    padding: {{ section.settings.form_padding }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .form-title {
+    color: {{ section.settings.form_title_color }};
+    font-size: {{ section.settings.form_title_size }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .form-input,
+  .hero-lead-form-{{ section.id }} .form-select,
+  .hero-lead-form-{{ section.id }} .form-textarea {
+    border: {{ section.settings.input_border_width }}px solid {{ section.settings.input_border_color }};
+    border-radius: {{ section.settings.input_border_radius }}px;
+    background-color: {{ section.settings.input_background }};
+    color: {{ section.settings.input_text_color }};
+    font-size: {{ section.settings.input_text_size }}px;
+  }
+  
+  .hero-lead-form-{{ section.id }} .form-submit-btn {
+    background-color: {{ section.settings.button_background }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: {{ section.settings.button_border_radius }}px;
+    font-size: {{ section.settings.button_text_size }}px;
+    border: {{ section.settings.button_border_width }}px solid {{ section.settings.button_border_color }};
+  }
+  
+  .hero-lead-form-{{ section.id }} .form-submit-btn:hover {
+    background-color: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_text_color }};
+  }
+{%- endstyle -%}
+
+<div class="hero-lead-form hero-lead-form-{{ section.id }}">
+  <div class="page-width">
+    <div class="hero-lead-grid">
+      <!-- Left Side: Hero Content with Image -->
+      <div class="hero-content">
+        {% if section.settings.hero_image != blank %}
+          <div class="hero-image">
+            <img 
+              src="{{ section.settings.hero_image | image_url: width: 800 }}"
+              alt="{{ section.settings.hero_image.alt | escape }}"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+        
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.description }}</p>
+        
+        {% if section.settings.show_trust_badge %}
+          <div class="trust-badge">
+            {{ section.settings.trust_badge_text }}
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Right Side: Lead Form -->
+      <div class="lead-form-container">
+        <h4 class="form-title">{{ section.settings.form_title }}</h4>
+        
+        <form id="lead-form-{{ section.id }}" class="lead-form" method="post" enctype="multipart/form-data">
+          <!-- Hidden tracking fields -->
+          <input type="hidden" name="gclid" id="gclid-{{ section.id }}" value="">
+          <input type="hidden" name="fbclid" id="fbclid-{{ section.id }}" value="">
+          <input type="hidden" name="lead_source" value="{{ section.settings.lead_source }}">
+          <input type="hidden" name="form_id" value="{{ section.id }}">
+          
+          <!-- Voornaam -->
+          <div class="form-group">
+            <label for="first_name">{{ section.settings.label_first_name }}</label>
+            <input 
+              type="text" 
+              id="first_name" 
+              name="first_name" 
+              class="form-input" 
+              placeholder="{{ section.settings.placeholder_first_name }}"
+              required
+            >
+          </div>
+          
+          <!-- Achternaam -->
+          <div class="form-group">
+            <label for="last_name">{{ section.settings.label_last_name }}</label>
+            <input 
+              type="text" 
+              id="last_name" 
+              name="last_name" 
+              class="form-input" 
+              placeholder="{{ section.settings.placeholder_last_name }}"
+              required
+            >
+          </div>
+          
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">{{ section.settings.label_email }}</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="{{ section.settings.placeholder_email }}"
+              required
+            >
+          </div>
+          
+          <!-- Telefoon -->
+          <div class="form-group">
+            <label for="phone">{{ section.settings.label_phone }}</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="form-input" 
+              placeholder="{{ section.settings.placeholder_phone }}"
+              required
+            >
+          </div>
+          
+          <!-- Bedrijfsnaam -->
+          <div class="form-group">
+            <label for="company">{{ section.settings.label_company }}</label>
+            <input 
+              type="text" 
+              id="company" 
+              name="company" 
+              class="form-input" 
+              placeholder="{{ section.settings.placeholder_company }}"
+            >
+          </div>
+          
+          <!-- Aantal paar dropdown -->
+          <div class="form-group">
+            <label for="quantity">{{ section.settings.label_quantity }}</label>
+            <select id="quantity" name="quantity" class="form-select" required>
+              <option value="">{{ section.settings.placeholder_quantity }}</option>
+              {% for block in section.blocks %}
+                {% if block.type == 'quantity_option' %}
+                  <option value="{{ block.settings.option_value }}">{{ block.settings.option_label }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+          
+          <!-- Soort sokken dropdown -->
+          <div class="form-group">
+            <label for="sock_type">{{ section.settings.label_sock_type }}</label>
+            <select id="sock_type" name="sock_type" class="form-select" required>
+              <option value="">{{ section.settings.placeholder_sock_type }}</option>
+              {% for block in section.blocks %}
+                {% if block.type == 'sock_type_option' %}
+                  <option value="{{ block.settings.option_value }}">{{ block.settings.option_label }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+          
+          <!-- Bericht -->
+          <div class="form-group">
+            <label for="message">{{ section.settings.label_message }}</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-textarea" 
+              rows="4"
+              placeholder="{{ section.settings.placeholder_message }}"
+            ></textarea>
+          </div>
+          
+          <!-- File Upload -->
+          <div class="form-group form-file-upload">
+            <label for="file_upload" class="file-upload-label">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span id="file-name-{{ section.id }}">{{ section.settings.file_upload_text }}</span>
+            </label>
+            <input 
+              type="file" 
+              id="file_upload" 
+              name="file_upload" 
+              class="form-file-input"
+              accept=".pdf,.jpeg,.jpg,.png,.webp"
+            >
+            <small>{{ section.settings.file_upload_hint }}</small>
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" class="form-submit-btn">
+            <span class="btn-text">{{ section.settings.button_text }}</span>
+            <span class="btn-loader" style="display: none;">
+              <svg class="spinner" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+              </svg>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const formId = '{{ section.id }}';
+  const form = document.getElementById('lead-form-' + formId);
+  const fileInput = document.getElementById('file_upload');
+  const fileName = document.getElementById('file-name-' + formId);
+  
+  // Capture GCLID and FBCLID
+  function captureTrackingParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Google Click ID
+    const gclid = urlParams.get('gclid') || getCookie('gclid');
+    if (gclid) {
+      document.getElementById('gclid-' + formId).value = gclid;
+      setCookie('gclid', gclid, 90);
+    }
+    
+    // Facebook Click ID
+    const fbclid = urlParams.get('fbclid') || getCookie('fbclid');
+    if (fbclid) {
+      document.getElementById('fbclid-' + formId).value = fbclid;
+      setCookie('fbclid', fbclid, 90);
+    }
+  }
+  
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+  }
+  
+  // File upload display
+  if (fileInput) {
+    fileInput.addEventListener('change', function(e) {
+      if (this.files && this.files[0]) {
+        fileName.textContent = this.files[0].name;
+      }
+    });
+  }
+  
+  // Form submission
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('.form-submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoader = submitBtn.querySelector('.btn-loader');
+    
+    // Show loader
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    // Track lead event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-XXXXX/LEAD',
+        'value': 50,
+        'currency': 'EUR',
+        'transaction_id': Date.now()
+      });
+    }
+    
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead', {
+        content_name: '{{ section.settings.lead_source }}',
+        value: 50,
+        currency: 'EUR'
+      });
+    }
+    
+    // Gather form data
+    const formData = new FormData(form);
+    
+    try {
+      // Create customer in Shopify
+      const response = await fetch('/apps/lead-capture/submit', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        
+        // Redirect to thank you page
+        window.location.href = '{{ section.settings.thank_you_page }}?lead_id=' + data.customer_id;
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Er is iets misgegaan. Probeer het opnieuw.');
+      
+      // Reset button
+      btnText.style.display = 'inline';
+      btnLoader.style.display = 'none';
+      submitBtn.disabled = false;
+    }
+  });
+  
+  // Initialize
+  captureTrackingParams();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Lead Form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Vraag gratis een proefdesign aan"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading Font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Ontvang binnen 24 uur een offerte op maat inclusief gratis proefdesign."
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show Trust Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_text",
+      "label": "Trust Badge Text",
+      "default": "Je ontvangt het ontwerp & offerte binnen 24 uur"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Text Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Color",
+      "default": "#4CAF50"
+    },
+    {
+      "type": "header",
+      "content": "Form Settings"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Vul je gegevens in"
+    },
+    {
+      "type": "range",
+      "id": "form_title_size",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Form Title Size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "form_title_color",
+      "label": "Form Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "form_background",
+      "label": "Form Background",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "range",
+      "id": "form_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Form Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "form_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Form Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "form_border_color",
+      "label": "Form Border Color",
+      "default": "#E0E0E0"
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Form Padding",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Input Fields"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "input_text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Input Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "input_border_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Input Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input Border Color",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "label": "Input Border Radius",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Form Labels & Placeholders"
+    },
+    {
+      "type": "text",
+      "id": "label_first_name",
+      "label": "First Name Label",
+      "default": "Voornaam"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_first_name",
+      "label": "First Name Placeholder",
+      "default": "Je voornaam"
+    },
+    {
+      "type": "text",
+      "id": "label_last_name",
+      "label": "Last Name Label",
+      "default": "Achternaam"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_last_name",
+      "label": "Last Name Placeholder",
+      "default": "Je achternaam"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email Label",
+      "default": "E-mailadres"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email Placeholder",
+      "default": "je@email.nl"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone Label",
+      "default": "Telefoonnummer"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_phone",
+      "label": "Phone Placeholder",
+      "default": "+31 6 12345678"
+    },
+    {
+      "type": "text",
+      "id": "label_company",
+      "label": "Company Label",
+      "default": "Bedrijfsnaam (optioneel)"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_company",
+      "label": "Company Placeholder",
+      "default": "Je bedrijfsnaam"
+    },
+    {
+      "type": "text",
+      "id": "label_quantity",
+      "label": "Quantity Label",
+      "default": "Aantal paar"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_quantity",
+      "label": "Quantity Placeholder",
+      "default": "Selecteer aantal"
+    },
+    {
+      "type": "text",
+      "id": "label_sock_type",
+      "label": "Sock Type Label",
+      "default": "Soort sokken"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_sock_type",
+      "label": "Sock Type Placeholder",
+      "default": "Selecteer soort"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message Label",
+      "default": "Wat zijn je wensen?"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Message Placeholder",
+      "default": "Vertel ons over je project..."
+    },
+    {
+      "type": "text",
+      "id": "file_upload_text",
+      "label": "File Upload Text",
+      "default": "Voeg een bijlage toe"
+    },
+    {
+      "type": "text",
+      "id": "file_upload_hint",
+      "label": "File Upload Hint",
+      "default": "(.pdf, .jpeg, .png, .jpg of .webp)"
+    },
+    {
+      "type": "header",
+      "content": "Submit Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Vraag gratis proefdesign aan"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Text Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button Hover Background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_width",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Button Border Width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Tracking & Redirect"
+    },
+    {
+      "type": "text",
+      "id": "lead_source",
+      "label": "Lead Source",
+      "default": "website-lead-form",
+      "info": "Used for tracking in Shopify"
+    },
+    {
+      "type": "url",
+      "id": "thank_you_page",
+      "label": "Thank You Page URL",
+      "info": "Example: /pages/thank-you"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quantity_option",
+      "name": "Quantity Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "option_label",
+          "label": "Option Label",
+          "default": "50-100 paar"
+        },
+        {
+          "type": "text",
+          "id": "option_value",
+          "label": "Option Value",
+          "default": "50-100"
+        }
+      ]
+    },
+    {
+      "type": "sock_type_option",
+      "name": "Sock Type Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "option_label",
+          "label": "Option Label",
+          "default": "Duurzame sokken"
+        },
+        {
+          "type": "text",
+          "id": "option_value",
+          "label": "Option Value",
+          "default": "duurzame-sokken"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Lead Form",
+      "blocks": [
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "50-100 paar",
+            "option_value": "50-100"
+          }
+        },
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "101-250 paar",
+            "option_value": "101-250"
+          }
+        },
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "251-500 paar",
+            "option_value": "251-500"
+          }
+        },
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "501-750 paar",
+            "option_value": "501-750"
+          }
+        },
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "751-1500 paar",
+            "option_value": "751-1500"
+          }
+        },
+        {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "1500+ paar",
+            "option_value": "1500+"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Duurzame sokken",
+            "option_value": "duurzame-sokken"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Werksokken",
+            "option_value": "werksokken"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Sportsokken",
+            "option_value": "sportsokken"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Casualsokken",
+            "option_value": "casualsokken"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Skisokken",
+            "option_value": "skisokken"
+          }
+        },
+        {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Hockeysokken",
+            "option_value": "hockeysokken"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
