@@ -1,0 +1,101 @@
+/* USP Features Section */
+.usp-features {
+  width: 100%;
+}
+
+.usp-features .page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.usp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.usp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.usp-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.usp-icon {
+  max-width: 50px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.usp-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.usp-title {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.usp-description {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 990px) {
+  .usp-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  
+  .usp-card {
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .usp-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .usp-card {
+    padding: 28px 20px;
+  }
+  
+  .usp-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 16px;
+  }
+  
+  .usp-icon {
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
