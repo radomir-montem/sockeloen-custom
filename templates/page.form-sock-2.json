@@ -177,11 +177,12 @@
         "button_border_width": 0,
         "button_border_color": "#000000",
         "lead_source": "website-lead-form",
-        "thank_you_page": ""
+        "thank_you_page": "https://custom.sockeloen.com/pages/thank-you"
       }
     },
     "section_contact_info_QE8yx3": {
       "type": "section-contact-info",
+      "disabled": true,
       "name": "Contact Info",
       "settings": {
         "show_section": true,
