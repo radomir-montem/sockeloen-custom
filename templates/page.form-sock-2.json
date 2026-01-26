@@ -11,13 +11,372 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "section_hero_lead_form_NMh4we": {
+      "type": "section-hero-lead-form",
+      "blocks": {
+        "quantity_option_6fnfqC": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "50-100 paar",
+            "option_value": "50-100"
+          }
+        },
+        "quantity_option_kYFfDX": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "101-250 paar",
+            "option_value": "101-250"
+          }
+        },
+        "quantity_option_kkaWTz": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "251-500 paar",
+            "option_value": "251-500"
+          }
+        },
+        "quantity_option_DtQyhR": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "501-750 paar",
+            "option_value": "501-750"
+          }
+        },
+        "quantity_option_ARcPi4": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "751-1500 paar",
+            "option_value": "751-1500"
+          }
+        },
+        "quantity_option_rJcz9z": {
+          "type": "quantity_option",
+          "settings": {
+            "option_label": "1500+ paar",
+            "option_value": "1500+"
+          }
+        },
+        "sock_type_option_3MqPbR": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Duurzame sokken",
+            "option_value": "duurzame-sokken"
+          }
+        },
+        "sock_type_option_LwXMD4": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Werksokken",
+            "option_value": "werksokken"
+          }
+        },
+        "sock_type_option_pYPqjH": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Sportsokken",
+            "option_value": "sportsokken"
+          }
+        },
+        "sock_type_option_6fXWEh": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Casualsokken",
+            "option_value": "casualsokken"
+          }
+        },
+        "sock_type_option_7nANqt": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Skisokken",
+            "option_value": "skisokken"
+          }
+        },
+        "sock_type_option_GLH6UR": {
+          "type": "sock_type_option",
+          "settings": {
+            "option_label": "Hockeysokken",
+            "option_value": "hockeysokken"
+          }
+        }
+      },
+      "block_order": [
+        "quantity_option_6fnfqC",
+        "quantity_option_kYFfDX",
+        "quantity_option_kkaWTz",
+        "quantity_option_DtQyhR",
+        "quantity_option_ARcPi4",
+        "quantity_option_rJcz9z",
+        "sock_type_option_3MqPbR",
+        "sock_type_option_LwXMD4",
+        "sock_type_option_pYPqjH",
+        "sock_type_option_6fXWEh",
+        "sock_type_option_7nANqt",
+        "sock_type_option_GLH6UR"
+      ],
+      "name": "Hero Lead Form",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "padding_top": 100,
+        "padding_bottom": 80,
+        "heading": "Vraag gratis een proefdesign aan",
+        "heading_font": "archivo_black_n4",
+        "heading_size": 38,
+        "heading_color": "#000000",
+        "description": "",
+        "text_size": 17,
+        "text_color": "#666666",
+        "show_trust_badge": true,
+        "trust_badge_text": "Je ontvangt het ontwerp & offerte binnen 24 uur",
+        "badge_size": 14,
+        "badge_color": "#4CAF50",
+        "form_title": "Vul je gegevens in",
+        "form_title_size": 20,
+        "form_title_color": "#000000",
+        "form_background": "#F9F9F9",
+        "form_border_radius": 12,
+        "form_border_width": 1,
+        "form_border_color": "#E0E0E0",
+        "form_padding": 40,
+        "input_background": "#FFFFFF",
+        "input_text_color": "#000000",
+        "input_text_size": 16,
+        "input_border_width": 1,
+        "input_border_color": "#CCCCCC",
+        "input_border_radius": 6,
+        "label_first_name": "Voornaam",
+        "placeholder_first_name": "Je voornaam",
+        "label_last_name": "Achternaam",
+        "placeholder_last_name": "Je achternaam",
+        "label_email": "E-mailadres",
+        "placeholder_email": "je@email.nl",
+        "label_phone": "Telefoonnummer",
+        "placeholder_phone": "+31 6 12345678",
+        "label_company": "Bedrijfsnaam (optioneel)",
+        "placeholder_company": "Je bedrijfsnaam",
+        "label_quantity": "Aantal paar",
+        "placeholder_quantity": "Selecteer aantal",
+        "label_sock_type": "Soort sokken",
+        "placeholder_sock_type": "Selecteer soort",
+        "label_message": "Wat zijn je wensen?",
+        "placeholder_message": "Vertel ons over je project...",
+        "file_upload_text": "Voeg een bijlage toe",
+        "file_upload_hint": "(.pdf, .jpeg, .png, .jpg of .webp)",
+        "button_text": "Vraag gratis proefdesign aan",
+        "button_text_size": 16,
+        "button_background": "#000000",
+        "button_text_color": "#FFFFFF",
+        "button_hover_background": "#333333",
+        "button_hover_text_color": "#FFFFFF",
+        "button_border_radius": 8,
+        "button_border_width": 0,
+        "button_border_color": "#000000",
+        "lead_source": "website-lead-form",
+        "thank_you_page": ""
+      }
+    },
+    "section_contact_info_QE8yx3": {
+      "type": "section-contact-info",
+      "name": "Contact Info",
+      "settings": {
+        "show_section": true,
+        "background_color": "#F9F9F9",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "heading": "Neem contact met ons op",
+        "heading_size": 32,
+        "heading_color": "#000000",
+        "description": "Heb je een vraag of wil je meer informatie? Neem gerust contact met ons op, wij helpen je graag verder!",
+        "text_size": 16,
+        "text_color": "#666666",
+        "email": "info@sockfactory.nl",
+        "phone": "+31 (0) 70 22 11 465",
+        "card_background": "#FFFFFF",
+        "card_border_radius": 12,
+        "card_border_width": 1,
+        "card_border_color": "#E0E0E0",
+        "link_size": 20,
+        "link_color": "#000000",
+        "link_hover_color": "#666666"
+      }
+    },
+    "section_brand_carousel_fEb3jV": {
+      "type": "section-brand-carousel",
+      "blocks": {
+        "brand_logo_LczaLJ": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        },
+        "brand_logo_PXQFjw": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        },
+        "brand_logo_NgLbWy": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        },
+        "brand_logo_BNVnKR": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        },
+        "brand_logo_mbYpEX": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        },
+        "brand_logo_FP3494": {
+          "type": "brand_logo",
+          "settings": {
+            "alt_text": "Brand logo"
+          }
+        }
+      },
+      "block_order": [
+        "brand_logo_LczaLJ",
+        "brand_logo_PXQFjw",
+        "brand_logo_NgLbWy",
+        "brand_logo_BNVnKR",
+        "brand_logo_mbYpEX",
+        "brand_logo_FP3494"
+      ],
+      "name": "Brand Carousel",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "heading": "Deze merken gingen je voor",
+        "heading_size": 28,
+        "heading_color": "#000000",
+        "scroll_speed": 30,
+        "logo_opacity": 60,
+        "logo_grayscale": 100
+      }
+    },
+    "section_usp_features_DhjLBq": {
+      "type": "section-usp-features",
+      "blocks": {
+        "usp_item_yNtpa3": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Gratis ontwerp",
+            "description": "Binnen 24 uur"
+          }
+        },
+        "usp_item_4MRLCh": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Lokaal geproduceerd",
+            "description": "Op duurzame wijze in Nederland 🇳🇱"
+          }
+        },
+        "usp_item_bzbMzV": {
+          "type": "usp_item",
+          "settings": {
+            "title": "Maatwerk oplossingen",
+            "description": "Geen klus te groot of te moeilijk"
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_yNtpa3",
+        "usp_item_4MRLCh",
+        "usp_item_bzbMzV"
+      ],
+      "name": "USP Features",
+      "settings": {
+        "background_color": "#FAFAFA",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "card_background": "#FFFFFF",
+        "card_border_radius": 12,
+        "card_border_width": 0,
+        "card_border_color": "#E0E0E0",
+        "icon_background": "#F0F0F0",
+        "title_color": "#000000",
+        "title_size": 18,
+        "description_color": "#666666",
+        "description_size": 14
+      }
+    },
+    "section_google_reviews_He4VxD": {
+      "type": "section-google-reviews",
+      "blocks": {
+        "review_item_DVFfPJ": {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Jan de Vries",
+            "review_date": "2 weken geleden",
+            "rating": 5,
+            "review_text": "Uitstekende service en kwaliteit! De sokken zijn precies zoals we wilden en de levering was snel."
+          }
+        },
+        "review_item_E3qNAU": {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Maria Jansen",
+            "review_date": "1 maand geleden",
+            "rating": 5,
+            "review_text": "Zeer tevreden met het eindresultaat. Het team dacht goed mee en het ontwerp was perfect."
+          }
+        },
+        "review_item_wLHRgB": {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Peter Smit",
+            "review_date": "3 weken geleden",
+            "rating": 5,
+            "review_text": "Snelle reactie en goede communicatie. De sokken zijn van hoge kwaliteit."
+          }
+        }
+      },
+      "block_order": [
+        "review_item_DVFfPJ",
+        "review_item_E3qNAU",
+        "review_item_wLHRgB"
+      ],
+      "name": "Google Reviews",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_header": true,
+        "heading": "Wat klanten zeggen",
+        "heading_size": 32,
+        "heading_color": "#000000",
+        "average_rating": "9.9",
+        "rating_size": 48,
+        "rating_color": "#000000",
+        "star_color": "#FFB800",
+        "review_count": "26",
+        "card_background": "#F9F9F9",
+        "card_border_radius": 12,
+        "card_border_width": 1,
+        "card_border_color": "#E0E0E0",
+        "cta_text": "Bekijk alle reviews",
+        "cta_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "section_hero_lead_form_NMh4we",
+    "section_contact_info_QE8yx3",
+    "section_brand_carousel_fEb3jV",
+    "section_usp_features_DhjLBq",
+    "section_google_reviews_He4VxD"
   ]
 }
