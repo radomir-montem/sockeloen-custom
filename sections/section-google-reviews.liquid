@@ -1,0 +1,356 @@
+{{ 'section-google-reviews.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .google-reviews-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  
+  .google-reviews-{{ section.id }} .reviews-header h2 {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+  }
+  
+  .google-reviews-{{ section.id }} .rating-score {
+    color: {{ section.settings.rating_color }};
+    font-size: {{ section.settings.rating_size }}px;
+  }
+  
+  .google-reviews-{{ section.id }} .star-icon {
+    color: {{ section.settings.star_color }};
+  }
+  
+  .google-reviews-{{ section.id }} .review-card {
+    background-color: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+  }
+{%- endstyle -%}
+
+<div class="google-reviews google-reviews-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.show_header %}
+      <div class="reviews-header">
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        
+        <div class="rating-summary">
+          <div class="rating-score">{{ section.settings.average_rating }}</div>
+          <div class="rating-stars">
+            {% assign full_stars = section.settings.average_rating | floor %}
+            {% assign decimal_part = section.settings.average_rating | modulo: 1 %}
+            {% assign half_star_position = full_stars | plus: 1 %}
+            
+            {% for i in (1..5) %}
+              {% if i <= full_stars %}
+                <svg class="star-icon filled" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+              {% elsif i == half_star_position and decimal_part >= 0.5 %}
+                <svg class="star-icon half" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <defs>
+                    <linearGradient id="half-{{ section.id }}">
+                      <stop offset="50%" stop-color="currentColor"/>
+                      <stop offset="50%" stop-color="#E0E0E0"/>
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#half-{{ section.id }})" d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+              {% else %}
+                <svg class="star-icon empty" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke-width="1.5"/>
+                </svg>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="review-count">{{ section.settings.review_count }} reviews</div>
+        </div>
+      </div>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+      <div class="reviews-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'review_item' %}
+            <div class="review-card" {{ block.shopify_attributes }}>
+              <div class="review-header">
+                <div class="reviewer-info">
+                  <div class="reviewer-avatar">
+                    {% if block.settings.reviewer_image != blank %}
+                      <img src="{{ block.settings.reviewer_image | image_url: width: 100 }}" alt="{{ block.settings.reviewer_name }}">
+                    {% else %}
+                      <div class="avatar-placeholder">{{ block.settings.reviewer_name | slice: 0 }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="reviewer-details">
+                    <div class="reviewer-name">{{ block.settings.reviewer_name }}</div>
+                    <div class="review-date">{{ block.settings.review_date }}</div>
+                  </div>
+                </div>
+                <div class="review-stars-small">
+                  {% for i in (1..block.settings.rating) %}
+                    <svg class="star-icon-small filled" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                  {% endfor %}
+                </div>
+              </div>
+              
+              <div class="review-content">
+                <p>{{ block.settings.review_text }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% if section.settings.cta_link != blank %}
+      <div class="reviews-cta">
+        <a href="{{ section.settings.cta_link }}" class="reviews-link" target="_blank" rel="noopener">
+          {{ section.settings.cta_text }}
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Google Reviews Widget",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show Header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Wat klanten zeggen"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Rating Summary"
+    },
+    {
+      "type": "text",
+      "id": "average_rating",
+      "label": "Average Rating",
+      "default": "9.9",
+      "info": "e.g., 4.8 or 9.9"
+    },
+    {
+      "type": "range",
+      "id": "rating_size",
+      "min": 32,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Rating Number Size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "rating_color",
+      "label": "Rating Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#FFB800"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Review Count",
+      "default": "26"
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#E0E0E0"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Bekijk alle reviews"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link",
+      "info": "Link to your review platform"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_item",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer Name",
+          "default": "Jan de Vries"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_image",
+          "label": "Reviewer Image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "review_date",
+          "label": "Review Date",
+          "default": "2 weken geleden"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating (stars)",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "Uitstekende service en kwaliteit! De sokken zijn precies zoals we wilden en de levering was snel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Google Reviews",
+      "blocks": [
+        {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Jan de Vries",
+            "review_date": "2 weken geleden",
+            "rating": 5,
+            "review_text": "Uitstekende service en kwaliteit! De sokken zijn precies zoals we wilden en de levering was snel."
+          }
+        },
+        {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Maria Jansen",
+            "review_date": "1 maand geleden",
+            "rating": 5,
+            "review_text": "Zeer tevreden met het eindresultaat. Het team dacht goed mee en het ontwerp was perfect."
+          }
+        },
+        {
+          "type": "review_item",
+          "settings": {
+            "reviewer_name": "Peter Smit",
+            "review_date": "3 weken geleden",
+            "rating": 5,
+            "review_text": "Snelle reactie en goede communicatie. De sokken zijn van hoge kwaliteit."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
