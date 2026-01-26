@@ -1,0 +1,46 @@
+/* LeadGen Embed Section */
+.leadgen-embed {
+  width: 100%;
+}
+
+.leadgen-embed .page-width {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.leadgen-container {
+  margin: 0 auto;
+}
+
+.leadgen-heading {
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.description {
+  text-align: center;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+
+.leadgen-form-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 750px) {
+  .leadgen-heading {
+    font-size: 28px !important;
+  }
+  
+  .description {
+    font-size: 15px !important;
+  }
+  
+  .leadgen-form-wrapper {
+    margin-top: 30px;
+  }
+}
