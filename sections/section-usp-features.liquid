@@ -1,0 +1,232 @@
+{{ 'section-usp-features.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .usp-features-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  
+  .usp-features-{{ section.id }} .usp-card {
+    background-color: {{ section.settings.card_background }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+  }
+  
+  .usp-features-{{ section.id }} .usp-icon-wrapper {
+    background-color: {{ section.settings.icon_background }};
+  }
+  
+  .usp-features-{{ section.id }} .usp-title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size }}px;
+  }
+  
+  .usp-features-{{ section.id }} .usp-description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_size }}px;
+  }
+{%- endstyle -%}
+
+<div class="usp-features usp-features-{{ section.id }}">
+  <div class="page-width">
+    <div class="usp-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'usp_item' %}
+          <div class="usp-card" {{ block.shopify_attributes }}>
+            {% if block.settings.icon_image != blank %}
+              <div class="usp-icon-wrapper">
+                <img 
+                  src="{{ block.settings.icon_image | image_url: width: 100 }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="usp-icon"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+            
+            <div class="usp-content">
+              <h3 class="usp-title">{{ block.settings.title }}</h3>
+              {% if block.settings.description != blank %}
+                <p class="usp-description">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "USP Features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Width",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#E0E0E0"
+    },
+    {
+      "type": "header",
+      "content": "Icon Styling"
+    },
+    {
+      "type": "color",
+      "id": "icon_background",
+      "label": "Icon Background",
+      "default": "#F0F0F0"
+    },
+    {
+      "type": "header",
+      "content": "Text Styling"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Gratis ontwerp"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Binnen 24 uur"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USP Features",
+      "blocks": [
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "Gratis ontwerp",
+            "description": "Binnen 24 uur"
+          }
+        },
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "Lokaal geproduceerd",
+            "description": "Op duurzame wijze in Nederland 🇳🇱"
+          }
+        },
+        {
+          "type": "usp_item",
+          "settings": {
+            "title": "Maatwerk oplossingen",
+            "description": "Geen klus te groot of te moeilijk"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
