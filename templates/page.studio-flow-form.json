@@ -21,10 +21,10 @@
       "type": "studio-flow-landing",
       "name": "Studio Flow Landing",
       "settings": {
-        "primary_bg_color": "#000000",
-        "secondary_bg_color": "#000000",
+        "primary_bg_color": "#ffffff",
+        "secondary_bg_color": "#ffffff",
         "card_bg_color": "#00ff66",
-        "primary_text_color": "#ffffff",
+        "primary_text_color": "#000000",
         "secondary_text_color": "#000000",
         "accent_color": "#00ff66",
         "button_bg_color": "#ffffff",
