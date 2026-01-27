@@ -2,12 +2,15 @@
 
 .studio-flow-landing {
   width: 100%;
+  position: relative;
 }
 
 .studio-flow-landing .page-width {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -98,7 +101,8 @@
 
 /* CTA Button */
 .cta-wrapper {
-  margin-top: 8px;
+  margin-top: 0;
+  margin-bottom: 24px; /* Space below button, before video */
 }
 
 .cta-button {
@@ -115,7 +119,7 @@
 
 .cta-button:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
 .cta-button svg {
