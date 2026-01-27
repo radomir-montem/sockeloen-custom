@@ -21,7 +21,12 @@
       "type": "studio-flow-landing",
       "name": "Studio Flow Landing",
       "settings": {
-        "background_color": "#f0f0f0",
+        "background_color": "#ffffff",
+        "show_grid_pattern": true,
+        "grid_color": "#ff8c00",
+        "grid_size": 40,
+        "grid_opacity": 15,
+        "grid_line_width": 1,
         "hero_padding_top": 60,
         "hero_padding_bottom": 40,
         "show_badge": true,
