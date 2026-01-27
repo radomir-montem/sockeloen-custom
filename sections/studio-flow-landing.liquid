@@ -3,7 +3,31 @@
 {%- style -%}
   .studio-flow-landing-{{ section.id }} {
     background-color: {{ section.settings.background_color }};
+    position: relative;
   }
+  
+  {% if section.settings.show_grid_pattern %}
+  .studio-flow-landing-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient({{ section.settings.grid_color }} {{ section.settings.grid_line_width }}px, transparent {{ section.settings.grid_line_width }}px),
+      linear-gradient(90deg, {{ section.settings.grid_color }} {{ section.settings.grid_line_width }}px, transparent {{ section.settings.grid_line_width }}px);
+    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
+    opacity: {{ section.settings.grid_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .studio-flow-landing-{{ section.id }} > * {
+    position: relative;
+    z-index: 1;
+  }
+  {% endif %}
   
   /* Hero Styles */
   .studio-flow-landing-{{ section.id }} .hero-section {
@@ -110,6 +134,16 @@
           <p class="subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
         
+        <!-- CTA Button ABOVE Video -->
+        <div class="cta-wrapper">
+          <a href="{{ section.settings.button_link }}" class="cta-button">
+            {{ section.settings.button_text }}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        
         <!-- YouTube Video -->
         <div class="video-wrapper">
           <div class="video-container" id="video-container-{{ section.id }}">
@@ -125,16 +159,6 @@
               </div>
             {% endif %}
           </div>
-        </div>
-        
-        <!-- CTA Button Below Video -->
-        <div class="cta-wrapper">
-          <a href="{{ section.settings.button_link }}" class="cta-button">
-            {{ section.settings.button_text }}
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
         </div>
         
       </div>
@@ -289,7 +313,53 @@
       "type": "color",
       "id": "background_color",
       "label": "Background Color",
-      "default": "#000000"
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Background Grid Pattern"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid_pattern",
+      "label": "Show Grid Pattern",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "grid_color",
+      "label": "Grid Line Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "range",
+      "id": "grid_size",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Grid Cell Size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_opacity",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Grid Opacity",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "grid_line_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Grid Line Width",
+      "default": 1
     },
     {
       "type": "header",
@@ -331,19 +401,19 @@
       "type": "color",
       "id": "badge_background",
       "label": "Badge Background",
-      "default": "#1a1a1a"
+      "default": "#FF8C00"
     },
     {
       "type": "color",
       "id": "badge_color",
       "label": "Badge Text Color",
-      "default": "#ffffff"
+      "default": "#FFFFFF"
     },
     {
       "type": "textarea",
       "id": "heading",
       "label": "Main Heading",
-      "default": "Launch Premium Custom Socks - while 2x Your Margin within 4 Weeks"
+      "default": "Launch your own Premium Custom Socks starting at €1,95/pair - within 4 Weeks"
     },
     {
       "type": "range",
@@ -353,7 +423,7 @@
       "step": 2,
       "unit": "px",
       "label": "Heading Size",
-      "default": 56
+      "default": 48
     },
     {
       "type": "range",
@@ -368,13 +438,13 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Watch this video for details & pricing, then click the button to request your free design."
+      "default": "Watch this video for details & pricing, then click the \"Ask Free Design\" button to request your free design."
     },
     {
       "type": "range",
@@ -384,13 +454,13 @@
       "step": 1,
       "unit": "px",
       "label": "Subtitle Size",
-      "default": 18
+      "default": 16
     },
     {
       "type": "color",
       "id": "subtitle_color",
       "label": "Subtitle Color",
-      "default": "#cccccc"
+      "default": "#333333"
     },
     {
       "type": "text",
@@ -408,7 +478,7 @@
       "type": "text",
       "id": "button_text",
       "label": "CTA Button Text",
-      "default": "Get Started"
+      "default": "Ask Free Design"
     },
     {
       "type": "url",
@@ -419,19 +489,19 @@
       "type": "color",
       "id": "button_background",
       "label": "Button Background",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "button_text_color",
       "label": "Button Text Color",
-      "default": "#000000"
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "button_hover_background",
       "label": "Button Hover Background",
-      "default": "#f0f0f0"
+      "default": "#333333"
     },
     {
       "type": "range",
@@ -477,7 +547,7 @@
       "type": "text",
       "id": "brands_heading",
       "label": "Brands Heading",
-      "default": "TRUSTED BY THE BIGGEST BRANDS:"
+      "default": "TRUSTED BY THE BIGGEST FASHION BRANDS IN THE WORLD:"
     },
     {
       "type": "range",
@@ -493,7 +563,7 @@
       "type": "color",
       "id": "brands_heading_color",
       "label": "Brands Heading Color",
-      "default": "#999999"
+      "default": "#666666"
     },
     {
       "type": "range",
@@ -513,7 +583,7 @@
       "step": 10,
       "unit": "%",
       "label": "Logo Brightness",
-      "default": 180
+      "default": 70
     },
     {
       "type": "range",
@@ -533,7 +603,7 @@
       "step": 5,
       "unit": "%",
       "label": "Logo Opacity",
-      "default": 50
+      "default": 60
     },
     {
       "type": "header",
@@ -585,13 +655,13 @@
       "type": "color",
       "id": "reasons_heading_color",
       "label": "Reasons Heading Color",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "card_background",
       "label": "Card Background",
-      "default": "#0a0a0a"
+      "default": "#F9F9F9"
     },
     {
       "type": "range",
@@ -607,7 +677,7 @@
       "type": "color",
       "id": "card_border_color",
       "label": "Card Border Color",
-      "default": "#222222"
+      "default": "#E0E0E0"
     },
     {
       "type": "range",
@@ -623,7 +693,7 @@
       "type": "color",
       "id": "number_color",
       "label": "Number Color",
-      "default": "#666666"
+      "default": "#CCCCCC"
     },
     {
       "type": "range",
@@ -639,7 +709,7 @@
       "type": "color",
       "id": "title_color",
       "label": "Reason Title Color",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -655,7 +725,7 @@
       "type": "color",
       "id": "description_color",
       "label": "Description Color",
-      "default": "#aaaaaa"
+      "default": "#666666"
     },
     {
       "type": "range",
