@@ -1,585 +1,768 @@
-{% comment %}
-  Studio Flow Landing Page - Complete Version with Full Color Control
-  File: sections/studio-flow-landing.liquid
-{% endcomment %}
+{{ 'section-studio-flow-landing.css' | asset_url | stylesheet_tag }}
 
-<style>
-  :root {
-    --sf-primary-bg: {{ section.settings.primary_bg_color }};
-    --sf-secondary-bg: {{ section.settings.secondary_bg_color }};
-    --sf-card-bg: {{ section.settings.card_bg_color }};
-    --sf-accent-color: {{ section.settings.accent_color }};
-    --sf-primary-text: {{ section.settings.primary_text_color }};
-    --sf-secondary-text: {{ section.settings.secondary_text_color }};
-    --sf-button-bg: {{ section.settings.button_bg_color }};
-    --sf-button-text: {{ section.settings.button_text_color }};
-    --sf-grid-color: {{ section.settings.grid_color }};
+{%- style -%}
+  .studio-flow-landing-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
   }
   
-  body { margin: 0; padding: 0; }
-  
-  .studio-flow-page {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color: var(--sf-primary-text);
-    background: var(--sf-primary-bg);
-    min-height: 100vh;
-    position: relative;
+  /* Hero Styles */
+  .studio-flow-landing-{{ section.id }} .hero-section {
+    padding-top: {{ section.settings.hero_padding_top }}px;
+    padding-bottom: {{ section.settings.hero_padding_bottom }}px;
   }
   
-  .studio-flow-page::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: 
-      linear-gradient(var(--sf-grid-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--sf-grid-color) 1px, transparent 1px);
-    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
-    pointer-events: none;
-    z-index: 0;
-    opacity: {{ section.settings.grid_opacity }}%;
+  .studio-flow-landing-{{ section.id }} .badge {
+    background-color: {{ section.settings.badge_background }};
+    color: {{ section.settings.badge_color }};
   }
   
-  .studio-flow-page > * { position: relative; z-index: 1; }
-  
-  .sf-hero {
-    text-align: center;
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  .studio-flow-landing-{{ section.id }} h1 {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: {{ section.settings.heading_line_height }};
   }
   
-  .sf-badge {
-    display: inline-block;
-    background: var(--sf-card-bg);
-    color: var(--sf-secondary-text);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    margin-bottom: 30px;
-    border: 1px solid {{ section.settings.badge_border_color }};
+  .studio-flow-landing-{{ section.id }} .subtitle {
+    color: {{ section.settings.subtitle_color }};
+    font-size: {{ section.settings.subtitle_size }}px;
   }
   
-  .sf-headline {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 30px;
-    color: var(--sf-primary-text);
+  .studio-flow-landing-{{ section.id }} .cta-button {
+    background-color: {{ section.settings.button_background }};
+    color: {{ section.settings.button_text_color }};
+    border-radius: {{ section.settings.button_border_radius }}px;
   }
   
-  .sf-headline strong,
-  .sf-headline b {
-    color: var(--sf-accent-color);
-    font-weight: 700;
+  .studio-flow-landing-{{ section.id }} .cta-button:hover {
+    background-color: {{ section.settings.button_hover_background }};
   }
   
-  .sf-subheadline {
-    font-size: 18px;
-    color: var(--sf-secondary-text);
-    margin-bottom: 30px;
-    line-height: 1.6;
+  /* Brands Styles */
+  .studio-flow-landing-{{ section.id }} .brands-section {
+    padding-top: {{ section.settings.brands_padding_top }}px;
+    padding-bottom: {{ section.settings.brands_padding_bottom }}px;
   }
   
-  .sf-cta-btn {
-    display: inline-block;
-    background: var(--sf-button-bg);
-    color: var(--sf-button-text);
-    padding: 16px 40px;
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s;
-    box-shadow: 0 0 20px {{ section.settings.button_glow_color }};
+  .studio-flow-landing-{{ section.id }} .brands-heading {
+    color: {{ section.settings.brands_heading_color }};
+    font-size: {{ section.settings.brands_heading_size }}px;
   }
   
-  .sf-cta-btn:hover {
-    background: {{ section.settings.button_hover_color }};
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px {{ section.settings.button_glow_hover_color }};
+  .studio-flow-landing-{{ section.id }} .logo-item {
+    filter: grayscale({{ section.settings.grayscale_amount }}%) 
+            brightness({{ section.settings.brightness_amount }}%) 
+            contrast({{ section.settings.contrast_amount }}%);
+    opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
   }
   
-  .sf-video-wrapper {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 0 20px;
+  .studio-flow-landing-{{ section.id }} .logo-item:hover {
+    filter: grayscale(0%) brightness(100%) contrast(100%);
+    opacity: 1;
   }
   
-  .sf-video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px {{ section.settings.video_shadow_color }};
-    border: 2px solid {{ section.settings.video_border_color }};
+  /* Reasons Styles */
+  .studio-flow-landing-{{ section.id }} .reasons-section {
+    padding-top: {{ section.settings.reasons_padding_top }}px;
+    padding-bottom: {{ section.settings.reasons_padding_bottom }}px;
   }
   
-  .sf-video-container iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+  .studio-flow-landing-{{ section.id }} .reasons-heading {
+    color: {{ section.settings.reasons_heading_color }};
+    font-size: {{ section.settings.reasons_heading_size }}px;
   }
   
-  .sf-logos {
-    padding: 60px 20px;
-    background: var(--sf-secondary-bg);
-    text-align: center;
+  .studio-flow-landing-{{ section.id }} .reason-card {
+    background-color: {{ section.settings.card_background }};
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
   }
   
-  .sf-logos h3 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--sf-secondary-text);
-    margin-bottom: 30px;
+  .studio-flow-landing-{{ section.id }} .reason-number {
+    color: {{ section.settings.number_color }};
+    font-size: {{ section.settings.number_size }}px;
   }
   
-  .sf-logo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+  .studio-flow-landing-{{ section.id }} .reason-title {
+    color: {{ section.settings.title_color }};
+    font-size: {{ section.settings.title_size }}px;
   }
   
-  .sf-logo-grid img {
-    height: 40px;
-    width: auto;
-    filter: grayscale({{ section.settings.logo_grayscale }}%);
-    opacity: {{ section.settings.logo_opacity }}%;
-    transition: all 0.3s;
+  .studio-flow-landing-{{ section.id }} .reason-description {
+    color: {{ section.settings.description_color }};
+    font-size: {{ section.settings.description_size }}px;
   }
-  
-  .sf-logo-grid img:hover {
-    filter: grayscale(0%);
-    opacity: 100%;
-  }
-  
-  .sf-reasons {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .sf-reasons h2 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 60px;
-    color: var(--sf-primary-text);
-  }
-  
-  .sf-reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
-  }
-  
-  .sf-reason-card {
-    background: var(--sf-card-bg);
-    border: 1px solid {{ section.settings.card_border_color }};
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 0 15px {{ section.settings.card_glow_color }};
-    transition: all 0.3s;
-  }
-  
-  .sf-reason-card:hover {
-    border-color: var(--sf-accent-color);
-    box-shadow: 0 0 25px {{ section.settings.card_glow_hover_color }};
-    transform: translateY(-5px);
-  }
-  
-  .sf-reason-number {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--sf-accent-color);
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px {{ section.settings.number_glow_color }};
-  }
-  
-  .sf-reason-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--sf-primary-text);
-  }
-  
-  .sf-reason-text {
-    color: var(--sf-secondary-text);
-    line-height: 1.6;
-  }
-  
-  .sf-case-studies {
-    padding: 80px 20px;
-    background: var(--sf-secondary-bg);
-  }
-  
-  .sf-case-study {
-    max-width: 1200px;
-    margin: 0 auto 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  
-  .sf-case-study:nth-child(even) { direction: rtl; }
-  .sf-case-study:nth-child(even) > * { direction: ltr; }
-  
-  .sf-case-content h3 {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--sf-secondary-text);
-    margin-bottom: 15px;
-  }
-  
-  .sf-case-content h2 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    line-height: 1.3;
-    color: var(--sf-primary-text);
-  }
-  
-  .sf-case-content p {
-    color: var(--sf-secondary-text);
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  .sf-case-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px {{ section.settings.image_shadow_color }};
-    border: 1px solid {{ section.settings.image_border_color }};
-  }
-  
-  .sf-testimonial {
-    text-align: center;
-    padding: 80px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .sf-testimonial blockquote {
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: var(--sf-primary-text);
-  }
-  
-  .sf-testimonial cite {
-    font-size: 16px;
-    color: var(--sf-secondary-text);
-    font-style: normal;
-  }
-  
-  .sf-gallery {
-    padding: 80px 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .sf-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .sf-gallery-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid {{ section.settings.gallery_border_color }};
-    transition: all 0.3s;
-  }
-  
-  .sf-gallery-item img:hover {
-    border-color: var(--sf-accent-color);
-    box-shadow: 0 0 20px {{ section.settings.gallery_glow_color }};
-    transform: scale(1.05);
-  }
-  
-  .sf-footer {
-    background: var(--sf-card-bg);
-    color: var(--sf-primary-text);
-    padding: 60px 20px;
-    text-align: center;
-    border-top: 1px solid {{ section.settings.footer_border_color }};
-  }
-  
-  .sf-disclaimer {
-    max-width: 900px;
-    margin: 0 auto 30px;
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--sf-secondary-text);
-  }
-  
-  .sf-copyright {
-    font-size: 14px;
-    color: var(--sf-secondary-text);
-  }
-  
-  .sf-highlight {
-    color: var(--sf-accent-color);
-  }
-  
-  @media (max-width: 768px) {
-    .sf-headline { font-size: 32px; }
-    .sf-case-study { grid-template-columns: 1fr; }
-    .sf-case-study:nth-child(even) { direction: ltr; }
-    .sf-case-content h2 { font-size: 24px; }
-    .sf-testimonial blockquote { font-size: 20px; }
-  }
-</style>
+{%- endstyle -%}
 
-<div class="studio-flow-page">
+<div class="studio-flow-landing studio-flow-landing-{{ section.id }}">
   
-  <section class="sf-hero">
-    {% if section.settings.hero_badge %}
-      <div class="sf-badge">{{ section.settings.hero_badge }}</div>
-    {% endif %}
-    {% if section.settings.hero_headline %}
-      <h1 class="sf-headline">{{ section.settings.hero_headline }}</h1>
-    {% endif %}
-    {% if section.settings.hero_subheadline %}
-      <p class="sf-subheadline">{{ section.settings.hero_subheadline }}</p>
-    {% endif %}
-    {% if section.settings.hero_cta_text and section.settings.hero_cta_url %}
-      <a href="{{ section.settings.hero_cta_url }}" class="sf-cta-btn">{{ section.settings.hero_cta_text }} →</a>
-    {% endif %}
-  </section>
-  
-  {% if section.settings.video_url %}
-  <section class="sf-video-wrapper">
-    <div class="sf-video-container">
-      <iframe src="{{ section.settings.video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </section>
-  {% endif %}
-  
-  <section class="sf-logos">
-    {% if section.settings.logos_title %}
-      <h3>{{ section.settings.logos_title }}</h3>
-    {% endif %}
-    <div class="sf-logo-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'logo' and block.settings.logo_image %}
-          <img src="{{ block.settings.logo_image | img_url: '200x' }}" alt="{{ block.settings.logo_alt }}">
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="page-width">
+      <div class="hero-container">
+        
+        {% if section.settings.show_badge %}
+          <div class="badge">{{ section.settings.badge_text }}</div>
         {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-  
-  <section class="sf-reasons">
-    {% if section.settings.reasons_title %}
-      <h2>{{ section.settings.reasons_title }}</h2>
-    {% endif %}
-    <div class="sf-reasons-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'reason' %}
-          <div class="sf-reason-card">
-            <div class="sf-reason-number">{{ forloop.index }}.</div>
-            <h3 class="sf-reason-title">{{ block.settings.reason_title }}</h3>
-            <p class="sf-reason-text">{{ block.settings.reason_text }}</p>
-          </div>
+        
+        <h1>{{ section.settings.heading }}</h1>
+        
+        {% if section.settings.subtitle != blank %}
+          <p class="subtitle">{{ section.settings.subtitle }}</p>
         {% endif %}
-      {% endfor %}
-    </div>
-    {% if section.settings.reasons_cta_text and section.settings.reasons_cta_url %}
-    <div style="text-align: center; margin-top: 60px;">
-      <a href="{{ section.settings.reasons_cta_url }}" class="sf-cta-btn">{{ section.settings.reasons_cta_text }} →</a>
-    </div>
-    {% endif %}
-  </section>
-  
-  <section class="sf-case-studies">
-    {% for block in section.blocks %}
-      {% if block.type == 'case_study' %}
-        <div class="sf-case-study">
-          <div class="sf-case-content">
-            {% if block.settings.case_category %}<h3>{{ block.settings.case_category }}</h3>{% endif %}
-            {% if block.settings.case_headline %}<h2>{{ block.settings.case_headline }}</h2>{% endif %}
-            {% if block.settings.case_description %}<p>{{ block.settings.case_description }}</p>{% endif %}
-          </div>
-          <div class="sf-case-image">
-            {% if block.settings.case_image %}
-              <img src="{{ block.settings.case_image | img_url: '800x' }}" alt="{{ block.settings.case_headline }}">
-            {% elsif block.settings.case_video_url %}
-              <div class="sf-video-container">
-                <iframe src="{{ block.settings.case_video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <!-- YouTube Video -->
+        <div class="video-wrapper">
+          <div class="video-container" id="video-container-{{ section.id }}">
+            {% if section.settings.youtube_id != blank %}
+              <div id="player-{{ section.id }}" class="youtube-player"></div>
+            {% else %}
+              <div class="video-placeholder">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                  <path d="M10 8L16 12L10 16V8Z" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <p>Add your YouTube video ID in settings</p>
               </div>
             {% endif %}
           </div>
         </div>
-      {% endif %}
-    {% endfor %}
+        
+        <!-- CTA Button Below Video -->
+        <div class="cta-wrapper">
+          <a href="{{ section.settings.button_link }}" class="cta-button">
+            {{ section.settings.button_text }}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        
+      </div>
+    </div>
   </section>
   
-  {% if section.settings.testimonial_quote %}
-  <section class="sf-testimonial">
-    <blockquote>"{{ section.settings.testimonial_quote }}"</blockquote>
-    {% if section.settings.testimonial_author %}<cite>{{ section.settings.testimonial_author }}</cite>{% endif %}
+  <!-- TRUSTED BRANDS SECTION -->
+  {% if section.settings.show_brands %}
+  <section class="brands-section">
+    <div class="page-width">
+      {% if section.settings.brands_heading != blank %}
+        <h3 class="brands-heading">{{ section.settings.brands_heading }}</h3>
+      {% endif %}
+      
+      <div class="logos-container">
+        <div class="logos-track">
+          {% for block in section.blocks %}
+            {% if block.type == 'logo' %}
+              <div class="logo-item" {{ block.shopify_attributes }}>
+                {% if block.settings.logo_image != blank %}
+                  <img 
+                    src="{{ block.settings.logo_image | image_url: width: 300 }}"
+                    alt="{{ block.settings.alt_text | escape }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+          
+          <!-- Duplicate for seamless scroll -->
+          {% for block in section.blocks %}
+            {% if block.type == 'logo' %}
+              <div class="logo-item logo-duplicate" aria-hidden="true">
+                {% if block.settings.logo_image != blank %}
+                  <img 
+                    src="{{ block.settings.logo_image | image_url: width: 300 }}"
+                    alt="{{ block.settings.alt_text | escape }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </section>
   {% endif %}
   
-  <section class="sf-gallery">
-    <div class="sf-gallery-grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'gallery_image' and block.settings.gallery_image %}
-          <div class="sf-gallery-item">
-            <img src="{{ block.settings.gallery_image | img_url: '400x' }}" alt="Gallery image">
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-  
-  <section style="background: var(--sf-primary-bg); padding: 40px 20px;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      {% for block in section.blocks %}
-        {% if block.type == 'text_block' %}
-          <div style="margin: 40px 0; color: var(--sf-primary-text);">
-            {{ block.settings.text_content }}
-          </div>
-        {% elsif block.type == 'image_block' %}
-          <div style="margin: 40px 0;">
-            {% if block.settings.block_image %}
-              <img src="{{ block.settings.block_image | img_url: '1200x' }}" alt="{{ block.settings.image_alt }}" style="width: 100%; border-radius: 12px; border: 1px solid {{ section.settings.image_border_color }};">
-            {% endif %}
-          </div>
-        {% elsif block.type == 'video_block' %}
-          <div style="margin: 40px 0;">
-            <div class="sf-video-container">
-              <iframe src="{{ block.settings.block_video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <!-- 4 REASONS SECTION -->
+  {% if section.settings.show_reasons %}
+  <section class="reasons-section">
+    <div class="page-width">
+      {% if section.settings.reasons_heading != blank %}
+        <h2 class="reasons-heading">{{ section.settings.reasons_heading }}</h2>
+      {% endif %}
+      
+      <div class="reasons-container">
+        {% for block in section.blocks %}
+          {% if block.type == 'reason' %}
+            <div class="reason-card" {{ block.shopify_attributes }}>
+              <div class="reason-number">{{ forloop.index }}.</div>
+              <h3 class="reason-title">{{ block.settings.title }}</h3>
+              <p class="reason-description">{{ block.settings.description }}</p>
             </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {% if section.settings.show_bottom_cta %}
+        <div class="cta-wrapper">
+          <a href="{{ section.settings.button_link }}" class="cta-button">
+            {{ section.settings.button_text }}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      {% endif %}
     </div>
   </section>
+  {% endif %}
   
 </div>
+
+<!-- YouTube IFrame API -->
+<script>
+(function() {
+  const sectionId = '{{ section.id }}';
+  const youtubeId = '{{ section.settings.youtube_id }}';
+  
+  if (!youtubeId) return;
+  
+  // Load YouTube IFrame API
+  if (!window.YT) {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+  
+  // Initialize player
+  window.onYouTubeIframeAPIReady = function() {
+    new YT.Player('player-' + sectionId, {
+      videoId: youtubeId,
+      playerVars: {
+        autoplay: {{ section.settings.autoplay }},
+        controls: 1,
+        modestbranding: 1,
+        rel: 0,
+        showinfo: 0,
+        fs: 1,
+        playsinline: 1
+      },
+      events: {
+        'onReady': function(event) {
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'video_start', {
+              'video_title': 'Hero Video'
+            });
+          }
+        },
+        'onStateChange': function(event) {
+          if (event.data === YT.PlayerState.ENDED) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'video_complete', {
+                'video_title': 'Hero Video'
+              });
+            }
+          }
+        }
+      }
+    });
+  };
+  
+  if (window.YT && window.YT.Player) {
+    window.onYouTubeIframeAPIReady();
+  }
+})();
+</script>
 
 {% schema %}
 {
   "name": "Studio Flow Landing",
   "settings": [
-    {"type": "header", "content": "🎨 COLORS"},
-    {"type": "color", "id": "primary_bg_color", "label": "Primary BG", "default": "#000000"},
-    {"type": "color", "id": "secondary_bg_color", "label": "Secondary BG", "default": "#000000"},
-    {"type": "color", "id": "card_bg_color", "label": "Card BG", "default": "#0a0a0a"},
-    {"type": "color", "id": "primary_text_color", "label": "Primary Text", "default": "#ffffff"},
-    {"type": "color", "id": "secondary_text_color", "label": "Secondary Text", "default": "#999999"},
-    {"type": "color", "id": "accent_color", "label": "Accent Color", "default": "#00ff66"},
-    {"type": "header", "content": "🔘 BUTTONS"},
-    {"type": "color", "id": "button_bg_color", "label": "Button BG", "default": "#00ff66"},
-    {"type": "color", "id": "button_text_color", "label": "Button Text", "default": "#000000"},
-    {"type": "color", "id": "button_hover_color", "label": "Button Hover", "default": "#00ff80"},
-    {"type": "color", "id": "button_glow_color", "label": "Button Glow", "default": "#00ff6650"},
-    {"type": "color", "id": "button_glow_hover_color", "label": "Glow Hover", "default": "#00ff6680"},
-    {"type": "header", "content": "🖼️ BORDERS"},
-    {"type": "color", "id": "card_border_color", "label": "Card Border", "default": "#00ff66"},
-    {"type": "color", "id": "card_glow_color", "label": "Card Glow", "default": "#00ff6620"},
-    {"type": "color", "id": "card_glow_hover_color", "label": "Card Glow Hover", "default": "#00ff6640"},
-    {"type": "color", "id": "number_glow_color", "label": "Number Glow", "default": "#00ff6680"},
-    {"type": "color", "id": "video_border_color", "label": "Video Border", "default": "#00ff6650"},
-    {"type": "color", "id": "video_shadow_color", "label": "Video Shadow", "default": "#00ff6640"},
-    {"type": "color", "id": "image_border_color", "label": "Image Border", "default": "#00ff6630"},
-    {"type": "color", "id": "image_shadow_color", "label": "Image Shadow", "default": "#00ff6625"},
-    {"type": "color", "id": "gallery_border_color", "label": "Gallery Border", "default": "#00ff6630"},
-    {"type": "color", "id": "gallery_glow_color", "label": "Gallery Glow", "default": "#00ff6650"},
-    {"type": "color", "id": "badge_border_color", "label": "Badge Border", "default": "#00ff6630"},
-    {"type": "color", "id": "footer_border_color", "label": "Footer Border", "default": "#00ff6630"},
-    {"type": "header", "content": "🔲 GRID"},
-    {"type": "color", "id": "grid_color", "label": "Grid Color", "default": "#00ff6608"},
-    {"type": "range", "id": "grid_size", "label": "Grid Size", "min": 20, "max": 100, "step": 5, "default": 50},
-    {"type": "range", "id": "grid_opacity", "label": "Grid Opacity", "min": 0, "max": 100, "step": 5, "default": 100},
-    {"type": "header", "content": "🖼️ LOGOS"},
-    {"type": "range", "id": "logo_grayscale", "label": "Grayscale", "min": 0, "max": 100, "step": 10, "default": 100},
-    {"type": "range", "id": "logo_opacity", "label": "Opacity", "min": 0, "max": 100, "step": 10, "default": 60},
-    {"type": "header", "content": "✏️ HERO"},
-    {"type": "text", "id": "hero_badge", "label": "Badge", "default": "Businesses spending $25k/m+ on ads"},
-    {"type": "richtext", "id": "hero_headline", "label": "Headline (use bold for colored words)", "default": "<p>Use AI To Produce 1,000+ Ads Every Month</p>"},
-    {"type": "textarea", "id": "hero_subheadline", "label": "Subheadline", "default": "Watch this video for details"},
-    {"type": "text", "id": "hero_cta_text", "label": "CTA Text", "default": "Get Started"},
-    {"type": "url", "id": "hero_cta_url", "label": "CTA Link"},
-    {"type": "header", "content": "📹 VIDEO"},
-    {"type": "text", "id": "video_url", "label": "Video URL"},
-    {"type": "header", "content": "🏢 LOGOS"},
-    {"type": "text", "id": "logos_title", "label": "Title", "default": "TRUSTED BY:"},
-    {"type": "header", "content": "📋 REASONS"},
-    {"type": "text", "id": "reasons_title", "label": "Title", "default": "4 Reasons To Get Started"},
-    {"type": "text", "id": "reasons_cta_text", "label": "CTA Text", "default": "Get Started"},
-    {"type": "url", "id": "reasons_cta_url", "label": "CTA Link"},
-    {"type": "header", "content": "💬 TESTIMONIAL"},
-    {"type": "textarea", "id": "testimonial_quote", "label": "Quote"},
-    {"type": "text", "id": "testimonial_author", "label": "Author"}
+    {
+      "type": "header",
+      "content": "Global Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "🎬 HERO SECTION"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Hero Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Hero Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "only for brands selling +2000 socks / year"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Badge Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Launch Premium Custom Socks - while 2x Your Margin within 4 Weeks"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "min": 1.0,
+      "max": 1.6,
+      "step": 0.1,
+      "label": "Heading Line Height",
+      "default": 1.1
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Watch this video for details & pricing, then click the button to request your free design."
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "text",
+      "id": "youtube_id",
+      "label": "YouTube Video ID",
+      "info": "Example: dQw4w9WgXcQ (from youtube.com/watch?v=dQw4w9WgXcQ)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay Video",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "CTA Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button Hover Background",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "🏢 TRUSTED BRANDS SECTION"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brands",
+      "label": "Show Brands Section",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "brands_padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Brands Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "brands_padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Brands Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "text",
+      "id": "brands_heading",
+      "label": "Brands Heading",
+      "default": "TRUSTED BY THE BIGGEST BRANDS:"
+    },
+    {
+      "type": "range",
+      "id": "brands_heading_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Brands Heading Size",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "brands_heading_color",
+      "label": "Brands Heading Color",
+      "default": "#999999"
+    },
+    {
+      "type": "range",
+      "id": "grayscale_amount",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Logo Grayscale",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "brightness_amount",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "%",
+      "label": "Logo Brightness",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "contrast_amount",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "unit": "%",
+      "label": "Logo Contrast",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Logo Opacity",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "✨ 4 REASONS SECTION"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reasons",
+      "label": "Show Reasons Section",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "reasons_padding_top",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Reasons Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "reasons_padding_bottom",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Reasons Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "reasons_heading",
+      "label": "Reasons Heading",
+      "default": "4 Reasons To Get Started Today"
+    },
+    {
+      "type": "range",
+      "id": "reasons_heading_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Reasons Heading Size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "reasons_heading_color",
+      "label": "Reasons Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Border Width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#222222"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 32,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "label": "Number Size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Reason Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 18,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Reason Title Size",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#aaaaaa"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_cta",
+      "label": "Show Bottom CTA Button",
+      "default": true
+    }
   ],
   "blocks": [
     {
       "type": "logo",
-      "name": "Logo",
+      "name": "Brand Logo",
       "settings": [
-        {"type": "image_picker", "id": "logo_image", "label": "Image"},
-        {"type": "text", "id": "logo_alt", "label": "Alt Text"}
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Brand logo"
+        }
       ]
     },
     {
       "type": "reason",
       "name": "Reason",
       "settings": [
-        {"type": "text", "id": "reason_title", "label": "Title"},
-        {"type": "textarea", "id": "reason_text", "label": "Text"}
-      ]
-    },
-    {
-      "type": "case_study",
-      "name": "Case Study",
-      "settings": [
-        {"type": "text", "id": "case_category", "label": "Category"},
-        {"type": "textarea", "id": "case_headline", "label": "Headline"},
-        {"type": "textarea", "id": "case_description", "label": "Description"},
-        {"type": "image_picker", "id": "case_image", "label": "Image"},
-        {"type": "text", "id": "case_video_url", "label": "OR Video URL"}
-      ]
-    },
-    {
-      "type": "gallery_image",
-      "name": "Gallery Image",
-      "settings": [
-        {"type": "image_picker", "id": "gallery_image", "label": "Image"}
-      ]
-    },
-    {
-      "type": "text_block",
-      "name": "Text Block",
-      "settings": [
-        {"type": "richtext", "id": "text_content", "label": "Content"}
-      ]
-    },
-    {
-      "type": "image_block",
-      "name": "Image Block",
-      "settings": [
-        {"type": "image_picker", "id": "block_image", "label": "Image"},
-        {"type": "text", "id": "image_alt", "label": "Alt Text"}
-      ]
-    },
-    {
-      "type": "video_block",
-      "name": "Video Block",
-      "settings": [
-        {"type": "text", "id": "block_video_url", "label": "Video URL"}
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "More Output = More Tests = More Winners"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "The only way to find winning products faster is to test more of them."
+        }
       ]
     }
   ],
-  "presets": [{"name": "Studio Flow Landing"}]
+  "presets": [
+    {
+      "name": "Studio Flow Landing",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "More Output = More Tests = More Winners",
+            "description": "The only way to find winning products faster is to test more of them. This system lets you produce 10x more without adding headcount."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Quality You Can Actually Use",
+            "description": "Most suppliers produce samples you have to redo multiple times. We get it right the first time."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Platforms Demand More Variety",
+            "description": "Algorithm changes mean that iterating on the same design isn't enough anymore."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Limited Capacity Per Month",
+            "description": "This is a hands-on service. Once capacity is full, new clients join a waiting list."
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
