@@ -27,7 +27,7 @@
         "grid_size": 50,
         "grid_opacity": 10,
         "grid_line_width": 1,
-        "hero_padding_top": 60,
+        "hero_padding_top": 20,
         "hero_padding_bottom": 40,
         "show_badge": true,
         "badge_text": "only for brands selling +2000 socks / year",
@@ -76,10 +76,19 @@
         "description_size": 16,
         "show_bottom_cta": true
       }
+    },
+    "reviews_carousel_custom_RD6nar": {
+      "type": "reviews-carousel-custom",
+      "name": "Reviews Carousel",
+      "settings": {
+        "title": "what others say",
+        "vertical_padding": 140
+      }
     }
   },
   "order": [
     "main",
-    "studio_flow_landing_kY3Pgh"
+    "studio_flow_landing_kY3Pgh",
+    "reviews_carousel_custom_RD6nar"
   ]
 }
