@@ -179,13 +179,15 @@
         "row1_image_bkJxff": {
           "type": "row1_image",
           "settings": {
-            "alt": "Customer result"
+            "image": "shopify://shop_images/Scherm_afbeelding_2026-02-22_om_22.31.38.png",
+            "alt": "MAAP SOCKS"
           }
         },
         "row1_image_LD7Ggd": {
           "type": "row1_image",
           "settings": {
-            "alt": "Customer result"
+            "image": "shopify://shop_images/Scherm_afbeelding_2026-02-22_om_22.34.04.png",
+            "alt": "PATTA"
           }
         },
         "row1_image_RaFYmW": {
@@ -249,7 +251,7 @@
         "padding_bottom": 60,
         "show_quote": true,
         "quote_text": "The quality, the speed, the results. Everything was incredible. I'd give them a 10/10 overall.",
-        "quote_author": "Jan de Vries, Marketing Manager at MAAP",
+        "quote_author": "Hamish Low, Head of Product at MAAP",
         "quote_color": "#000000",
         "quote_size": 30,
         "author_color": "#777777",
