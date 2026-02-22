@@ -1,0 +1,350 @@
+{{ 'section-sockeloen-results.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .sr-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .sr-section-{{ section.id }} .sr-label {
+    color: {{ section.settings.label_color }};
+  }
+  .sr-section-{{ section.id }} .sr-heading {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+  }
+  .sr-section-{{ section.id }} .sr-card {
+    background-color: {{ section.settings.card_bg }};
+    border-color: {{ section.settings.card_border }};
+    border-radius: {{ section.settings.card_radius }}px;
+  }
+  .sr-section-{{ section.id }} .sr-card-category {
+    color: {{ section.settings.category_color }};
+  }
+  .sr-section-{{ section.id }} .sr-card-headline {
+    color: {{ section.settings.headline_color }};
+    font-size: {{ section.settings.headline_size }}px;
+  }
+  .sr-section-{{ section.id }} .sr-card-desc {
+    color: {{ section.settings.desc_color }};
+  }
+  .sr-section-{{ section.id }} .sr-cta {
+    background-color: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_color }};
+    border-radius: {{ section.settings.btn_radius }}px;
+  }
+  .sr-section-{{ section.id }} .sr-cta:hover {
+    background-color: {{ section.settings.btn_hover_bg }};
+  }
+{%- endstyle -%}
+
+<section class="sr-section sr-section-{{ section.id }}">
+  <div class="page-width">
+
+    {% if section.settings.section_label != blank or section.settings.section_heading != blank %}
+    <div class="sr-header">
+      {% if section.settings.section_label != blank %}
+        <p class="sr-label">{{ section.settings.section_label }}</p>
+      {% endif %}
+      {% if section.settings.section_heading != blank %}
+        <h2 class="sr-heading">{{ section.settings.section_heading }}</h2>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="sr-cards">
+      {% for block in section.blocks %}
+        {% if block.type == 'result_card' %}
+
+          {%- assign image_left = forloop.index | modulo: 2 -%}
+          <div class="sr-card {% if image_left == 1 %}sr-card--img-left{% else %}sr-card--img-right{% endif %}" {{ block.shopify_attributes }}>
+
+            <div class="sr-card-image">
+              {% if block.settings.image != blank %}
+                <img 
+                  src="{{ block.settings.image | image_url: width: 600 }}" 
+                  alt="{{ block.settings.category | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <div class="sr-card-image-empty">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="14" rx="2"/>
+                    <path d="M3 11l4-4 4 4 3-3 4 4"/>
+                  </svg>
+                  <p>Upload screenshot or chart</p>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="sr-card-content">
+              {% if block.settings.category != blank %}
+                <span class="sr-card-category">{{ block.settings.category }}</span>
+              {% endif %}
+              {% if block.settings.headline != blank %}
+                <h3 class="sr-card-headline">{{ block.settings.headline }}</h3>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <p class="sr-card-desc">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_cta %}
+    <div class="sr-cta-wrap">
+      <a href="{{ section.settings.cta_link }}" class="sr-cta">
+        {{ section.settings.cta_text }}
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Results & Case Studies",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#0d0d0d"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_label",
+      "label": "Small Label (above heading)",
+      "default": "Real Results"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": ""
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border Color",
+      "default": "#2a2a2a"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "category_color",
+      "label": "Category Label Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 16,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Headline Font Size",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description Color",
+      "default": "#888888"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Ask Free Design →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#e07b00"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result_card",
+      "name": "Result Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image / Screenshot / Chart",
+          "info": "Upload a product photo, order screenshot, or result chart"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Label",
+          "info": "Short tag shown in orange above headline",
+          "default": "Brand Identity"
+        },
+        {
+          "type": "textarea",
+          "id": "headline",
+          "label": "Headline",
+          "default": "500 Custom Socks Sold Out in 48 Hours After Launch."
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Fashion brand launched their first custom sock run. Sold out within 2 days with 80% going to repeat customers."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results & Case Studies",
+      "blocks": [
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "Brand Identity",
+            "headline": "500 Custom Socks Sold Out in 48 Hours After Launch.",
+            "description": "Fashion brand launched their first run of custom socks. Sold out within 2 days, with 80% going to repeat customers."
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "Team Gifting",
+            "headline": "250 Branded Pairs Delivered for Annual Company Retreat — On Time, Perfect Quality.",
+            "description": "Corporate client needed 250 branded socks for their annual team event. Delivered on schedule. Team loved them."
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "Event Merch",
+            "headline": "Cycling Club's Custom Socks Became Their Best-Selling Product Within 30 Days.",
+            "description": "Sports community launched custom cycling socks. Outperformed all other merch items in their first month."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
