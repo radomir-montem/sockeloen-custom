@@ -5,7 +5,28 @@
     background-color: {{ section.settings.background_color }};
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
   }
+
+  {% if section.settings.show_grid_pattern %}
+  .tw-section-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient({{ section.settings.grid_color }} {{ section.settings.grid_line_width }}px, transparent {{ section.settings.grid_line_width }}px),
+      linear-gradient(90deg, {{ section.settings.grid_color }} {{ section.settings.grid_line_width }}px, transparent {{ section.settings.grid_line_width }}px);
+    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
+    opacity: {{ section.settings.grid_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+    z-index: 0;
+  }
+  .tw-section-{{ section.id }} > * {
+    position: relative;
+    z-index: 1;
+  }
+  {% endif %}
+
   .tw-section-{{ section.id }} .tw-quote-text {
     color: {{ section.settings.quote_color }};
     font-size: {{ section.settings.quote_size }}px;
@@ -45,7 +66,6 @@
             </div>
           {% endif %}
         {% endfor %}
-        <!-- Duplicate set for seamless loop -->
         {% for block in section.blocks %}
           {% if block.type == 'row1_image' %}
             <div class="tw-card" aria-hidden="true">
@@ -74,7 +94,6 @@
             </div>
           {% endif %}
         {% endfor %}
-        <!-- Duplicate set for seamless loop -->
         {% for block in section.blocks %}
           {% if block.type == 'row2_image' %}
             <div class="tw-card" aria-hidden="true">
@@ -106,7 +125,53 @@
       "type": "color",
       "id": "background_color",
       "label": "Background Color",
-      "default": "#0d0d0d"
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Background Grid Pattern"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid_pattern",
+      "label": "Show Grid Pattern",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "grid_color",
+      "label": "Grid Line Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "range",
+      "id": "grid_size",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Grid Cell Size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "grid_opacity",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Grid Opacity",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "grid_line_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Grid Line Width",
+      "default": 1
     },
     {
       "type": "range",
@@ -154,7 +219,7 @@
       "type": "color",
       "id": "quote_color",
       "label": "Quote Color",
-      "default": "#ffffff"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -170,7 +235,7 @@
       "type": "color",
       "id": "author_color",
       "label": "Author Color",
-      "default": "#777777"
+      "default": "#666666"
     },
     {
       "type": "header",
