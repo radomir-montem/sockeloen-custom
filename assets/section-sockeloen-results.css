@@ -1,0 +1,201 @@
+/* =============================================
+   SOCKELOEN â€” Results & Case Studies Section
+   ============================================= */
+
+.sr-section {
+  width: 100%;
+}
+
+/* ---- Section Header ---- */
+
+.sr-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sr-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.sr-heading {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ---- Cards List ---- */
+
+.sr-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+/* ---- Single Card ---- */
+
+.sr-card {
+  display: flex;
+  border: 1px solid;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sr-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Image left (odd cards) */
+.sr-card--img-left {
+  flex-direction: row;
+}
+
+/* Image right (even cards) */
+.sr-card--img-right {
+  flex-direction: row-reverse;
+}
+
+/* ---- Card Image ---- */
+
+.sr-card-image {
+  flex: 0 0 42%;
+  min-height: 200px;
+  overflow: hidden;
+  background: #111;
+}
+
+.sr-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.sr-card:hover .sr-card-image img {
+  transform: scale(1.04);
+}
+
+.sr-card-image-empty {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #333;
+  padding: 24px;
+  text-align: center;
+}
+
+.sr-card-image-empty p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---- Card Content ---- */
+
+.sr-card-content {
+  flex: 1;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sr-card-category {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sr-card-headline {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.sr-card-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ---- CTA Button ---- */
+
+.sr-cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.sr-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sr-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 750px) {
+  .sr-card,
+  .sr-card--img-left,
+  .sr-card--img-right {
+    flex-direction: column !important;
+  }
+
+  .sr-card-image {
+    flex: none;
+    width: 100%;
+    height: 180px;
+    min-height: unset;
+  }
+
+  .sr-card-content {
+    padding: 20px 22px;
+  }
+
+  .sr-card-headline {
+    font-size: 18px !important;
+  }
+
+  .sr-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 990px) and (min-width: 751px) {
+  .sr-card-image {
+    flex: 0 0 38%;
+  }
+
+  .sr-card-content {
+    padding: 22px 26px;
+  }
+}
