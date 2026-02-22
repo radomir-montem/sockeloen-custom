@@ -305,9 +305,9 @@
         "cta_text": "Ask Free Design →",
         "cta_link": "",
         "btn_bg": "#FF8C00",
-        "btn_color": "#000000",
-        "btn_hover_bg": "#e07b00",
-        "btn_radius": 50
+        "btn_color": "#ffffff",
+        "btn_hover_bg": "#ff8c00",
+        "btn_radius": 10
       }
     }
   },
