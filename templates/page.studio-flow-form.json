@@ -161,18 +161,160 @@
         "show_bottom_cta": true
       }
     },
-    "reviews_carousel_custom_RD6nar": {
-      "type": "reviews-carousel-custom",
-      "name": "Reviews Carousel",
+    "section_sockeloen_testimonial_wall_gMqkX7": {
+      "type": "section-sockeloen-testimonial-wall",
+      "blocks": {
+        "row1_image_h74fC3": {
+          "type": "row1_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row1_image_cFikkN": {
+          "type": "row1_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row1_image_bkJxff": {
+          "type": "row1_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row1_image_LD7Ggd": {
+          "type": "row1_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row1_image_RaFYmW": {
+          "type": "row1_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row2_image_8VNx6i": {
+          "type": "row2_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row2_image_LE7VkV": {
+          "type": "row2_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row2_image_WzYVjy": {
+          "type": "row2_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row2_image_8xkTF6": {
+          "type": "row2_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        },
+        "row2_image_7zn9yR": {
+          "type": "row2_image",
+          "settings": {
+            "alt": "Customer result"
+          }
+        }
+      },
+      "block_order": [
+        "row1_image_h74fC3",
+        "row1_image_cFikkN",
+        "row1_image_bkJxff",
+        "row1_image_LD7Ggd",
+        "row1_image_RaFYmW",
+        "row2_image_8VNx6i",
+        "row2_image_LE7VkV",
+        "row2_image_WzYVjy",
+        "row2_image_8xkTF6",
+        "row2_image_7zn9yR"
+      ],
+      "name": "Testimonial Wall",
       "settings": {
-        "title": "what others say",
-        "vertical_padding": 140
+        "background_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 60,
+        "show_quote": true,
+        "quote_text": "The quality, the speed, the results. Everything was incredible. I'd give them a 10/10 overall.",
+        "quote_author": "Jan de Vries, Marketing Manager at MAAP",
+        "quote_color": "#000000",
+        "quote_size": 30,
+        "author_color": "#777777",
+        "show_wall": true
+      }
+    },
+    "section_sockeloen_results_KwhbEC": {
+      "type": "section-sockeloen-results",
+      "blocks": {
+        "result_card_czgJYT": {
+          "type": "result_card",
+          "settings": {
+            "category": "Brand Identity",
+            "headline": "500 Custom Socks Sold Out in 48 Hours After Launch.",
+            "description": "Fashion brand launched their first run of custom socks. Sold out within 2 days, with 80% going to repeat customers."
+          }
+        },
+        "result_card_nxBK9h": {
+          "type": "result_card",
+          "settings": {
+            "category": "Team Gifting",
+            "headline": "250 Branded Pairs Delivered for Annual Company Retreat — On Time, Perfect Quality.",
+            "description": "Corporate client needed 250 branded socks for their annual team event. Delivered on schedule. Team loved them."
+          }
+        },
+        "result_card_dUrnEF": {
+          "type": "result_card",
+          "settings": {
+            "category": "Event Merch",
+            "headline": "Cycling Club's Custom Socks Became Their Best-Selling Product Within 30 Days.",
+            "description": "Sports community launched custom cycling socks. Outperformed all other merch items in their first month."
+          }
+        }
+      },
+      "block_order": [
+        "result_card_czgJYT",
+        "result_card_nxBK9h",
+        "result_card_dUrnEF"
+      ],
+      "name": "Results & Case Studies",
+      "settings": {
+        "background_color": "#0d0d0d",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "section_label": "Real Results",
+        "section_heading": "What Our Clients Achieved",
+        "label_color": "#FF8C00",
+        "heading_color": "#ffffff",
+        "heading_size": 36,
+        "card_bg": "#141414",
+        "card_border": "#2a2a2a",
+        "card_radius": 10,
+        "category_color": "#FF8C00",
+        "headline_color": "#ffffff",
+        "headline_size": 22,
+        "desc_color": "#888888",
+        "show_cta": true,
+        "cta_text": "Ask Free Design →",
+        "cta_link": "",
+        "btn_bg": "#FF8C00",
+        "btn_color": "#000000",
+        "btn_hover_bg": "#e07b00",
+        "btn_radius": 50
       }
     }
   },
   "order": [
     "main",
     "studio_flow_landing_kY3Pgh",
-    "reviews_carousel_custom_RD6nar"
+    "section_sockeloen_testimonial_wall_gMqkX7",
+    "section_sockeloen_results_KwhbEC"
   ]
 }
