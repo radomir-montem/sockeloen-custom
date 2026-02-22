@@ -19,11 +19,95 @@
     },
     "studio_flow_landing_kY3Pgh": {
       "type": "studio-flow-landing",
+      "blocks": {
+        "reason_iiFkAb": {
+          "type": "reason",
+          "settings": {
+            "title": "Your Brand Deserves to Be Worn, Not  Seen.",
+            "description": "Custom socks turn your brand into something people actually put on their body every day. Every time they put on a premium sockeloen custom sock is a statement. Most brands settle for forgettable merch. The ones people remember show up differently."
+          }
+        },
+        "reason_UBmReQ": {
+          "type": "reason",
+          "settings": {
+            "title": "Adidas Does It. Red Bull Does It. MAAP Does It.",
+            "description": "The biggest fashion and sports brands in the world use custom socks to create visibility, hype, and reward their community. Don't get stuck behind."
+          }
+        },
+        "reason_yNbrrE": {
+          "type": "reason",
+          "settings": {
+            "title": "The Most Cost-Efficient Branded Product You'll Ever Order.",
+            "description": "At €1,95/pair, custom socks deliver the best ROAS you will get. More than any ad, banner, or t-shirt. They don't get thrown away. They get worn. Repeatedly."
+          }
+        },
+        "reason_dzXH7T": {
+          "type": "reason",
+          "settings": {
+            "title": "We Work With a Limited Number of Brands Per Month.",
+            "description": "This isn't a factory producing millions of generic pairs. Every order gets personal design attention from our team. Once our monthly capacity is full, new clients go on a waiting list. Request your free design before that happens."
+          }
+        },
+        "logo_kJKehG": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/redbull.png",
+            "alt_text": "Red Bull"
+          }
+        },
+        "logo_nqC6d8": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/Adidas_Logo_svg.png",
+            "alt_text": "Adidas"
+          }
+        },
+        "logo_J4B9Xj": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/uniqlo.png",
+            "alt_text": "uniqlo"
+          }
+        },
+        "logo_DnV9aq": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/patta.png",
+            "alt_text": "Patta"
+          }
+        },
+        "logo_NGJ3Vx": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/maap_96eb9cc3-6ffd-43e1-993d-3c82f75cabad.png",
+            "alt_text": "MAAP"
+          }
+        },
+        "logo_qnTjpB": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/upfront.png",
+            "alt_text": "UPFRONT"
+          }
+        }
+      },
+      "block_order": [
+        "reason_iiFkAb",
+        "reason_UBmReQ",
+        "reason_yNbrrE",
+        "reason_dzXH7T",
+        "logo_kJKehG",
+        "logo_nqC6d8",
+        "logo_J4B9Xj",
+        "logo_DnV9aq",
+        "logo_NGJ3Vx",
+        "logo_qnTjpB"
+      ],
       "name": "Studio Flow Landing",
       "settings": {
         "background_color": "#ffffff",
         "show_grid_pattern": true,
-        "grid_color": "#00ff66",
+        "grid_color": "#ff8c00",
         "grid_size": 50,
         "grid_opacity": 10,
         "grid_line_width": 1,
@@ -66,7 +150,7 @@
         "reasons_heading_color": "#000000",
         "card_background": "#f9f9f9",
         "card_border_width": 1,
-        "card_border_color": "#00ff66",
+        "card_border_color": "#ff8c00",
         "card_border_radius": 12,
         "number_color": "#cccccc",
         "number_size": 48,
