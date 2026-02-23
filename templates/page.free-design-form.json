@@ -245,7 +245,7 @@
         "show_grid_pattern": true,
         "grid_color": "#ff8c00",
         "grid_size": 50,
-        "grid_opacity": 20,
+        "grid_opacity": 10,
         "grid_line_width": 1,
         "padding_top": 80,
         "padding_bottom": 60,
