@@ -1,0 +1,705 @@
+{{ 'section-sockeloen-qualify.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .sq-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    min-height: 100vh;
+    padding: {{ section.settings.padding_top }}px 16px {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+  {% if section.settings.show_grid %}
+  .sq-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient({{ section.settings.grid_color }} 1px, transparent 1px),
+      linear-gradient(90deg, {{ section.settings.grid_color }} 1px, transparent 1px);
+    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
+    opacity: {{ section.settings.grid_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+    z-index: 0;
+  }
+  {% endif %}
+  .sq-{{ section.id }} .sq-accent       { color: {{ section.settings.accent }}; }
+  .sq-{{ section.id }} .sq-badge        { background: {{ section.settings.accent }}; color: #000; }
+  .sq-{{ section.id }} .sq-progress-bar { background: {{ section.settings.accent }}; }
+  .sq-{{ section.id }} .sq-opt.chosen,
+  .sq-{{ section.id }} .sq-opt:hover    { border-color: {{ section.settings.accent }}; background: rgba(255,140,0,.05); }
+  .sq-{{ section.id }} .sq-opt.chosen .sq-check { background: {{ section.settings.accent }}; border-color: {{ section.settings.accent }}; }
+  .sq-{{ section.id }} .sq-input:focus  { border-color: {{ section.settings.accent }}; box-shadow: 0 0 0 3px rgba(255,140,0,.15); }
+  .sq-{{ section.id }} .sq-cta          { background: {{ section.settings.accent }}; color: #000; border-radius: {{ section.settings.btn_radius }}px; }
+  .sq-{{ section.id }} .sq-cta:hover    { background: {{ section.settings.accent_hover }}; transform: translateY(-1px); }
+  .sq-{{ section.id }} .sq-card         { background: {{ section.settings.card_bg }}; border: 1px solid {{ section.settings.card_border }}; border-radius: {{ section.settings.card_radius }}px; }
+{%- endstyle -%}
+
+<section class="sq-{{ section.id }}">
+<div class="sq-inner">
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="sq-header">
+    <div class="sq-badge">{{ section.settings.badge }}</div>
+    <h1 class="sq-h1">{{ section.settings.headline }}</h1>
+    <p class="sq-sub">{{ section.settings.subline }}</p>
+    <div class="sq-proof">
+      <div class="sq-proof-avatars">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <span>{{ section.settings.social_proof }}</span>
+    </div>
+  </header>
+
+  <!-- ── FORM CARD ── -->
+  <div class="sq-card" id="sqCard">
+
+    <!-- Progress bar -->
+    <div class="sq-prog-wrap">
+      <div class="sq-prog-track"><div class="sq-progress-bar" id="sqBar" style="width:14%"></div></div>
+      <span class="sq-prog-label" id="sqProgLabel">Stap 1 van 7</span>
+    </div>
+
+    <form id="sqForm" novalidate>
+
+      <!-- ══ STEP 1: Timeline ══ -->
+      <div class="sq-step is-active" data-step="1">
+        <p class="sq-eyebrow">Laten we beginnen</p>
+        <h2 class="sq-step-h">{{ section.settings.q1_title }}</h2>
+        <div class="sq-opts" data-group="timeline">
+          <label class="sq-opt" data-val="4weeks" data-dq="timeline">
+            <span class="sq-opt-icon">⚡</span>
+            <span class="sq-opt-text">Binnen 4 weken</span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="8weeks">
+            <span class="sq-opt-icon">📅</span>
+            <span class="sq-opt-text">Binnen 8 weken</span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="no_deadline">
+            <span class="sq-opt-icon">🗓</span>
+            <span class="sq-opt-text">Geen specifieke deadline</span>
+            <span class="sq-check"></span>
+          </label>
+        </div>
+        <p class="sq-hint">⏱ Productie duurt 4–6 weken. We plannen zodat jij op tijd bent.</p>
+        <p class="sq-err hidden" id="e1">Kies een optie om door te gaan.</p>
+      </div>
+
+      <!-- ══ STEP 2: First Name ══ -->
+      <div class="sq-step" data-step="2">
+        <p class="sq-eyebrow">Leuk je te ontmoeten</p>
+        <h2 class="sq-step-h">{{ section.settings.q2_title }}</h2>
+        <input type="text" id="sqName" class="sq-input" placeholder="bijv. Jan" autocomplete="given-name" inputmode="text">
+        <p class="sq-err hidden" id="e2">Vul je voornaam in.</p>
+        <button type="button" class="sq-cta sq-next" data-v="name" data-to="3">Doorgaan →</button>
+      </div>
+
+      <!-- ══ STEP 3: Email ══ -->
+      <div class="sq-step" data-step="3">
+        <p class="sq-eyebrow" id="sqGreet">Top!</p>
+        <h2 class="sq-step-h">{{ section.settings.q3_title }}</h2>
+        <p class="sq-step-desc">We sturen je gratis 3D ontwerp hierheen zodra je kwalificeert.</p>
+        <input type="email" id="sqEmail" class="sq-input" placeholder="jan@jouwmerk.com" autocomplete="email" inputmode="email">
+        <p class="sq-trust">🔒 We delen je gegevens nooit en sturen geen spam.</p>
+        <p class="sq-err hidden" id="e3">Vul een geldig e-mailadres in.</p>
+        <button type="button" class="sq-cta sq-next" data-v="email" data-to="4">Doorgaan →</button>
+      </div>
+
+      <!-- ══ STEP 4: Phone ══ -->
+      <div class="sq-step" data-step="4">
+        <p class="sq-eyebrow">Bijna klaar</p>
+        <h2 class="sq-step-h">{{ section.settings.q4_title }}</h2>
+        <p class="sq-step-desc">Ons team belt je binnen 24u na kwalificatie — alleen als er een match is.</p>
+        <input type="tel" id="sqPhone" class="sq-input" placeholder="+31 6 12345678" autocomplete="tel" inputmode="tel">
+        <p class="sq-trust">📞 We bellen alleen als je kwalificeert. Geen cold calls.</p>
+        <p class="sq-err hidden" id="e4">Vul een geldig telefoonnummer in.</p>
+        <button type="button" class="sq-cta sq-next" data-v="phone" data-to="5">Doorgaan →</button>
+      </div>
+
+      <!-- ══ STEP 5: Quantity ══ -->
+      <div class="sq-step" data-step="5">
+        <p class="sq-eyebrow">Nog één stap</p>
+        <h2 class="sq-step-h">{{ section.settings.q5_title }}</h2>
+        <div class="sq-opts" data-group="quantity">
+          <label class="sq-opt" data-val="under100" data-dq="quantity">
+            <span class="sq-opt-icon">📦</span>
+            <span class="sq-opt-text">Minder dan 100 paar</span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="200">
+            <span class="sq-opt-icon">📦</span>
+            <span class="sq-opt-text">200 paar</span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="500">
+            <span class="sq-opt-icon">🔥</span>
+            <span class="sq-opt-text">500 paar <span class="sq-popular">Meest gekozen</span></span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="2000">
+            <span class="sq-opt-icon">🏭</span>
+            <span class="sq-opt-text">2.000 paar</span>
+            <span class="sq-check"></span>
+          </label>
+          <label class="sq-opt" data-val="5000">
+            <span class="sq-opt-icon">🚀</span>
+            <span class="sq-opt-text">5.000+ paar</span>
+            <span class="sq-check"></span>
+          </label>
+        </div>
+        <p class="sq-err hidden" id="e5">Kies een optie om door te gaan.</p>
+      </div>
+
+      <!-- ══ STEP 6: Design Brief + Logo ══ -->
+      <div class="sq-step" data-step="6">
+        <p class="sq-eyebrow">Vertel ons over je ontwerp</p>
+        <h2 class="sq-step-h">{{ section.settings.q6_title }}</h2>
+        <p class="sq-step-desc">Hoe meer detail, hoe beter je gratis 3D ontwerp wordt.</p>
+        <textarea id="sqBrief" class="sq-input sq-textarea" placeholder="Bijv: Onze merkkleuren zijn navy en wit, logo op de enkel, crew-lengte sokken voor wielrenners..."></textarea>
+        <p class="sq-err hidden" id="e6">Beschrijf je ontwerp om door te gaan.</p>
+        <label class="sq-upload" for="sqLogo">
+          <span class="sq-upload-icon">📎</span>
+          <span id="sqUploadText">Upload je logo (PNG, SVG, PDF)</span>
+          <input type="file" id="sqLogo" accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps" class="sq-file-hidden">
+        </label>
+        <button type="button" class="sq-cta sq-next" data-v="brief" data-to="7">Doorgaan →</button>
+      </div>
+
+      <!-- ══ STEP 7: Review + Submit ══ -->
+      <div class="sq-step" data-step="7">
+        <p class="sq-eyebrow">Je bent klaar om te kwalificeren 🎉</p>
+        <h2 class="sq-step-h">Controleer je gegevens</h2>
+        <div class="sq-review" id="sqReview"></div>
+        <ul class="sq-guarantees">
+          <li>✅ Gratis 3D ontwerp — geen verplichtingen</li>
+          <li>✅ Reactie binnen 24 uur</li>
+          <li>✅ Geen spam, ooit</li>
+        </ul>
+        <button type="submit" class="sq-cta sq-submit-btn" id="sqSubmit">
+          <span id="sqSubmitLabel">Verstuur mijn aanvraag →</span>
+          <span id="sqSubmitLoading" class="hidden">Bezig met verzenden…</span>
+        </button>
+        <p class="sq-err hidden" id="e7">Er ging iets mis. Probeer het opnieuw.</p>
+      </div>
+
+    </form>
+
+    <button type="button" class="sq-back hidden" id="sqBack">← Terug</button>
+
+  </div>
+  <!-- /sq-card -->
+
+  <!-- ── DISQUALIFY PANEL ── -->
+  <div class="sq-dq hidden" id="sqDQ">
+    <div class="sq-dq-icon" id="sqDQIcon">⚠️</div>
+    <h2 class="sq-dq-title" id="sqDQTitle">Onze minimale bestelling is 200 paar</h2>
+    <p class="sq-dq-body" id="sqDQBody">We zijn een productiepartner voor merken die 200+ paar bestellen. Voor kleinere aantallen raden we een lokale drukker of Printful aan.</p>
+    <a href="{{ section.settings.dq_url }}" class="sq-cta sq-dq-btn">{{ section.settings.dq_cta }}</a>
+  </div>
+
+</div>
+</section>
+
+<script>
+(function(){
+  // ── CONFIG (set via theme editor) ──
+  var WEBHOOK     = {{ section.settings.zapier_url | json }};
+  var THANKYOU    = {{ section.settings.thankyou_url | json }};
+  var DQ_URL      = {{ section.settings.dq_url | json }};
+  var GTM_NAME    = 'sockeloen_qualify';
+
+  // DQ messages per reason
+  var DQ_MESSAGES = {
+    timeline: {
+      icon:  '⏱',
+      title: 'We kunnen dit niet binnen 4 weken leveren',
+      body:  'Onze productietijd is minimaal 4–6 weken. Neem contact op als je een rushorder nodig hebt, dan kijken we wat mogelijk is.'
+    },
+    quantity: {
+      icon:  '📦',
+      title: 'Onze minimale bestelling is 200 paar',
+      body:  'We werken met merken die 200+ paar bestellen. Voor kleinere aantallen raden we Printful of een lokale drukker aan.'
+    }
+  };
+
+  // ── STATE ──
+  var step     = 1;
+  var total    = 7;
+  var history  = [];
+  var data     = {};
+
+  // ── DOM ──
+  var form     = document.getElementById('sqForm');
+  var card     = document.getElementById('sqCard');
+  var backBtn  = document.getElementById('sqBack');
+  var progBar  = document.getElementById('sqBar');
+  var progLbl  = document.getElementById('sqProgLabel');
+  var dqPanel  = document.getElementById('sqDQ');
+
+  // ── GTM HELPER ──
+  function gtm(event, payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: GTM_NAME + '_' + event }, payload));
+  }
+
+  // ── UPDATE PROGRESS ──
+  function setProgress(s) {
+    var pct = Math.round((s / total) * 100);
+    progBar.style.width = pct + '%';
+    progLbl.textContent = 'Stap ' + s + ' van ' + total;
+  }
+
+  // ── SHOW STEP ──
+  function showStep(n) {
+    document.querySelectorAll('.sq-step').forEach(function(el){ el.classList.remove('is-active'); });
+    var target = document.querySelector('[data-step="' + n + '"]');
+    if (target) {
+      target.classList.add('is-active');
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    backBtn.classList.toggle('hidden', n === 1);
+    setProgress(n);
+    step = n;
+    gtm('step_view', { step: n });
+  }
+
+  // ── VALIDATE ──
+  function validate(field) {
+    var val, ok;
+    if (field === 'name') {
+      val = document.getElementById('sqName').value.trim();
+      ok  = val.length >= 2;
+      document.getElementById('e2').classList.toggle('hidden', ok);
+      if (ok) { data.firstname = val; document.getElementById('sqGreet').textContent = 'Top, ' + val + '!'; }
+    } else if (field === 'email') {
+      val = document.getElementById('sqEmail').value.trim();
+      ok  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      document.getElementById('e3').classList.toggle('hidden', ok);
+      if (ok) data.email = val;
+    } else if (field === 'phone') {
+      val = document.getElementById('sqPhone').value.trim();
+      ok  = val.length >= 7;
+      document.getElementById('e4').classList.toggle('hidden', ok);
+      if (ok) data.phone = val;
+    } else if (field === 'brief') {
+      val = document.getElementById('sqBrief').value.trim();
+      ok  = val.length >= 10;
+      document.getElementById('e6').classList.toggle('hidden', ok);
+      if (ok) data.brief = val;
+    }
+    return ok;
+  }
+
+  // ── DISQUALIFY ──
+  function disqualify(reason) {
+    var msg = DQ_MESSAGES[reason] || DQ_MESSAGES.quantity;
+    document.getElementById('sqDQIcon').textContent  = msg.icon;
+    document.getElementById('sqDQTitle').textContent = msg.title;
+    document.getElementById('sqDQBody').textContent  = msg.body;
+    card.classList.add('hidden');
+    dqPanel.classList.remove('hidden');
+    gtm('disqualified', { reason: reason, step: step });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── OPTION CLICK ──
+  document.querySelectorAll('.sq-opts').forEach(function(group) {
+    group.addEventListener('click', function(e) {
+      var opt = e.target.closest('.sq-opt');
+      if (!opt) return;
+      var grp = group.dataset.group;
+
+      // Deselect others
+      group.querySelectorAll('.sq-opt').forEach(function(o){ o.classList.remove('chosen'); });
+      opt.classList.add('chosen');
+
+      var val = opt.dataset.val;
+      var dq  = opt.dataset.dq;
+      data[grp] = val;
+
+      // Clear error
+      var errEl = document.getElementById('e' + step);
+      if (errEl) errEl.classList.add('hidden');
+
+      gtm('option_select', { field: grp, value: val });
+
+      // Auto-advance after short delay (feels snappy on mobile)
+      setTimeout(function() {
+        if (dq) {
+          disqualify(dq);
+        } else {
+          history.push(step);
+          showStep(step + 1);
+        }
+      }, 280);
+    });
+  });
+
+  // ── NEXT BUTTON ──
+  document.querySelectorAll('.sq-next').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var field = btn.dataset.v;
+      var to    = parseInt(btn.dataset.to);
+      if (validate(field)) {
+        history.push(step);
+        gtm('step_complete', { step: step, field: field, value: data[field] });
+        showStep(to);
+      }
+    });
+  });
+
+  // ── BACK BUTTON ──
+  backBtn.addEventListener('click', function() {
+    if (history.length) {
+      step = history.pop();
+      showStep(step);
+    }
+  });
+
+  // ── FILE UPLOAD LABEL ──
+  document.getElementById('sqLogo').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+      document.getElementById('sqUploadText').textContent = '✅ ' + file.name;
+      data.logo_name = file.name;
+    }
+  });
+
+  // ── BUILD REVIEW CARD ──
+  function buildReview() {
+    var labels = {
+      timeline: { '4weeks':'Binnen 4 weken','8weeks':'Binnen 8 weken','no_deadline':'Geen deadline' },
+      quantity:  { 'under100':'< 100 paar','200':'200 paar','500':'500 paar','2000':'2.000 paar','5000':'5.000+ paar' }
+    };
+    var rows = [
+      ['Naam',      data.firstname || '—'],
+      ['E-mail',    data.email     || '—'],
+      ['Telefoon',  data.phone     || '—'],
+      ['Deadline',  labels.timeline[data.timeline] || '—'],
+      ['Aantal',    labels.quantity[data.quantity]  || '—'],
+      ['Ontwerp',   data.brief ? data.brief.substring(0,60) + '…' : '—'],
+      ['Logo',      data.logo_name || 'Niet geüpload']
+    ];
+    var html = rows.map(function(r){
+      return '<div class="sq-review-row"><span class="sq-review-label">'+ r[0] +'</span><span class="sq-review-val">'+ r[1] +'</span></div>';
+    }).join('');
+    document.getElementById('sqReview').innerHTML = html;
+  }
+
+  // Rebuild review whenever step 7 becomes active
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(m) {
+      if (m.target.dataset.step === '7' && m.target.classList.contains('is-active')) {
+        buildReview();
+      }
+    });
+  });
+  document.querySelectorAll('.sq-step').forEach(function(el){
+    observer.observe(el, { attributes: true, attributeFilter: ['class'] });
+  });
+
+  // ── SUBMIT ──
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Collect logo as base64 if provided
+    var logoFile = document.getElementById('sqLogo').files[0];
+    data.brief   = document.getElementById('sqBrief').value.trim();
+
+    var submitBtn   = document.getElementById('sqSubmit');
+    var submitLabel = document.getElementById('sqSubmitLabel');
+    var submitLoad  = document.getElementById('sqSubmitLoading');
+
+    submitBtn.disabled = true;
+    submitLabel.classList.add('hidden');
+    submitLoad.classList.remove('hidden');
+
+    gtm('form_submit', { email: data.email, quantity: data.quantity });
+
+    function sendToZapier(logoBase64) {
+      var payload = {
+        firstname: data.firstname,
+        email:     data.email,
+        phone:     data.phone,
+        timeline:  data.timeline,
+        quantity:  data.quantity,
+        brief:     data.brief,
+        logo_name: data.logo_name || '',
+        logo_base64: logoBase64 || '',
+        source:    'sockeloen_qualify_form',
+        submitted_at: new Date().toISOString()
+      };
+
+      if (!WEBHOOK || WEBHOOK === '') {
+        // No webhook configured — still redirect
+        gtm('form_completed', { email: data.email });
+        window.location.href = THANKYOU || '/pages/bedankt';
+        return;
+      }
+
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function() {
+        gtm('form_completed', { email: data.email, quantity: data.quantity });
+        window.location.href = THANKYOU || '/pages/bedankt';
+      })
+      .catch(function() {
+        submitBtn.disabled = false;
+        submitLabel.classList.remove('hidden');
+        submitLoad.classList.add('hidden');
+        document.getElementById('e7').classList.remove('hidden');
+        gtm('form_error', { step: 7 });
+      });
+    }
+
+    if (logoFile) {
+      var reader = new FileReader();
+      reader.onload = function(ev) { sendToZapier(ev.target.result); };
+      reader.readAsDataURL(logoFile);
+    } else {
+      sendToZapier('');
+    }
+  });
+
+  // ── INIT ──
+  gtm('form_start', {});
+  showStep(1);
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Qualify Form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid",
+      "label": "Show Grid Pattern",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "grid_color",
+      "label": "Grid Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "range",
+      "id": "grid_size",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Grid Cell Size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "grid_opacity",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "%",
+      "label": "Grid Opacity",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "grid_line_width",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Grid Line Width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Colors & Style"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Accent Color",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "accent_hover",
+      "label": "Accent Hover",
+      "default": "#e07b00"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border",
+      "default": "#E8E8E8"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Radius",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Page Content"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "Gratis 3D ontwerp"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Page Headline",
+      "default": "Check of jij kwalificeert voor een gratis 3D ontwerp."
+    },
+    {
+      "type": "text",
+      "id": "subline",
+      "label": "Subline",
+      "default": "Slechts 10 gratis ontwerpen per maand. Vul het formulier in en we laten het je weten."
+    },
+    {
+      "type": "text",
+      "id": "social_proof",
+      "label": "Social Proof Text",
+      "default": "500+ merken gingen je voor"
+    },
+    {
+      "type": "header",
+      "content": "Question Labels"
+    },
+    {
+      "type": "text",
+      "id": "q1_title",
+      "label": "Q1 — Timeline",
+      "default": "Wanneer heb je je sokken uiterlijk nodig?"
+    },
+    {
+      "type": "text",
+      "id": "q2_title",
+      "label": "Q2 — First Name",
+      "default": "Wat is je voornaam?"
+    },
+    {
+      "type": "text",
+      "id": "q3_title",
+      "label": "Q3 — Email",
+      "default": "Wat is je e-mailadres?"
+    },
+    {
+      "type": "text",
+      "id": "q4_title",
+      "label": "Q4 — Phone",
+      "default": "Wat is je telefoonnummer?"
+    },
+    {
+      "type": "text",
+      "id": "q5_title",
+      "label": "Q5 — Quantity",
+      "default": "Hoeveel sokken denk je te bestellen?"
+    },
+    {
+      "type": "text",
+      "id": "q6_title",
+      "label": "Q6 — Design",
+      "default": "Beschrijf je ontwerp en upload je logo."
+    },
+    {
+      "type": "header",
+      "content": "Disqualify Settings"
+    },
+    {
+      "type": "url",
+      "id": "dq_url",
+      "label": "Disqualify Redirect URL"
+    },
+    {
+      "type": "text",
+      "id": "dq_cta",
+      "label": "Disqualify Button Text",
+      "default": "Bekijk onze minimum bestelling →"
+    },
+    {
+      "type": "header",
+      "content": "Integrations"
+    },
+    {
+      "type": "text",
+      "id": "zapier_url",
+      "label": "Zapier Webhook URL",
+      "info": "Paste your Zapier webhook URL here. Leave empty to skip."
+    },
+    {
+      "type": "url",
+      "id": "thankyou_url",
+      "label": "Thank You Page URL",
+      "info": "Where to redirect after successful submission"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Qualify Form"
+    }
+  ]
+}
+{% endschema %}
