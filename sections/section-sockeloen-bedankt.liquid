@@ -1,0 +1,624 @@
+{{ 'section-sockeloen-bedankt.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .sb-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    position: relative;
+    overflow: hidden;
+  }
+  {% if section.settings.show_grid %}
+  .sb-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient({{ section.settings.grid_color }} 1px, transparent 1px),
+      linear-gradient(90deg, {{ section.settings.grid_color }} 1px, transparent 1px);
+    background-size: {{ section.settings.grid_size }}px {{ section.settings.grid_size }}px;
+    opacity: {{ section.settings.grid_opacity | divided_by: 100.0 }};
+    pointer-events: none;
+    z-index: 0;
+  }
+  {% endif %}
+  .sb-{{ section.id }} .sb-accent        { color: {{ section.settings.accent }}; }
+  .sb-{{ section.id }} .sb-badge         { background: {{ section.settings.accent }}; color: #000; }
+  .sb-{{ section.id }} .sb-cta           { background: {{ section.settings.accent }}; color: #000; border-radius: {{ section.settings.btn_radius }}px; }
+  .sb-{{ section.id }} .sb-cta:hover     { background: {{ section.settings.accent_hover }}; }
+  .sb-{{ section.id }} .sb-step-num      { background: {{ section.settings.accent }}; color: #000; }
+  .sb-{{ section.id }} .sb-faq-item.open .sb-faq-icon { background: {{ section.settings.accent }}; color: #000; }
+  .sb-{{ section.id }} .sb-review-card   { border-color: #e8e8e8; }
+  .sb-{{ section.id }} .sb-divider       { border-color: #e8e8e8; }
+{%- endstyle -%}
+
+<div class="sb-{{ section.id }}">
+<div class="sb-inner">
+
+  <!-- ══════════════════════════════
+       HERO — Confirmation
+  ══════════════════════════════ -->
+  <section class="sb-hero">
+    <div class="sb-hero-icon">🎉</div>
+    <div class="sb-badge">{{ section.settings.badge }}</div>
+    <h1 class="sb-h1">{{ section.settings.hero_title }}</h1>
+    <p class="sb-hero-sub">{{ section.settings.hero_subtitle }}</p>
+
+    <!-- What happens next -->
+    <div class="sb-next-steps">
+      <p class="sb-next-label">{{ section.settings.next_label }}</p>
+      <div class="sb-steps">
+        <div class="sb-step">
+          <div class="sb-step-num">1</div>
+          <div class="sb-step-text">
+            <strong>{{ section.settings.step1_title }}</strong>
+            <span>{{ section.settings.step1_body }}</span>
+          </div>
+        </div>
+        <div class="sb-step">
+          <div class="sb-step-num">2</div>
+          <div class="sb-step-text">
+            <strong>{{ section.settings.step2_title }}</strong>
+            <span>{{ section.settings.step2_body }}</span>
+          </div>
+        </div>
+        <div class="sb-step">
+          <div class="sb-step-num">3</div>
+          <div class="sb-step-text">
+            <strong>{{ section.settings.step3_title }}</strong>
+            <span>{{ section.settings.step3_body }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA while waiting -->
+    {% if section.settings.show_whatsapp %}
+    <a href="{{ section.settings.whatsapp_url }}" class="sb-cta sb-cta-hero" target="_blank" rel="noopener">
+      {{ section.settings.whatsapp_label }}
+    </a>
+    <p class="sb-cta-note">{{ section.settings.cta_note }}</p>
+    {% endif %}
+  </section>
+
+  <hr class="sb-divider">
+
+  <!-- ══════════════════════════════
+       TRUSTED BY LOGOS
+  ══════════════════════════════ -->
+  {% if section.settings.show_logos %}
+  <section class="sb-logos-section">
+    <p class="sb-logos-label">{{ section.settings.logos_label }}</p>
+    <div class="sb-logos-track-wrap">
+      <div class="sb-logos-track">
+        {% for block in section.blocks %}
+          {% if block.type == 'logo' %}
+            <div class="sb-logo-item" {{ block.shopify_attributes }}>
+              {% if block.settings.logo_image != blank %}
+                <img src="{{ block.settings.logo_image | image_url: width: 160 }}" alt="{{ block.settings.logo_alt | default: 'Brand' | escape }}" loading="lazy">
+              {% else %}
+                <span class="sb-logo-placeholder">{{ block.settings.logo_alt | default: 'Brand' }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+        <!-- Duplicate for seamless scroll -->
+        {% for block in section.blocks %}
+          {% if block.type == 'logo' %}
+            <div class="sb-logo-item" aria-hidden="true">
+              {% if block.settings.logo_image != blank %}
+                <img src="{{ block.settings.logo_image | image_url: width: 160 }}" alt="" loading="lazy">
+              {% else %}
+                <span class="sb-logo-placeholder">{{ block.settings.logo_alt }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <hr class="sb-divider">
+  {% endif %}
+
+  <!-- ══════════════════════════════
+       FAQ ACCORDION
+  ══════════════════════════════ -->
+  {% if section.settings.show_faq %}
+  <section class="sb-faq-section">
+    <h2 class="sb-section-title">{{ section.settings.faq_title }}</h2>
+    <div class="sb-faq-list" id="sbFaqList">
+      {% for block in section.blocks %}
+        {% if block.type == 'faq' %}
+          <div class="sb-faq-item" {{ block.shopify_attributes }}>
+            <button class="sb-faq-q" type="button" aria-expanded="false">
+              <span>{{ block.settings.question }}</span>
+              <span class="sb-faq-icon">+</span>
+            </button>
+            <div class="sb-faq-a" hidden>
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <hr class="sb-divider">
+  {% endif %}
+
+  <!-- ══════════════════════════════
+       TESTIMONIALS GRID
+  ══════════════════════════════ -->
+  {% if section.settings.show_reviews %}
+  <section class="sb-reviews-section">
+    <h2 class="sb-section-title">{{ section.settings.reviews_title }}</h2>
+    <div class="sb-reviews-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="sb-review-card" {{ block.shopify_attributes }}>
+            <div class="sb-review-stars">★★★★★</div>
+            <p class="sb-review-text">"{{ block.settings.review_text }}"</p>
+            <div class="sb-reviewer">
+              <div class="sb-reviewer-avatar">{{ block.settings.reviewer_name | slice: 0 }}</div>
+              <div>
+                <strong class="sb-reviewer-name">{{ block.settings.reviewer_name }}</strong>
+                <span class="sb-reviewer-role">{{ block.settings.reviewer_role }}</span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <hr class="sb-divider">
+  {% endif %}
+
+  <!-- ══════════════════════════════
+       BOTTOM CTA
+  ══════════════════════════════ -->
+  <section class="sb-bottom-cta">
+    <h2 class="sb-bottom-title">{{ section.settings.bottom_title }}</h2>
+    <p class="sb-bottom-sub">{{ section.settings.bottom_sub }}</p>
+    <a href="{{ section.settings.bottom_cta_url }}" class="sb-cta sb-bottom-btn">
+      {{ section.settings.bottom_cta_label }}
+    </a>
+  </section>
+
+</div>
+</div>
+
+<!-- ══ FAQ ACCORDION JS ══ -->
+<script>
+document.getElementById('sbFaqList').addEventListener('click', function(e) {
+  var btn = e.target.closest('.sb-faq-q');
+  if (!btn) return;
+  var item   = btn.closest('.sb-faq-item');
+  var answer = item.querySelector('.sb-faq-a');
+  var icon   = btn.querySelector('.sb-faq-icon');
+  var isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.sb-faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.sb-faq-a').hidden = true;
+    el.querySelector('.sb-faq-q').setAttribute('aria-expanded', 'false');
+    el.querySelector('.sb-faq-icon').textContent = '+';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    icon.textContent = '×';
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Bedankt Pagina",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Achtergrond"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Achtergrondkleur",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_grid",
+      "label": "Toon rasterpatroon",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "grid_color",
+      "label": "Rasterkleur",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "range",
+      "id": "grid_size",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Rastergrootte",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "grid_opacity",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "%",
+      "label": "Raster doorzichtigheid",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Accentkleur",
+      "default": "#FF8C00"
+    },
+    {
+      "type": "color",
+      "id": "accent_hover",
+      "label": "Accent hover",
+      "default": "#e07b00"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Knop radius",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Hero sectie"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge tekst",
+      "default": "Aanvraag ontvangen"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hoofdtitel",
+      "default": "Aanvraag ontvangen! We nemen binnen 24u contact op."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtitel",
+      "default": "Ons team bekijkt je aanvraag en maakt een gratis 3D ontwerp als je kwalificeert. Je hoort van ons via e-mail of telefoon."
+    },
+    {
+      "type": "header",
+      "content": "Volgende stappen"
+    },
+    {
+      "type": "text",
+      "id": "next_label",
+      "label": "Label boven stappen",
+      "default": "Wat gebeurt er nu?"
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Stap 1 titel",
+      "default": "We beoordelen je aanvraag"
+    },
+    {
+      "type": "text",
+      "id": "step1_body",
+      "label": "Stap 1 tekst",
+      "default": "Ons team bekijkt je brief en logo. Dit doen we binnen 24 uur na ontvangst."
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Stap 2 titel",
+      "default": "Je ontvangt je gratis 3D ontwerp"
+    },
+    {
+      "type": "text",
+      "id": "step2_body",
+      "label": "Stap 2 tekst",
+      "default": "Als je kwalificeert sturen we je een professioneel 3D sok-ontwerp op maat van jouw merk."
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Stap 3 titel",
+      "default": "We plannen een korte call"
+    },
+    {
+      "type": "text",
+      "id": "step3_body",
+      "label": "Stap 3 tekst",
+      "default": "Bevalt het ontwerp? Dan bespreken we de productie, aantallen en levering. Geen verplichtingen."
+    },
+    {
+      "type": "header",
+      "content": "WhatsApp CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "label": "Toon WhatsApp knop",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_label",
+      "label": "WhatsApp knop tekst",
+      "default": "Stuur ons een WhatsApp bericht →"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_url",
+      "label": "WhatsApp URL",
+      "default": "https://wa.me/31600000000"
+    },
+    {
+      "type": "text",
+      "id": "cta_note",
+      "label": "Noot onder CTA",
+      "default": "Liever niet wachten? App ons direct."
+    },
+    {
+      "type": "header",
+      "content": "Logo carrousel"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logos",
+      "label": "Toon logo carrousel",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "logos_label",
+      "label": "Label boven logo's",
+      "default": "Vertrouwd door merken zoals"
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_faq",
+      "label": "Toon FAQ",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ titel",
+      "default": "Veelgestelde vragen"
+    },
+    {
+      "type": "header",
+      "content": "Beoordelingen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Toon beoordelingen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "reviews_title",
+      "label": "Beoordelingen titel",
+      "default": "Wat onze klanten zeggen"
+    },
+    {
+      "type": "header",
+      "content": "Onderste CTA"
+    },
+    {
+      "type": "text",
+      "id": "bottom_title",
+      "label": "Titel",
+      "default": "Terwijl je wacht — bekijk onze eerdere ontwerpen."
+    },
+    {
+      "type": "text",
+      "id": "bottom_sub",
+      "label": "Subtekst",
+      "default": "Laat je inspireren door wat we al gemaakt hebben voor andere merken."
+    },
+    {
+      "type": "text",
+      "id": "bottom_cta_label",
+      "label": "Knop tekst",
+      "default": "Bekijk ons portfolio →"
+    },
+    {
+      "type": "url",
+      "id": "bottom_cta_url",
+      "label": "Knop URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Merknaam (alt tekst)",
+          "default": "Merk"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ vraag",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Vraag",
+          "default": "Hoe lang duurt het voordat ik mijn 3D ontwerp ontvang?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Antwoord",
+          "default": "Ons team beoordeelt je aanvraag binnen 24 uur. Als je kwalificeert ontvang je het 3D ontwerp binnen 2-3 werkdagen."
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Beoordeling",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Beoordelingstekst",
+          "default": "De kwaliteit, snelheid en het resultaat waren fantastisch. Een 10 uit 10."
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Naam reviewer",
+          "default": "Jan de Vries"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_role",
+          "label": "Functie reviewer",
+          "default": "Marketing Manager, MAAP"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bedankt Pagina",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": { "logo_alt": "MAAP" }
+        },
+        {
+          "type": "logo",
+          "settings": { "logo_alt": "Adidas" }
+        },
+        {
+          "type": "logo",
+          "settings": { "logo_alt": "Red Bull" }
+        },
+        {
+          "type": "logo",
+          "settings": { "logo_alt": "Patta" }
+        },
+        {
+          "type": "logo",
+          "settings": { "logo_alt": "Uniqlo" }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Hoe lang duurt het voordat ik mijn 3D ontwerp ontvang?",
+            "answer": "Ons team beoordeelt je aanvraag binnen 24 uur. Als je kwalificeert ontvang je het gratis 3D ontwerp binnen 2-3 werkdagen per e-mail."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Wat is de minimale bestelling bij Sockeloen?",
+            "answer": "Ons minimum is 200 paar per bestelling. Dit stelt ons in staat om een premium kwaliteit te garanderen en je te helpen met een professioneel ontwerp op maat."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Hoe lang duurt de productie?",
+            "answer": "Productie duurt gemiddeld 4 tot 6 weken na goedkeuring van het definitieve ontwerp en betaling van de aanbetaling."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Kan ik mijn eigen kleuren en logo gebruiken?",
+            "answer": "Absoluut. We werken volledig op maat: jouw kleuren, logo, patroon en lengte. Ons designteam helpt je het beste resultaat te behalen."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Wat als ik het ontwerp niet leuk vind?",
+            "answer": "Geen probleem. We werken net zo lang aan het ontwerp totdat je tevreden bent voordat we in productie gaan. Het 3D ontwerp is volledig gratis en vrijblijvend."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Kan ik meerdere designs tegelijk bestellen?",
+            "answer": "Ja, we kunnen meerdere varianten in één productieronde maken. Vraag dit aan tijdens onze gesprek, dan kijken we wat de beste opties zijn."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "De kwaliteit, de snelheid, het resultaat. Alles was ongelofelijk. Ik geef ze een 10 uit 10.",
+            "reviewer_name": "Thomas V.",
+            "reviewer_role": "Owner, Upfront Amsterdam"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Onze eerste run van 500 paar was binnen 48 uur uitverkocht. We bestellen nu al onze tweede ronde.",
+            "reviewer_name": "Sarah K.",
+            "reviewer_role": "Brand Manager, Cycling Club"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Professioneel team, geweldig ontwerp en op tijd geleverd. Onze klanten zijn dol op de sokken.",
+            "reviewer_name": "Marc D.",
+            "reviewer_role": "Marketing Director"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "review_text": "Het 3D ontwerp zag er al fantastisch uit. Het eindproduct was nog beter. Echt een topservice.",
+            "reviewer_name": "Lisa B.",
+            "reviewer_role": "Founder, Fashion Brand"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
