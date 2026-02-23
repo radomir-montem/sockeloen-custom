@@ -9,15 +9,38 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "qualify_form": {
+      "type": "section-sockeloen-qualify",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "bg_color": "#FFFFFF",
+        "show_grid": true,
+        "grid_color": "#FF8C00",
+        "grid_size": 50,
+        "grid_opacity": 10,
+        "grid_line_width": 1,
+        "padding_top": 60,
+        "padding_bottom": 80,
+        "accent": "#FF8C00",
+        "accent_hover": "#e07b00",
+        "card_bg": "#FFFFFF",
+        "card_border": "#E8E8E8",
+        "card_radius": 16,
+        "btn_radius": 50,
+        "badge": "Gratis 3D ontwerp",
+        "headline": "Check of jij kwalificeert voor een gratis 3D ontwerp.",
+        "subline": "Slechts 10 gratis ontwerpen per maand. Vul het formulier in — we laten het je binnen 24u weten.",
+        "social_proof": "500+ merken gingen je voor",
+        "q1_title": "Wanneer heb je je sokken uiterlijk nodig?",
+        "q2_title": "Wat is je voornaam?",
+        "q3_title": "Wat is je e-mailadres?",
+        "q4_title": "Wat is je telefoonnummer?",
+        "q5_title": "Hoeveel sokken denk je te bestellen?",
+        "q6_title": "Beschrijf je ontwerp en upload je logo.",
+        "dq_cta": "Bekijk onze minimum bestelling \u2192",
+        "zapier_url": "",
+        "thankyou_url": "/pages/bedankt"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["qualify_form"]
 }
