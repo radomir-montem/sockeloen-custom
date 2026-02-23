@@ -9,29 +9,43 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "bedankt": {
+      "type": "section-sockeloen-bedankt",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "studio_flow_landing_kY3Pgh": {
-      "type": "studio-flow-landing",
-      "name": "Studio Flow Landing",
-      "settings": {
-        "grid_color": "#00ff66",
+        "bg_color": "#FFFFFF",
+        "show_grid": true,
+        "grid_color": "#FF8C00",
         "grid_size": 50,
         "grid_opacity": 10,
-        "button_text_color": "#000000",
-        "logo_opacity": 40,
-        "card_border_color": "#00ff66"
+        "accent": "#FF8C00",
+        "accent_hover": "#e07b00",
+        "btn_radius": 50,
+        "badge": "Aanvraag ontvangen",
+        "hero_title": "Aanvraag ontvangen! We nemen binnen 24u contact op.",
+        "hero_subtitle": "Ons team bekijkt je aanvraag en maakt een gratis 3D ontwerp als je kwalificeert. Je hoort van ons via e-mail of telefoon.",
+        "next_label": "Wat gebeurt er nu?",
+        "step1_title": "We beoordelen je aanvraag",
+        "step1_body": "Ons team bekijkt je brief en logo. Dit doen we binnen 24 uur na ontvangst.",
+        "step2_title": "Je ontvangt je gratis 3D ontwerp",
+        "step2_body": "Als je kwalificeert sturen we je een professioneel 3D sok-ontwerp op maat van jouw merk.",
+        "step3_title": "We plannen een korte call",
+        "step3_body": "Bevalt het ontwerp? Dan bespreken we de productie, aantallen en levering. Geen verplichtingen.",
+        "show_whatsapp": true,
+        "whatsapp_label": "Stuur ons een WhatsApp bericht \u2192",
+        "whatsapp_url": "https://wa.me/31600000000",
+        "cta_note": "Liever niet wachten? App ons direct.",
+        "show_logos": true,
+        "logos_label": "Vertrouwd door merken zoals",
+        "show_faq": true,
+        "faq_title": "Veelgestelde vragen",
+        "show_reviews": true,
+        "reviews_title": "Wat onze klanten zeggen",
+        "bottom_title": "Terwijl je wacht \u2014 bekijk onze eerdere ontwerpen.",
+        "bottom_sub": "Laat je inspireren door wat we al gemaakt hebben voor andere merken.",
+        "bottom_cta_label": "Bekijk ons portfolio \u2192",
+        "bottom_cta_url": "/"
       }
     }
   },
-  "order": [
-    "main",
-    "studio_flow_landing_kY3Pgh"
-  ]
+  "order": ["bedankt"]
 }
