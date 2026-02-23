@@ -11,13 +11,112 @@
   "sections": {
     "bedankt": {
       "type": "section-sockeloen-bedankt",
+      "blocks": {
+        "review_bcV9i4": {
+          "type": "review",
+          "settings": {
+            "review_text": "De kwaliteit, snelheid en het resultaat waren fantastisch. Een 10 uit 10.",
+            "reviewer_name": "Jan de Vries",
+            "reviewer_role": "Marketing Manager, MAAP"
+          }
+        },
+        "review_HrqAF3": {
+          "type": "review",
+          "settings": {
+            "review_text": "De kwaliteit, snelheid en het resultaat waren fantastisch. Een 10 uit 10.",
+            "reviewer_name": "Jan de Vries",
+            "reviewer_role": "Marketing Manager, MAAP"
+          }
+        },
+        "review_KqUPdi": {
+          "type": "review",
+          "settings": {
+            "review_text": "De kwaliteit, snelheid en het resultaat waren fantastisch. Een 10 uit 10.",
+            "reviewer_name": "Jan de Vries",
+            "reviewer_role": "Marketing Manager, MAAP"
+          }
+        },
+        "review_7YXWWm": {
+          "type": "review",
+          "settings": {
+            "review_text": "De kwaliteit, snelheid en het resultaat waren fantastisch. Een 10 uit 10.",
+            "reviewer_name": "Jan de Vries",
+            "reviewer_role": "Marketing Manager, MAAP"
+          }
+        },
+        "faq_fXR7h3": {
+          "type": "faq",
+          "settings": {
+            "question": "Hoe lang duurt het voordat ik mijn 3D ontwerp ontvang?",
+            "answer": "Ons team beoordeelt je aanvraag binnen 24 uur. Als je kwalificeert ontvang je het 3D ontwerp binnen 2-3 werkdagen."
+          }
+        },
+        "faq_dQcYJd": {
+          "type": "faq",
+          "settings": {
+            "question": "Hoe lang duurt het voordat ik mijn 3D ontwerp ontvang?",
+            "answer": "Ons team beoordeelt je aanvraag binnen 24 uur. Als je kwalificeert ontvang je het 3D ontwerp binnen 2-3 werkdagen."
+          }
+        },
+        "faq_mYNhyJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Hoe lang duurt het voordat ik mijn 3D ontwerp ontvang?",
+            "answer": "Ons team beoordeelt je aanvraag binnen 24 uur. Als je kwalificeert ontvang je het 3D ontwerp binnen 2-3 werkdagen."
+          }
+        },
+        "logo_AewNX4": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "Merk"
+          }
+        },
+        "logo_e8pjzR": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "Merk"
+          }
+        },
+        "logo_YJnQmY": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "Merk"
+          }
+        },
+        "logo_98zXdG": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "Merk"
+          }
+        },
+        "logo_aQEJEM": {
+          "type": "logo",
+          "settings": {
+            "logo_alt": "Merk"
+          }
+        }
+      },
+      "block_order": [
+        "review_bcV9i4",
+        "review_HrqAF3",
+        "review_KqUPdi",
+        "review_7YXWWm",
+        "faq_fXR7h3",
+        "faq_dQcYJd",
+        "faq_mYNhyJ",
+        "logo_AewNX4",
+        "logo_e8pjzR",
+        "logo_YJnQmY",
+        "logo_98zXdG",
+        "logo_aQEJEM"
+      ],
       "settings": {
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "show_grid": true,
-        "grid_color": "#FF8C00",
+        "grid_color": "#ff8c00",
         "grid_size": 50,
         "grid_opacity": 10,
-        "accent": "#FF8C00",
+        "accent": "#ff8c00",
         "accent_hover": "#e07b00",
         "btn_radius": 50,
         "badge": "Aanvraag ontvangen",
@@ -31,7 +130,7 @@
         "step3_title": "We plannen een korte call",
         "step3_body": "Bevalt het ontwerp? Dan bespreken we de productie, aantallen en levering. Geen verplichtingen.",
         "show_whatsapp": true,
-        "whatsapp_label": "Stuur ons een WhatsApp bericht \u2192",
+        "whatsapp_label": "Stuur ons een WhatsApp bericht →",
         "whatsapp_url": "https://wa.me/31600000000",
         "cta_note": "Liever niet wachten? App ons direct.",
         "show_logos": true,
@@ -40,12 +139,14 @@
         "faq_title": "Veelgestelde vragen",
         "show_reviews": true,
         "reviews_title": "Wat onze klanten zeggen",
-        "bottom_title": "Terwijl je wacht \u2014 bekijk onze eerdere ontwerpen.",
+        "bottom_title": "Terwijl je wacht — bekijk onze eerdere ontwerpen.",
         "bottom_sub": "Laat je inspireren door wat we al gemaakt hebben voor andere merken.",
-        "bottom_cta_label": "Bekijk ons portfolio \u2192",
+        "bottom_cta_label": "Bekijk ons portfolio →",
         "bottom_cta_url": "/"
       }
     }
   },
-  "order": ["bedankt"]
+  "order": [
+    "bedankt"
+  ]
 }
